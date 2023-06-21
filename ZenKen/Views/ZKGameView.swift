@@ -9,14 +9,16 @@ import SwiftUI
 
 struct ZKGameView: View {
     
-    @StateObject var seedFinder: SeedFinder = SeedFinder()
+    let size = 4
+    
+    @StateObject var gameModel: GameModel = GameModel()
     
     var body: some View {
-       ZenKenGrid(seedfinder: seedFinder)
+        ZKFieldGridView(size: size,
+                        gameModel: gameModel)
             .onAppear {
-                seedFinder.size = 4
-                seedFinder.seed = 7355680666289556746
-                seedFinder.setNewProblem()
+                gameModel.size = size
+                gameModel.setNewProblem(newSeed: 7355680666289556746)
             }
     }
 }
