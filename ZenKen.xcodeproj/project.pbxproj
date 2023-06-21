@@ -11,6 +11,11 @@
 		9D7857962A42E596008C4867 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D7857952A42E596008C4867 /* ContentView.swift */; };
 		9D7857982A42E597008C4867 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9D7857972A42E597008C4867 /* Assets.xcassets */; };
 		9D78579B2A42E597008C4867 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9D78579A2A42E597008C4867 /* Preview Assets.xcassets */; };
+		9D7857A52A42E633008C4867 /* ZenKenGrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D7857A42A42E633008C4867 /* ZenKenGrid.swift */; };
+		9D7857A72A42E64E008C4867 /* ZenKenField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D7857A62A42E64E008C4867 /* ZenKenField.swift */; };
+		9D7857AA2A42E6FA008C4867 /* ZKGenerator in Frameworks */ = {isa = PBXBuildFile; productRef = 9D7857A92A42E6FA008C4867 /* ZKGenerator */; };
+		9D7857AD2A42E7C1008C4867 /* SeedFinder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D7857AC2A42E7C1008C4867 /* SeedFinder.swift */; };
+		9D7857AF2A42E83B008C4867 /* ZKGameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D7857AE2A42E83B008C4867 /* ZKGameView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -19,6 +24,11 @@
 		9D7857952A42E596008C4867 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		9D7857972A42E597008C4867 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9D78579A2A42E597008C4867 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		9D7857A22A42E5BE008C4867 /* ZKGenerator */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = ZKGenerator; path = ../ZKGenerator; sourceTree = "<group>"; };
+		9D7857A42A42E633008C4867 /* ZenKenGrid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZenKenGrid.swift; sourceTree = "<group>"; };
+		9D7857A62A42E64E008C4867 /* ZenKenField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZenKenField.swift; sourceTree = "<group>"; };
+		9D7857AC2A42E7C1008C4867 /* SeedFinder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeedFinder.swift; sourceTree = "<group>"; };
+		9D7857AE2A42E83B008C4867 /* ZKGameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZKGameView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -26,6 +36,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9D7857AA2A42E6FA008C4867 /* ZKGenerator in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -35,8 +46,10 @@
 		9D7857872A42E596008C4867 = {
 			isa = PBXGroup;
 			children = (
+				9D7857A12A42E5BE008C4867 /* Packages */,
 				9D7857922A42E596008C4867 /* ZenKen */,
 				9D7857912A42E596008C4867 /* Products */,
+				9D7857A82A42E6FA008C4867 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -51,8 +64,9 @@
 		9D7857922A42E596008C4867 /* ZenKen */ = {
 			isa = PBXGroup;
 			children = (
+				9D7857AB2A42E782008C4867 /* Model */,
 				9D7857932A42E596008C4867 /* ZenKenApp.swift */,
-				9D7857952A42E596008C4867 /* ContentView.swift */,
+				9D7857A32A42E5FA008C4867 /* Views */,
 				9D7857972A42E597008C4867 /* Assets.xcassets */,
 				9D7857992A42E597008C4867 /* Preview Content */,
 			);
@@ -65,6 +79,40 @@
 				9D78579A2A42E597008C4867 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		9D7857A12A42E5BE008C4867 /* Packages */ = {
+			isa = PBXGroup;
+			children = (
+				9D7857A22A42E5BE008C4867 /* ZKGenerator */,
+			);
+			name = Packages;
+			sourceTree = "<group>";
+		};
+		9D7857A32A42E5FA008C4867 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				9D7857952A42E596008C4867 /* ContentView.swift */,
+				9D7857A42A42E633008C4867 /* ZenKenGrid.swift */,
+				9D7857A62A42E64E008C4867 /* ZenKenField.swift */,
+				9D7857AE2A42E83B008C4867 /* ZKGameView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		9D7857A82A42E6FA008C4867 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		9D7857AB2A42E782008C4867 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				9D7857AC2A42E7C1008C4867 /* SeedFinder.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -83,6 +131,9 @@
 			dependencies = (
 			);
 			name = ZenKen;
+			packageProductDependencies = (
+				9D7857A92A42E6FA008C4867 /* ZKGenerator */,
+			);
 			productName = ZenKen;
 			productReference = 9D7857902A42E596008C4867 /* ZenKen.app */;
 			productType = "com.apple.product-type.application";
@@ -137,8 +188,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9D7857AD2A42E7C1008C4867 /* SeedFinder.swift in Sources */,
+				9D7857A52A42E633008C4867 /* ZenKenGrid.swift in Sources */,
 				9D7857962A42E596008C4867 /* ContentView.swift in Sources */,
+				9D7857AF2A42E83B008C4867 /* ZKGameView.swift in Sources */,
 				9D7857942A42E596008C4867 /* ZenKenApp.swift in Sources */,
+				9D7857A72A42E64E008C4867 /* ZenKenField.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -339,6 +394,13 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		9D7857A92A42E6FA008C4867 /* ZKGenerator */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = ZKGenerator;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 9D7857882A42E596008C4867 /* Project object */;
 }

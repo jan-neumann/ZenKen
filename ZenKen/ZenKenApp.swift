@@ -11,7 +11,7 @@ import SwiftUI
 struct ZenKenApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            ZKGameView()
         }
     }
 }
