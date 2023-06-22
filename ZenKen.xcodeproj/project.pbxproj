@@ -7,8 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9D25CB1F2A4433B300476FD6 /* Array+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D25CB1E2A4433B300476FD6 /* Array+Extensions.swift */; };
+		9D25CB212A4449CE00476FD6 /* NumPadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D25CB202A4449CE00476FD6 /* NumPadView.swift */; };
 		9D7857942A42E596008C4867 /* ZenKenApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D7857932A42E596008C4867 /* ZenKenApp.swift */; };
-		9D7857962A42E596008C4867 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D7857952A42E596008C4867 /* ContentView.swift */; };
 		9D7857982A42E597008C4867 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9D7857972A42E597008C4867 /* Assets.xcassets */; };
 		9D78579B2A42E597008C4867 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9D78579A2A42E597008C4867 /* Preview Assets.xcassets */; };
 		9D7857A52A42E633008C4867 /* ZKFieldGridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D7857A42A42E633008C4867 /* ZKFieldGridView.swift */; };
@@ -17,12 +18,14 @@
 		9D7857AD2A42E7C1008C4867 /* GameModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D7857AC2A42E7C1008C4867 /* GameModel.swift */; };
 		9D7857AF2A42E83B008C4867 /* ZKGameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D7857AE2A42E83B008C4867 /* ZKGameView.swift */; };
 		9D8275602A431B26007AE842 /* ZKField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D82755F2A431B26007AE842 /* ZKField.swift */; };
+		9DFA6D692A44886F00385C0F /* Color+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DFA6D682A44886F00385C0F /* Color+Extensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		9D25CB1E2A4433B300476FD6 /* Array+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Extensions.swift"; sourceTree = "<group>"; };
+		9D25CB202A4449CE00476FD6 /* NumPadView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumPadView.swift; sourceTree = "<group>"; };
 		9D7857902A42E596008C4867 /* ZenKen.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ZenKen.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9D7857932A42E596008C4867 /* ZenKenApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZenKenApp.swift; sourceTree = "<group>"; };
-		9D7857952A42E596008C4867 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		9D7857972A42E597008C4867 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9D78579A2A42E597008C4867 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		9D7857A22A42E5BE008C4867 /* ZKGenerator */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = ZKGenerator; path = ../ZKGenerator; sourceTree = "<group>"; };
@@ -31,6 +34,7 @@
 		9D7857AC2A42E7C1008C4867 /* GameModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameModel.swift; sourceTree = "<group>"; };
 		9D7857AE2A42E83B008C4867 /* ZKGameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZKGameView.swift; sourceTree = "<group>"; };
 		9D82755F2A431B26007AE842 /* ZKField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZKField.swift; sourceTree = "<group>"; };
+		9DFA6D682A44886F00385C0F /* Color+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Extensions.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -45,6 +49,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		9D25CB1D2A44339D00476FD6 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				9D25CB1E2A4433B300476FD6 /* Array+Extensions.swift */,
+				9DFA6D682A44886F00385C0F /* Color+Extensions.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		9D7857872A42E596008C4867 = {
 			isa = PBXGroup;
 			children = (
@@ -66,8 +79,9 @@
 		9D7857922A42E596008C4867 /* ZenKen */ = {
 			isa = PBXGroup;
 			children = (
-				9D7857AB2A42E782008C4867 /* Model */,
 				9D7857932A42E596008C4867 /* ZenKenApp.swift */,
+				9D25CB1D2A44339D00476FD6 /* Extensions */,
+				9D7857AB2A42E782008C4867 /* Model */,
 				9D7857A32A42E5FA008C4867 /* Views */,
 				9D7857972A42E597008C4867 /* Assets.xcassets */,
 				9D7857992A42E597008C4867 /* Preview Content */,
@@ -94,10 +108,10 @@
 		9D7857A32A42E5FA008C4867 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				9D7857952A42E596008C4867 /* ContentView.swift */,
 				9D7857A42A42E633008C4867 /* ZKFieldGridView.swift */,
 				9D7857A62A42E64E008C4867 /* ZKFieldView.swift */,
 				9D7857AE2A42E83B008C4867 /* ZKGameView.swift */,
+				9D25CB202A4449CE00476FD6 /* NumPadView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -193,9 +207,11 @@
 			files = (
 				9D7857AD2A42E7C1008C4867 /* GameModel.swift in Sources */,
 				9D7857A52A42E633008C4867 /* ZKFieldGridView.swift in Sources */,
-				9D7857962A42E596008C4867 /* ContentView.swift in Sources */,
+				9DFA6D692A44886F00385C0F /* Color+Extensions.swift in Sources */,
+				9D25CB1F2A4433B300476FD6 /* Array+Extensions.swift in Sources */,
 				9D7857AF2A42E83B008C4867 /* ZKGameView.swift in Sources */,
 				9D7857942A42E596008C4867 /* ZenKenApp.swift in Sources */,
+				9D25CB212A4449CE00476FD6 /* NumPadView.swift in Sources */,
 				9D7857A72A42E64E008C4867 /* ZKFieldView.swift in Sources */,
 				9D8275602A431B26007AE842 /* ZKField.swift in Sources */,
 			);

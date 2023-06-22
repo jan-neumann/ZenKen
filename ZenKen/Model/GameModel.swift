@@ -11,9 +11,8 @@ import ZKGenerator
 final class GameModel: ObservableObject {
     
     @Published var generator: ZKGenerator?
-   // @Published var solution: [[Int]]?
     @Published var fields: [[ZKField]] = []
-   
+    @Published var selectedField: ZKField?
     @Published var size = 8
   
     private var seed = 8033042266564781627
@@ -126,7 +125,7 @@ final class GameModel: ObservableObject {
                 fields[i].append(
                     ZKField(
                     hint: hint ?? "",
-                    value: 0,
+                    value: nil,
                     solution: solution ?? 0,
                     drawLeftBorder: drawLeft,
                     drawRightBorder: drawRight,

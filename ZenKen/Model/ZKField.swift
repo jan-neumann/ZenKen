@@ -7,13 +7,13 @@
 
 import Foundation
 
-struct ZKField: Codable, Identifiable {
-    
+final class ZKField: ObservableObject, Identifiable, Hashable {
+
     var id: Int = UUID().hashValue
-    
-    
+        
     let hint: String?
-    var value: Int?
+    @Published var value: Int?
+   
     var solution: Int?
     
     let drawLeftBorder: Bool
@@ -21,4 +21,24 @@ struct ZKField: Codable, Identifiable {
     let drawBottomBorder: Bool
     let drawTopBorder: Bool
     
+      
+    init(hint: String?, value: Int? = nil, solution: Int? = nil, drawLeftBorder: Bool, drawRightBorder: Bool, drawBottomBorder: Bool, drawTopBorder: Bool) {
+     
+        self.hint = hint
+        self.value = value
+        self.solution = solution
+        self.drawLeftBorder = drawLeftBorder
+        self.drawRightBorder = drawRightBorder
+        self.drawBottomBorder = drawBottomBorder
+        self.drawTopBorder = drawTopBorder
+    }
+    
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(id)
+      
+    }
+    
+    static func == (lhs: ZKField, rhs: ZKField) -> Bool {
+        lhs.id == rhs.id
+    }
 }
