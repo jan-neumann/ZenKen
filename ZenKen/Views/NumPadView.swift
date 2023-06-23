@@ -12,10 +12,10 @@ struct NumPadView: View {
     
     var body: some View {
         HStack {
-            
             Grid {
-                
-                
+                GridRow {
+                    numButton(value: -1, symbol: "<")
+                }
                 GridRow {
                     ForEach(1 ..< 4, id: \.self) { number in
                         numButton(value: number)
@@ -23,18 +23,23 @@ struct NumPadView: View {
                 }
                 GridRow {
                     ForEach(4 ..< 7, id: \.self) { number in
-                        numButton(value: number)
+                        if gameModel.size >= number {
+                            numButton(value: number)
+                        }
                     }
                 }
-                GridRow {
-                    ForEach(7 ..< 10, id: \.self) { number in
-                       numButton(value: number)
+                if gameModel.size > 6 {
+                    GridRow {
+                        ForEach(7 ..< 10, id: \.self) { number in
+                            if gameModel.size >= number {
+                                numButton(value: number)
+                            }
+                        }
+                        
                     }
+                }
                     
-                }
-                GridRow {
-                    numButton(value: -1, symbol: "<")
-                }
+              
             }
         }
         .padding()

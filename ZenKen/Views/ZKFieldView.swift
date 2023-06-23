@@ -31,6 +31,25 @@ struct ZKFieldView: View {
         return false
     }
     
+    var hintFontSize: CGFloat {
+        switch gridSize {
+        case 9:
+            return 10
+        case 8:
+            return 12
+        case 7:
+            return 14
+        case 6:
+            return 16
+        case 5:
+            return 18
+        case 4:
+            return 20
+        default:
+            return 20
+        }
+    }
+    
     var body: some View {
         ZStack {
             Rectangle()
@@ -93,10 +112,10 @@ struct ZKFieldView: View {
             VStack(alignment: .leading, spacing: 0) {
                 HStack(alignment: .top, spacing: 0) {
                     Text(field.hint ?? "")
-                        .font(.caption2)
+                        .font(.system(size: hintFontSize).bold())
                    
                         .frame(alignment: .topLeading)
-                        .foregroundColor(Color(.systemBlue))
+                        .foregroundColor((gm.selectedField != nil && gm.selectedField == field) ? Color.white : Color(.systemBlue))
                         .padding(.top, 2)
                         .padding(.leading, 4)
                         .lineLimit(1)

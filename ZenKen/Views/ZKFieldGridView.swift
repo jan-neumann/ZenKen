@@ -24,11 +24,13 @@ struct ZKFieldGridView: View {
         
         GeometryReader { geo in
             HStack(alignment: .center, spacing: 0) {
-                Spacer()
-                if !isPortrait {
-                    NumPadView(gameModel: gameModel)
-                        .padding(.vertical)
-                        .opacity(showKeyPad ? 1 : 0)
+                ZStack {
+                    Spacer()
+                    if !isPortrait {
+                        NumPadView(gameModel: gameModel)
+                            .padding(.vertical)
+                            .opacity(showKeyPad ? 1 : 0)
+                    }
                 }
                 VStack(alignment: .center, spacing: 0) {
                     Spacer()
@@ -65,6 +67,7 @@ struct ZKFieldGridView: View {
                     }
                     .background(.secondary)
                     
+                
                     if isPortrait {
                         NumPadView(gameModel: gameModel)
                             .padding(.vertical)
