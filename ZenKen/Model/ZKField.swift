@@ -13,7 +13,7 @@ final class ZKField: ObservableObject, Identifiable, Hashable {
         
     let hint: String?
     @Published var value: Int?
-   
+    @Published var notes: [Bool]
     var solution: Int?
     
     let drawLeftBorder: Bool
@@ -21,7 +21,6 @@ final class ZKField: ObservableObject, Identifiable, Hashable {
     let drawBottomBorder: Bool
     let drawTopBorder: Bool
     
-      
     init(hint: String?, value: Int? = nil, solution: Int? = nil, drawLeftBorder: Bool, drawRightBorder: Bool, drawBottomBorder: Bool, drawTopBorder: Bool) {
      
         self.hint = hint
@@ -31,6 +30,7 @@ final class ZKField: ObservableObject, Identifiable, Hashable {
         self.drawRightBorder = drawRightBorder
         self.drawBottomBorder = drawBottomBorder
         self.drawTopBorder = drawTopBorder
+        self.notes = Array(repeating: false, count: 9)
     }
     
     func hash(into hasher: inout Hasher) {

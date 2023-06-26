@@ -27,15 +27,26 @@ struct ZKFieldGridView: View {
                 ZStack {
                     Spacer()
                     if !isPortrait {
-                        NumPadView(gameModel: gameModel)
+                        ZKNumPadView(
+                            portrait: false,
+                            gameModel: gameModel)
                             .padding(.vertical)
                             .opacity(showKeyPad ? 1 : 0)
                     }
                 }
+                
                 VStack(alignment: .center, spacing: 0) {
                     Spacer()
 
                     VStack(spacing: 1) {
+                        if isPortrait {
+                            ZKNoteSelectionView(
+                                portrait: isPortrait,
+                                size: gameModel.size,
+                                field: $gameModel.selectedField
+                            )
+                            .opacity(gameModel.selectedField != nil ? 1 : 0)
+                        }
                         ForEach(gameModel.fields) { fields in
                             
                             HStack(alignment: .top, spacing: 1) {
@@ -69,15 +80,28 @@ struct ZKFieldGridView: View {
                     
                 
                     if isPortrait {
-                        NumPadView(gameModel: gameModel)
-                            .padding(.vertical)
-                            .opacity(showKeyPad ? 1 : 0)
+                        ZKNumPadView(
+                            portrait: true,
+                            gameModel: gameModel
+                        )
+                        .padding(.vertical)
+                        .opacity(showKeyPad ? 1 : 0)
                            
                     }
                     Spacer()
                 }
-
-                Spacer()
+                ZStack {
+                    Spacer()
+                    
+                    if !isPortrait {
+                        ZKNoteSelectionView(
+                            portrait: isPortrait,
+                            size: gameModel.size,
+                            field: $gameModel.selectedField
+                        )
+                        .opacity(gameModel.selectedField != nil ? 1 : 0)
+                    }
+                }
             }
             
         }
@@ -93,9 +117,12 @@ struct ZKFieldGridView: View {
     }
 }
 
+extension ZKFieldGridView {
+    
+}
+
 
 // MARK: - Previews
-
 struct ZenKenGrid_Previews: PreviewProvider {
     static var previews: some View {
         ZKFieldGridView(

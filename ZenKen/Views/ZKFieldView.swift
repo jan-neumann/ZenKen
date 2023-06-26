@@ -14,7 +14,7 @@ struct ZKFieldView: View {
     
     // MARK: - Constants
     private let cageColor: Color = .black
-    private let cageLineWidth: CGFloat = 3
+    private let cageLineWidth: CGFloat = 1
     private let sizeOffset: CGFloat = 2
     
     let gridSize: Int
@@ -80,29 +80,17 @@ struct ZKFieldView: View {
                                         field.drawBottomBorder ? cageLineWidth : 0)
                         }
                         
-//                        TextField("", value: $value, format: .number)
-//                            .onChange(of: value, perform: { newValue in
-//                                if let newValue = newValue {
-//                                    if newValue > 4 {
-//                                        value = 4
-//                                    }
-//                                    if newValue <= 0 {
-//                                        value = 1
-//                                    }
-//                                }
-//                            })
-//
-//                            .font(.title)
-//                            .foregroundColor((value != nil && value! == field.solution) ? .black : .red)
-//                            .minimumScaleFactor(0.3)
-//                            .padding(.top, 3)
-//                            .frame(width: fieldSize * 0.25)
-//                        // Value Text
+                        // Value Text
                         Text(field.value != nil ? "\(field.value!)" : "")
                             .font(.title)
                             .foregroundColor((field.value != nil && field.value! == field.solution!) ? .black : .red)
                             .shadow(radius: 2)
                             .padding(.top, 5)
+                        
+                        
+                        if field.value == nil {
+                            noteGridView
+                        }
                           
                     }
                     
@@ -113,7 +101,6 @@ struct ZKFieldView: View {
                 HStack(alignment: .top, spacing: 0) {
                     Text(field.hint ?? "")
                         .font(.system(size: hintFontSize).bold())
-                   
                         .frame(alignment: .topLeading)
                         .foregroundColor((gm.selectedField != nil && gm.selectedField == field) ? Color.white : Color(.systemBlue))
                         .padding(.top, 2)
@@ -143,6 +130,38 @@ struct ZKFieldView: View {
         }
         .frame(width: fieldSize - sizeOffset,
                height: fieldSize - sizeOffset)
+        
+    }
+}
+
+extension ZKFieldView {
+    
+    var noteGridView: some View {
+        VStack(alignment: .center, spacing: 5) {
+            Spacer()
+            HStack(spacing: 5) {
+                Text(field.notes[0] ? "1" : "•")
+                Text(field.notes[1] ? "2" : "•")
+                Text(field.notes[2] ? "3" : "•")
+            }
+            .frame(height: fieldSize * 0.1)
+            HStack(spacing: 5) {
+                Text(field.notes[3] ? "4" : "•")
+                Text(field.notes[4] ? "5" : "•")
+                Text(field.notes[5] ? "6" : "•")
+            }
+            .frame(height: fieldSize * 0.1)
+            HStack(spacing: 5) {
+                Text(field.notes[6] ? "7" : "•")
+                Text(field.notes[7] ? "8" : "•")
+                Text(field.notes[8] ? "9" : "•")
+            }
+            .frame(height: fieldSize * 0.1)
+            
+        }
+        .frame(height: fieldSize * 0.5)
+        .foregroundColor((gm.selectedField != nil && gm.selectedField == field) ? .white : .purple)
+        .font(.system(size: hintFontSize))
         
     }
 }

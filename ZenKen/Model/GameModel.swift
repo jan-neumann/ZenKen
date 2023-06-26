@@ -107,7 +107,7 @@ final class GameModel: ObservableObject {
         }
         
         guard let generator = generator else {
-            fatalError(">> Failure.No generator.")
+            fatalError(">> Failure. No generator.")
         }
         
         fields = []
