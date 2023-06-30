@@ -50,6 +50,10 @@ struct ZKFieldView: View {
         }
     }
     
+    var showNoteGridView: Bool {
+        field.notes.contains(where: { $0 })
+    }
+    
     var body: some View {
         ZStack {
             Rectangle()
@@ -90,6 +94,7 @@ struct ZKFieldView: View {
                         
                         if field.value == nil {
                             noteGridView
+                                .opacity(showNoteGridView ? 1 : 0)
                         }
                           
                     }
