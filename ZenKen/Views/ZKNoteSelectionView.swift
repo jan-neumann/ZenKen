@@ -12,63 +12,64 @@ struct ZKNoteSelectionView: View {
     let size: Int
     @ObservedObject var field: ZKField
     
+    @State var allNotesOn: Bool = false
+    
     func buttonColor(index: Int) -> Color {
-        //    guard let field = field else { return .primary }
         field.notes[index] ? Color.secondary : Color.blue
     }
     
     var body: some View {
         VStack {
-            Label("Notes", systemImage: "square.and.pencil")
+            
             if portrait {
+                notesLabel
                 HStack(spacing: 5) {
                     numbersView
-                    allButton
-                   // noneButton
+                    allNotesToggleButton
+                
                 }
             } else {
-                VStack(spacing: 5) {
-                    numbersView
-                    allButton
-                  //  noneButton
+                HStack {
+                    VStack(spacing: 5) {
+                        numbersView
+                        allNotesToggleButton
+                        
+                    }
+                    VStack {
+                        notesLabel
+                        Spacer()
+                    }
                 }
             }
         }
-        .padding(10)
-        .foregroundColor(.white)
-        //.background(.primary)
+        .padding(5)
+        .transition(.opacity)
     }
     
-    var allButton: some View {
+    var notesLabel: some View {
+        Label("Notes", systemImage: "square.and.pencil")
+            .foregroundColor(.primary)
+    }
+    
+    var allNotesToggleButton: some View {
         Button {
+            allNotesOn.toggle()
             for i in 0..<field.notes.count {
-                field.notes[i] = true
+                field.notes[i] = allNotesOn
             }
         } label: {
-            Image(systemName: "checkmark.square")
-                .font(.caption)
+            Image(systemName: allNotesOn ? "square.slash" : "checkmark.square")
+                .bold()
         }
         .buttonStyle(NoteToggleButtonStyle())
-        .frame(maxWidth: 30, minHeight: 30)
+       
     }
-    
-    var noneButton: some View {
-        Button {
-            for i in 0..<field.notes.count {
-                field.notes[i] = false
-            }
-        } label: {
-            Image(systemName: "trash.square")
-        }
-        .buttonStyle(.borderedProminent)
-        .frame(maxWidth: 30, minHeight: 30)
-    }
-    
     
     var numbersView: some View {
         ForEach(0..<size, id: \.self) { number in
             Button {
                 if field.notes.count > number {
+                   
                     withAnimation {
                         field.notes[number].toggle()
                     }
@@ -90,9 +91,10 @@ struct NoteToggleButtonStyle: ButtonStyle {
     
     func makeBody(configuration: Self.Configuration) -> some View {
             configuration.label
-                .frame(minWidth: 30, minHeight: 30)
+                .frame(minWidth: 30, maxWidth: 60, minHeight: 30, maxHeight: 60)
+                .aspectRatio(1, contentMode: .fit)
                 .foregroundColor(.white)
-                .background(toggle ? Color.secondary : Color.blue)
+                .background(toggle ? Color.blue : Color.secondary)
                 .cornerRadius(5)
                 .shadow(radius: 5)
         }

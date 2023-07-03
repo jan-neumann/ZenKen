@@ -32,27 +32,24 @@ struct ZKFieldView: View {
     }
     
     var hintFontSize: CGFloat {
-        switch gridSize {
-        case 9:
-            return 10
-        case 8:
-            return 12
-        case 7:
-            return 14
-        case 6:
-            return 16
-        case 5:
-            return 18
-        case 4:
-            return 20
-        default:
-            return 20
-        }
+        fieldSize * 0.2
+    }
+    
+    var valueFontSize: CGFloat {
+        fieldSize * 0.5
     }
     
     var showNoteGridView: Bool {
         field.notes.contains(where: { $0 })
     }
+    
+    var noteSpacing: CGFloat {
+        fieldSize * 0.13
+    }
+    var noteHeight: CGFloat {
+        fieldSize * 0.1
+    }
+    
     
     var body: some View {
         ZStack {
@@ -86,12 +83,11 @@ struct ZKFieldView: View {
                         
                         // Value Text
                         Text(field.value != nil ? "\(field.value!)" : "")
-                            .font(.title)
+                            .font(.system(size: valueFontSize))
                             .foregroundColor((field.value != nil && field.value! == field.solution!) ? .black : .red)
                             .shadow(radius: 2)
                             .padding(.top, 5)
-                        
-                        
+
                         if field.value == nil {
                             noteGridView
                                 .opacity(showNoteGridView ? 1 : 0)
@@ -117,21 +113,6 @@ struct ZKFieldView: View {
                 Spacer()
                 
             }
-            
-            // Actual solution
-//            VStack(alignment: .trailing) {
-//                Spacer()
-//                HStack(alignment: .bottom) {
-//                    Spacer()
-//                    Text("\(field.solution ?? 0)")
-//                        .font(.caption)
-//                        .foregroundColor(.red)
-//                        .frame(alignment: .bottomTrailing)
-//                        .padding([.bottom, .trailing], 4)
-//                        .minimumScaleFactor(0.3)
-//
-//                }
-//            }
         }
         .frame(width: fieldSize - sizeOffset,
                height: fieldSize - sizeOffset)
@@ -141,33 +122,38 @@ struct ZKFieldView: View {
 
 extension ZKFieldView {
     
+    private func noteText(number: Int) -> some View {
+        Text(field.notes[number - 1] ? "\(number)" : "•")
+    }
+    // TODO: Reduce to possible number
     var noteGridView: some View {
-        VStack(alignment: .center, spacing: 5) {
+        VStack(alignment: .center, spacing: noteSpacing) {
             Spacer()
-            HStack(spacing: 5) {
-                Text(field.notes[0] ? "1" : "•")
-                Text(field.notes[1] ? "2" : "•")
-                Text(field.notes[2] ? "3" : "•")
+            HStack(spacing: noteSpacing) {
+                noteText(number: 1)
+                noteText(number: 2)
+                noteText(number: 3)
             }
-            .frame(height: fieldSize * 0.1)
-            HStack(spacing: 5) {
-                Text(field.notes[3] ? "4" : "•")
-                Text(field.notes[4] ? "5" : "•")
-                Text(field.notes[5] ? "6" : "•")
+            .frame(height: noteHeight)
+            
+            HStack(spacing: noteSpacing) {
+                noteText(number: 4)
+                noteText(number: 5)
+                noteText(number: 6)
             }
-            .frame(height: fieldSize * 0.1)
-            HStack(spacing: 5) {
-                Text(field.notes[6] ? "7" : "•")
-                Text(field.notes[7] ? "8" : "•")
-                Text(field.notes[8] ? "9" : "•")
+            .frame(height: noteHeight)
+            
+            HStack(spacing: noteSpacing) {
+               noteText(number: 7)
+               noteText(number: 8)
+               noteText(number: 9)
             }
-            .frame(height: fieldSize * 0.1)
+            .frame(height: noteHeight)
             
         }
-        .frame(height: fieldSize * 0.5)
         .foregroundColor((gm.selectedField != nil && gm.selectedField == field) ? .white : .purple)
         .font(.system(size: hintFontSize))
-        
+        .padding(.bottom, noteSpacing)
     }
 }
 

@@ -20,7 +20,7 @@ struct ZKNumPadView: View {
     }
     
     private var portraitGrid: some View {
-        Grid(horizontalSpacing: 5) {
+        Grid(horizontalSpacing: 5, verticalSpacing: 5) {
             GridRow {
                 ForEach(1 ..< 5, id: \.self) { number in
                     numButton(value: number)
@@ -35,12 +35,11 @@ struct ZKNumPadView: View {
                 }
             }
         }
-        .padding(10)
-    //    .background(.secondary)
+        .padding(5)
     }
     
     private var landscapeGrid: some View {
-        Grid(horizontalSpacing: 5) {
+        Grid(horizontalSpacing: 5, verticalSpacing: 5) {
             GridRow {
                 numButton(value: -1, symbol: "delete.left")
             }
@@ -66,13 +65,10 @@ struct ZKNumPadView: View {
 
                 }
             }
-                
-          
         }
-        .padding(10)
-       // .background(.secondary)
+        .padding(5)
     }
-    
+
     private func numButton(value: Int, symbol: String? = nil) -> some View {
         Button {
             if value > 0 {
@@ -93,13 +89,21 @@ struct ZKNumPadView: View {
                 }
             }
         }
-        .frame(width: 40, height: 40)
-        .buttonStyle(.bordered)
-       
-      //  .shadow(radius: 2)
-
-        //.tint(.blue)
+        .frame(minWidth: 30, maxWidth: 60, minHeight: 30, maxHeight: 60)
+        .buttonStyle(NumberButtonStyle())
     }
+}
+
+struct NumberButtonStyle: ButtonStyle {
+    func makeBody(configuration: Self.Configuration) -> some View {
+            configuration.label
+                .frame(minWidth: 30, maxWidth: 60, minHeight: 30, maxHeight: 60)
+                .aspectRatio(1, contentMode: .fit)
+                .foregroundColor(.blue)
+                .background(.tertiary)
+                .cornerRadius(5)
+                .shadow(radius: 5)
+        }
 }
 
 //struct ZKNumPadView_Previews: PreviewProvider {
