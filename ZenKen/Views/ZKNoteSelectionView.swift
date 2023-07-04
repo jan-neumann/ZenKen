@@ -20,7 +20,6 @@ struct ZKNoteSelectionView: View {
     
     var body: some View {
         VStack {
-            
             if portrait {
                 notesLabel
                 HStack(spacing: 5) {
@@ -47,8 +46,12 @@ struct ZKNoteSelectionView: View {
     }
     
     var notesLabel: some View {
-        Label("Notes", systemImage: "square.and.pencil")
-            .foregroundColor(.primary)
+        HStack(spacing: 0) {
+            
+            Label("Notes", systemImage: "square.and.pencil")
+                .foregroundColor(.primary)
+            Spacer()
+        }
     }
     
     var allNotesToggleButton: some View {

@@ -10,6 +10,7 @@ import SwiftUI
 struct ZKGameView: View {
     
     let size = 9
+    let seed = 6512473110383760955
     
     @StateObject var gameModel: GameModel = GameModel()
     
@@ -18,9 +19,13 @@ struct ZKGameView: View {
     var body: some View {
         ZKFieldGridView(gridSize: size,
                         isPortrait: $isPortrait)
+        .background(
+            LinearGradient(colors: Color.backgroundGradientColors, startPoint: .topLeading, endPoint: .bottomTrailing)
+        )
+        .statusBarHidden()
         .onAppear {
             gameModel.size = size
-            gameModel.setNewProblem(newSeed: 6512473110383760955)
+            gameModel.setNewProblem(newSeed: seed)
             setOrientation()
         }
         .onReceive(

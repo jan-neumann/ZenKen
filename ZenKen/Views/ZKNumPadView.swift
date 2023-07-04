@@ -11,6 +11,13 @@ struct ZKNumPadView: View {
     let portrait: Bool
     @ObservedObject var gameModel: GameModel
     
+    var hint: String {
+        guard let hintString = gameModel.selectedField?.cageHint else {
+            return ""
+        }
+        return "Hint: " + hintString
+    }
+    
     var body: some View {
         if portrait {
             portraitGrid
@@ -20,53 +27,79 @@ struct ZKNumPadView: View {
     }
     
     private var portraitGrid: some View {
-        Grid(horizontalSpacing: 5, verticalSpacing: 5) {
-            GridRow {
-                ForEach(1 ..< 5, id: \.self) { number in
-                    numButton(value: number)
-                }
-                numButton(value: -1, symbol: "delete.left")
-            }
-            GridRow {
-                ForEach(5 ..< 10, id: \.self) { number in
-                    if gameModel.size >= number {
-                        numButton(value: number)
+        HStack(spacing: 0) {
+            Spacer()
+            VStack(spacing: 5) {
+                Text("\(hint)")
+                Grid(horizontalSpacing: 5, verticalSpacing: 5) {
+                    GridRow {
+                        ForEach(1 ..< 5, id: \.self) { number in
+                            numButton(value: number)
+                        }
+                        numButton(value: -1, symbol: "delete.left")
+                    }
+                    GridRow {
+                        ForEach(5 ..< 10, id: \.self) { number in
+                            if gameModel.size >= number {
+                                numButton(value: number)
+                            }
+                        }
                     }
                 }
             }
+            .padding(.bottom, 10)
+            Spacer()
         }
+        .background(
+            Color(.systemGray6)
+                .opacity(0.7)
+                .blur(radius: 2)
+        )
         .padding(5)
+        .cornerRadius(20)
+        .shadow(radius: 2)
     }
     
     private var landscapeGrid: some View {
-        Grid(horizontalSpacing: 5, verticalSpacing: 5) {
-            GridRow {
-                numButton(value: -1, symbol: "delete.left")
-            }
-            GridRow {
-                ForEach(1 ..< 4, id: \.self) { number in
-                    numButton(value: number)
+        VStack(spacing: 5) {
+            Text("\(hint)")
+            Grid(horizontalSpacing: 5, verticalSpacing: 5) {
+                GridRow {
+                    numButton(value: -1, symbol: "delete.left")
                 }
-            }
-            GridRow {
-                ForEach(4 ..< 7, id: \.self) { number in
-                    if gameModel.size >= number {
+                GridRow {
+                    ForEach(1 ..< 4, id: \.self) { number in
                         numButton(value: number)
                     }
                 }
-            }
-            if gameModel.size > 6 {
                 GridRow {
-                    ForEach(7 ..< 10, id: \.self) { number in
+                    ForEach(4 ..< 7, id: \.self) { number in
                         if gameModel.size >= number {
                             numButton(value: number)
                         }
                     }
-
+                }
+                if gameModel.size > 6 {
+                    GridRow {
+                        ForEach(7 ..< 10, id: \.self) { number in
+                            if gameModel.size >= number {
+                                numButton(value: number)
+                            }
+                        }
+                        
+                    }
                 }
             }
+            .padding(5)
         }
+        .background(
+            Color(.systemGray6)
+                .opacity(0.7)
+                .blur(radius: 2)
+        )
         .padding(5)
+        .cornerRadius(20)
+        .shadow(radius: 2)
     }
 
     private func numButton(value: Int, symbol: String? = nil) -> some View {
@@ -89,7 +122,7 @@ struct ZKNumPadView: View {
                 }
             }
         }
-        .frame(minWidth: 30, maxWidth: 60, minHeight: 30, maxHeight: 60)
+      //  .frame(minWidth: 30, maxWidth: 60, minHeight: 30, maxHeight: 60)
         .buttonStyle(NumberButtonStyle())
     }
 }
@@ -99,7 +132,7 @@ struct NumberButtonStyle: ButtonStyle {
             configuration.label
                 .frame(minWidth: 30, maxWidth: 60, minHeight: 30, maxHeight: 60)
                 .aspectRatio(1, contentMode: .fit)
-                .foregroundColor(.blue)
+                .foregroundColor(.primary)
                 .background(.tertiary)
                 .cornerRadius(5)
                 .shadow(radius: 5)

@@ -8,12 +8,7 @@
 import SwiftUI
 
 struct ZKFieldGridView: View {
-    
-    // MARK: - Constants
-    var margin: CGFloat {
-        CGFloat(gameModel.fields.count - 1)
-    }
-    
+
     let gridSize: Int
     
     @EnvironmentObject var gameModel: GameModel
@@ -21,12 +16,23 @@ struct ZKFieldGridView: View {
     
     @State private var showKeyPad: Bool = false
     
+    var margin: CGFloat {
+        CGFloat(gameModel.fields.count - 1)
+    }
+ 
     // MARK: - Main View
+    
     var body: some View {
-        if isPortrait {
+        ZStack {
+          
             portraitView
-        } else {
+                .opacity(isPortrait ? 1 : 0)
+                .disabled(!isPortrait)
+           
             landscapeView
+                .opacity(isPortrait ? 0 : 1)
+                .disabled(isPortrait)
+         
         }
     }
 }
@@ -49,7 +55,7 @@ extension ZKFieldGridView {
                         ZKFieldView(
                             gridSize: gridSize,
                             fieldSize: size,
-                            color: (gameModel.selectedField == field) ? .fieldSelection : .white,
+                            color: (gameModel.selectedField == field) ? .fieldSelection : Color(.systemBackground),
                             field: field
                         )
                         .foregroundColor(gameModel.selectedField == field ? .blue : .black)
@@ -64,7 +70,6 @@ extension ZKFieldGridView {
             }
         }
         .background(.tertiary)
-        .foregroundColor(.secondary)
         .onChange(of: gameModel.selectedField) { _ in
             if gameModel.selectedField == nil {
                 withAnimation(.linear(duration: 0.1)) {
@@ -77,13 +82,11 @@ extension ZKFieldGridView {
     var portraitView : some View {
         GeometryReader { geo in
             VStack(spacing: 0) {
-                
                 portraitNotesView
                 
                 grid(size: geo.size)
                 
                 portraitNumpad
-                
             }
         }
     }
@@ -92,10 +95,10 @@ extension ZKFieldGridView {
     var landscapeView : some View {
         GeometryReader { geo in
             HStack(spacing: 0) {
-                
                 landscapeNumpad
                 
                 grid(size: geo.size)
+                    .padding(.top, 10)
                 
                 landscapeNotesView
             }
@@ -104,7 +107,6 @@ extension ZKFieldGridView {
     
     
     var portraitNumpad: some View {
-        
         ZStack {
             ZKNumPadView(
                 portrait: true,
@@ -117,7 +119,6 @@ extension ZKFieldGridView {
     }
     
     var portraitNotesView: some View {
-        
         ZStack {
             Spacer()
                 .overlay {
@@ -139,33 +140,33 @@ extension ZKFieldGridView {
     }
     
     var landscapeNumpad : some View {
-        ZStack {
+        
+        HStack(spacing: 0) {
             Spacer()
-            if !isPortrait {
-                ZKNumPadView(
-                    portrait: false,
-                    gameModel: gameModel)
-                .padding(.vertical)
-                .opacity(showKeyPad ? 1 : 0)
-            }
+            ZKNumPadView(
+                portrait: false,
+                gameModel: gameModel)
+            .padding(.vertical)
+            .opacity(showKeyPad ? 1 : 0)
+           
         }
+        
     }
     
     var landscapeNotesView: some View {
-        ZStack {
-            Spacer()
-            
-            if !isPortrait,
-               let selectedField = gameModel.selectedField
-            {
+
+        HStack(spacing: 0) {
+            if let selectedField = gameModel.selectedField {
                 ZKNoteSelectionView(
-                    portrait: isPortrait,
+                    portrait: false,
                     size: gameModel.size,
                     field: selectedField
                 )
                 .opacity(gameModel.selectedField != nil ? 1 : 0)
             }
+            Spacer()
         }
+     
     }
 }
 

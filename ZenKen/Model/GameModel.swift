@@ -13,7 +13,7 @@ final class GameModel: ObservableObject {
     @Published var generator: ZKGenerator?
     @Published var fields: [[ZKField]] = []
     @Published var selectedField: ZKField?
-    @Published var size = 8
+    @Published var size = 9
   
     private var seed = 8033042266564781627
     
@@ -117,6 +117,8 @@ final class GameModel: ObservableObject {
             
             for j in 0..<size {
                 let hint = hint(row: i, col: j)
+                let cageHint = generator.problem?.getCages().first(where: { $0.getCells().contains((i * size + j)) })?.getClueText() ?? ""
+                
                 let solution = generator.problem?.standardSolution[i][j]
                 let drawLeft = drawLeft(row: i, col: j) || drawLeftBorder(col: j)
                 let drawRight = drawRightBorder(col: j)
@@ -124,6 +126,7 @@ final class GameModel: ObservableObject {
                 let drawBottom = drawBottomBorder(row: i)
                 fields[i].append(
                     ZKField(
+                    cageHint: cageHint,
                     hint: hint ?? "",
                     value: nil,
                     solution: solution ?? 0,

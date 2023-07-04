@@ -13,7 +13,7 @@ struct ZKFieldView: View {
     @EnvironmentObject var gm: GameModel
     
     // MARK: - Constants
-    private let cageColor: Color = .black
+    private let cageColor: Color = .secondary
     private let cageLineWidth: CGFloat = 1
     private let sizeOffset: CGFloat = 2
     
@@ -36,7 +36,7 @@ struct ZKFieldView: View {
     }
     
     var valueFontSize: CGFloat {
-        fieldSize * 0.5
+        fieldSize * 0.55
     }
     
     var showNoteGridView: Bool {
@@ -84,7 +84,7 @@ struct ZKFieldView: View {
                         // Value Text
                         Text(field.value != nil ? "\(field.value!)" : "")
                             .font(.system(size: valueFontSize))
-                            .foregroundColor((field.value != nil && field.value! == field.solution!) ? .black : .red)
+                            .foregroundColor((field.value != nil && field.value! == field.solution!) ? .primary : .red)
                             .shadow(radius: 2)
                             .padding(.top, 5)
 
@@ -138,20 +138,26 @@ extension ZKFieldView {
             
             HStack(spacing: noteSpacing) {
                 noteText(number: 4)
+                
                 noteText(number: 5)
+                    .opacity(gridSize > 4 ? 1 : 0)
                 noteText(number: 6)
+                    .opacity(gridSize > 5 ? 1 : 0)
             }
             .frame(height: noteHeight)
             
             HStack(spacing: noteSpacing) {
                noteText(number: 7)
+                    .opacity(gridSize > 6 ? 1 : 0)
                noteText(number: 8)
+                    .opacity(gridSize > 7 ? 1 : 0)
                noteText(number: 9)
+                    .opacity(gridSize > 8 ? 1 : 0)
             }
             .frame(height: noteHeight)
             
         }
-        .foregroundColor((gm.selectedField != nil && gm.selectedField == field) ? .white : .purple)
+        .foregroundColor((gm.selectedField != nil && gm.selectedField == field) ? Color(.systemBackground) : .purple)
         .font(.system(size: hintFontSize))
         .padding(.bottom, noteSpacing)
     }
@@ -164,6 +170,7 @@ struct ZenKenFieldView_Previews: PreviewProvider {
             fieldSize: 40,
             color: .white,
             field: ZKField(
+                cageHint: "1(x)",
                 hint: "1(x)",
                 value: 1,
                 solution: 1,

@@ -10,7 +10,8 @@ import Foundation
 final class ZKField: ObservableObject, Identifiable, Hashable {
 
     var id: Int = UUID().hashValue
-        
+    
+    let cageHint: String
     let hint: String?
     @Published var value: Int?
     @Published var notes: [Bool]
@@ -21,8 +22,9 @@ final class ZKField: ObservableObject, Identifiable, Hashable {
     let drawBottomBorder: Bool
     let drawTopBorder: Bool
     
-    init(hint: String?, value: Int? = nil, solution: Int? = nil, drawLeftBorder: Bool, drawRightBorder: Bool, drawBottomBorder: Bool, drawTopBorder: Bool) {
-     
+    init(cageHint: String, hint: String?, value: Int? = nil, solution: Int? = nil, drawLeftBorder: Bool, drawRightBorder: Bool, drawBottomBorder: Bool, drawTopBorder: Bool) {
+        
+        self.cageHint = cageHint
         self.hint = hint
         self.value = value
         self.solution = solution
