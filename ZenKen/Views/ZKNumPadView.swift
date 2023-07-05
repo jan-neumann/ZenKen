@@ -15,7 +15,7 @@ struct ZKNumPadView: View {
         guard let hintString = gameModel.selectedField?.cageHint else {
             return ""
         }
-        return "Hint: " + hintString
+        return hintString.replacingOccurrences(of: " ", with: "")
     }
     
     var body: some View {
@@ -28,9 +28,10 @@ struct ZKNumPadView: View {
     
     private var portraitGrid: some View {
         HStack(spacing: 0) {
-            Spacer()
+            
             VStack(spacing: 5) {
-                Text("\(hint)")
+                hintText
+                
                 Grid(horizontalSpacing: 5, verticalSpacing: 5) {
                     GridRow {
                         ForEach(1 ..< 5, id: \.self) { number in
@@ -47,8 +48,9 @@ struct ZKNumPadView: View {
                     }
                 }
             }
+            .padding(.horizontal)
             .padding(.bottom, 10)
-            Spacer()
+          
         }
         .background(
             Color(.systemGray6)
@@ -60,9 +62,24 @@ struct ZKNumPadView: View {
         .shadow(radius: 2)
     }
     
+    private var hintText: some View {
+        Text("\(hint)")
+            .foregroundColor(.white)
+            .padding(.horizontal)
+            .padding(.vertical, 5)
+            .background(.blue)
+            .clipShape(
+                RoundedRectangle(cornerRadius: 20)
+                   
+            )
+            .padding(.top, 10)
+            .shadow(radius: 2)
+    }
+    
     private var landscapeGrid: some View {
         VStack(spacing: 5) {
-            Text("\(hint)")
+            hintText
+            
             Grid(horizontalSpacing: 5, verticalSpacing: 5) {
                 GridRow {
                     numButton(value: -1, symbol: "delete.left")
@@ -104,10 +121,12 @@ struct ZKNumPadView: View {
 
     private func numButton(value: Int, symbol: String? = nil) -> some View {
         Button {
-            if value > 0 {
-                gameModel.selectedField?.value = value
-            } else {
-                gameModel.selectedField?.value = nil
+            withAnimation {
+                if value > 0 {
+                    gameModel.selectedField?.value = value
+                } else {
+                    gameModel.selectedField?.value = nil
+                }
             }
             gameModel.selectedField = nil
         } label: {

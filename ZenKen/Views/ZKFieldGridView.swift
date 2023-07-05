@@ -24,7 +24,6 @@ struct ZKFieldGridView: View {
     
     var body: some View {
         ZStack {
-          
             portraitView
                 .opacity(isPortrait ? 1 : 0)
                 .disabled(!isPortrait)
@@ -32,7 +31,6 @@ struct ZKFieldGridView: View {
             landscapeView
                 .opacity(isPortrait ? 0 : 1)
                 .disabled(isPortrait)
-         
         }
     }
 }
@@ -58,7 +56,6 @@ extension ZKFieldGridView {
                             color: (gameModel.selectedField == field) ? .fieldSelection : Color(.systemBackground),
                             field: field
                         )
-                        .foregroundColor(gameModel.selectedField == field ? .blue : .black)
                         .onTapGesture {
                             showKeyPad = true
                             gameModel.selectedField = field
@@ -69,7 +66,7 @@ extension ZKFieldGridView {
                 
             }
         }
-        .background(.tertiary)
+        .background(Color(.tertiarySystemFill))
         .onChange(of: gameModel.selectedField) { _ in
             if gameModel.selectedField == nil {
                 withAnimation(.linear(duration: 0.1)) {
@@ -79,35 +76,26 @@ extension ZKFieldGridView {
         }
     }
     
+    // MARK: - Portrait orientation views
+    
     var portraitView : some View {
         GeometryReader { geo in
             VStack(spacing: 0) {
                 portraitNotesView
                 
-                grid(size: geo.size)
-                
+                HStack {
+                    Spacer()
+                    grid(size: geo.size)
+                    Spacer()
+                    
+                }
                 portraitNumpad
             }
         }
     }
     
-    
-    var landscapeView : some View {
-        GeometryReader { geo in
-            HStack(spacing: 0) {
-                landscapeNumpad
-                
-                grid(size: geo.size)
-                    .padding(.top, 10)
-                
-                landscapeNotesView
-            }
-        }
-    }
-    
-    
     var portraitNumpad: some View {
-        ZStack {
+        VStack {
             ZKNumPadView(
                 portrait: true,
                 gameModel: gameModel
@@ -119,52 +107,65 @@ extension ZKFieldGridView {
     }
     
     var portraitNotesView: some View {
-        ZStack {
+        VStack(spacing: 0) {
             Spacer()
-                .overlay {
-                    VStack {
-                        Spacer()
-                        if let selectedField = gameModel.selectedField {
-                            ZKNoteSelectionView(
-                                portrait: isPortrait,
-                                size: gameModel.size,
-                                field: selectedField
-                            )
-                            
-                        }
-                    }
-                }
-            
+            if let selectedField = gameModel.selectedField {
+                ZKNoteSelectionView(
+                    portrait: isPortrait,
+                    size: gameModel.size,
+                    field: selectedField
+                )
+                .padding(.vertical, 10)
+            }
         }
-        
+    }
+    
+    // MARK: - Landscape orientation views
+    
+    var landscapeView : some View {
+        GeometryReader { geo in
+            HStack(alignment: .center, spacing: 0) {
+                landscapeNotesView
+                   
+                VStack {
+                    Spacer()
+                    grid(size: geo.size)
+                        .padding(.horizontal, 10)
+                    Spacer()
+                }
+                
+                landscapeNumpad
+                
+            }
+        }
     }
     
     var landscapeNumpad : some View {
-        
         HStack(spacing: 0) {
-            Spacer()
+        
             ZKNumPadView(
                 portrait: false,
                 gameModel: gameModel)
             .padding(.vertical)
             .opacity(showKeyPad ? 1 : 0)
-           
+            
+            Spacer()
         }
-        
     }
     
     var landscapeNotesView: some View {
-
         HStack(spacing: 0) {
+            
+            Spacer()
+            
             if let selectedField = gameModel.selectedField {
                 ZKNoteSelectionView(
                     portrait: false,
                     size: gameModel.size,
                     field: selectedField
                 )
-                .opacity(gameModel.selectedField != nil ? 1 : 0)
+                .padding(.vertical, 10)
             }
-            Spacer()
         }
      
     }

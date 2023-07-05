@@ -13,8 +13,8 @@ struct ZKFieldView: View {
     @EnvironmentObject var gm: GameModel
     
     // MARK: - Constants
-    private let cageColor: Color = .secondary
-    private let cageLineWidth: CGFloat = 1
+    private let cageColor: Color = .primary
+    private let cageLineWidth: CGFloat = 1.5
     private let sizeOffset: CGFloat = 2
     
     let gridSize: Int
@@ -31,25 +31,28 @@ struct ZKFieldView: View {
         return false
     }
     
-    var hintFontSize: CGFloat {
-        fieldSize * 0.2
-    }
-    
-    var valueFontSize: CGFloat {
-        fieldSize * 0.55
-    }
-    
     var showNoteGridView: Bool {
         field.notes.contains(where: { $0 })
     }
     
-    var noteSpacing: CGFloat {
-        fieldSize * 0.13
-    }
-    var noteHeight: CGFloat {
-        fieldSize * 0.1
+    var hintFontSize: CGFloat {
+        size * 0.2
     }
     
+    var valueFontSize: CGFloat {
+        size * 0.55
+    }
+    
+    var noteSpacing: CGFloat {
+        size * 0.13
+    }
+    var noteHeight: CGFloat {
+        size * 0.1
+    }
+    
+    var size: CGFloat {
+        (fieldSize - sizeOffset < 70) ? (fieldSize - sizeOffset) : 70
+    }
     
     var body: some View {
         ZStack {
@@ -84,7 +87,10 @@ struct ZKFieldView: View {
                         // Value Text
                         Text(field.value != nil ? "\(field.value!)" : "")
                             .font(.system(size: valueFontSize))
-                            .foregroundColor((field.value != nil && field.value! == field.solution!) ? .primary : .red)
+                            .foregroundColor(
+                                (field.value != nil && field.value! == field.solution!) ?
+                                    .primary :
+                                        .red)
                             .shadow(radius: 2)
                             .padding(.top, 5)
 
@@ -114,18 +120,16 @@ struct ZKFieldView: View {
                 
             }
         }
-        .frame(width: fieldSize - sizeOffset,
-               height: fieldSize - sizeOffset)
-        
+        .frame(width: size, height: size )
+   
     }
 }
 
 extension ZKFieldView {
-    
     private func noteText(number: Int) -> some View {
         Text(field.notes[number - 1] ? "\(number)" : "•")
     }
-    // TODO: Reduce to possible number
+
     var noteGridView: some View {
         VStack(alignment: .center, spacing: noteSpacing) {
             Spacer()
@@ -157,7 +161,7 @@ extension ZKFieldView {
             .frame(height: noteHeight)
             
         }
-        .foregroundColor((gm.selectedField != nil && gm.selectedField == field) ? Color(.systemBackground) : .purple)
+        .foregroundColor((gm.selectedField != nil && gm.selectedField == field) ? .white : Color.note)
         .font(.system(size: hintFontSize))
         .padding(.bottom, noteSpacing)
     }
@@ -170,8 +174,8 @@ struct ZenKenFieldView_Previews: PreviewProvider {
             fieldSize: 40,
             color: .white,
             field: ZKField(
-                cageHint: "1(x)",
-                hint: "1(x)",
+                cageHint: "1 (x)",
+                hint: "1 (x)",
                 value: 1,
                 solution: 1,
                 drawLeftBorder: true,

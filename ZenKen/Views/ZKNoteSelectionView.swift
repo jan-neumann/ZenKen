@@ -28,30 +28,24 @@ struct ZKNoteSelectionView: View {
                 
                 }
             } else {
-                HStack {
-                    VStack(spacing: 5) {
+               
+                    VStack(spacing: 3) {
+                        notesLabel
                         numbersView
                         allNotesToggleButton
                         
                     }
-                    VStack {
-                        notesLabel
-                        Spacer()
-                    }
+             
                 }
-            }
+            
         }
-        .padding(5)
+        .padding(.horizontal, 10)
         .transition(.opacity)
     }
     
     var notesLabel: some View {
-        HStack(spacing: 0) {
-            
-            Label("Notes", systemImage: "square.and.pencil")
-                .foregroundColor(.primary)
-            Spacer()
-        }
+        Label("Notes", systemImage: "square.and.pencil")
+            .foregroundColor(.white)
     }
     
     var allNotesToggleButton: some View {
@@ -86,15 +80,12 @@ struct ZKNoteSelectionView: View {
     }
 }
 
-
-
 struct NoteToggleButtonStyle: ButtonStyle {
-    
     var toggle: Bool = false
     
     func makeBody(configuration: Self.Configuration) -> some View {
             configuration.label
-                .frame(minWidth: 30, maxWidth: 60, minHeight: 30, maxHeight: 60)
+                .frame(minWidth: 28, maxWidth: 50, minHeight: 28, maxHeight: 50)
                 .aspectRatio(1, contentMode: .fit)
                 .foregroundColor(.white)
                 .background(toggle ? Color.blue : Color.secondary)
