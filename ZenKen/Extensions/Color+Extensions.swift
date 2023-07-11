@@ -19,4 +19,6 @@ extension Color {
     ]
     
     static var note = Color("Note")
+    static var fieldBackground = Color("FieldBackground")
+    static var hint = Color("Hint")
 }

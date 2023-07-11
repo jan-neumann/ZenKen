@@ -28,14 +28,11 @@ struct ZKNoteSelectionView: View {
                 
                 }
             } else {
-               
                     VStack(spacing: 3) {
                         notesLabel
                         numbersView
                         allNotesToggleButton
-                        
                     }
-             
                 }
             
         }

@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct ZKGameView: View {
+    @Environment(\.scenePhase) private var scenePhase
     
     let size = 9
     let seed = 6512473110383760955
@@ -16,6 +17,7 @@ struct ZKGameView: View {
     
     @State private var isPortrait = false
     
+    // TODO: hint and error buttons
     var body: some View {
         ZKFieldGridView(gridSize: size,
                         isPortrait: $isPortrait)
@@ -34,6 +36,18 @@ struct ZKGameView: View {
            setOrientation()
         }
         .environmentObject(gameModel)
+        .onChange(of: scenePhase) { phase in
+            switch phase {
+            case .background:
+                gameModel.save()
+                return
+            case .inactive:
+                return
+            case .active:
+                gameModel.restore()
+                return
+            }
+        }
     }
     
     private func setOrientation() {

@@ -110,11 +110,7 @@
 		9D7857A32A42E5FA008C4867 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				9D7857AE2A42E83B008C4867 /* ZKGameView.swift */,
-				9D7857A42A42E633008C4867 /* ZKFieldGridView.swift */,
-				9D7857A62A42E64E008C4867 /* ZKFieldView.swift */,
-				9D25CB202A4449CE00476FD6 /* ZKNumPadView.swift */,
-				9D3234342A4991A700AC96CB /* ZKNoteSelectionView.swift */,
+				9DF3A6662A5D7A6500E3D5C5 /* Game */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -133,6 +129,18 @@
 				9D82755F2A431B26007AE842 /* ZKField.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		9DF3A6662A5D7A6500E3D5C5 /* Game */ = {
+			isa = PBXGroup;
+			children = (
+				9D7857AE2A42E83B008C4867 /* ZKGameView.swift */,
+				9D7857A42A42E633008C4867 /* ZKFieldGridView.swift */,
+				9D7857A62A42E64E008C4867 /* ZKFieldView.swift */,
+				9D25CB202A4449CE00476FD6 /* ZKNumPadView.swift */,
+				9D3234342A4991A700AC96CB /* ZKNoteSelectionView.swift */,
+			);
+			path = Game;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

@@ -17,12 +17,16 @@ final class GameModel: ObservableObject {
   
     private var seed = 8033042266564781627
     
+    // MARK: - Properties
+    
     var solutionGrid: [[Int]] {
         guard let problem = generator?.problem else {
             return []
         }
         return problem.standardSolution
     }
+    
+    // MARK: - Functions
     
     private func cageID(row: Int, col: Int) -> Int? {
         guard let cageIDs = generator?.cageIDs else {
@@ -139,4 +143,26 @@ final class GameModel: ObservableObject {
         }
     }
     
+}
+
+// MARK: - Loading / Saving
+extension GameModel {
+    func save() {
+        if let data = try? JSONEncoder().encode(fields) {
+            print(">> data saved.")
+            UserDefaults.standard.set(data, forKey: "gameState")
+        } else {
+            print(">> Could not save data.")
+        }
+        
+    }
+    
+    func restore() {
+        if let data = UserDefaults.standard.data(forKey: "gameState"),
+           let fields = try? JSONDecoder().decode([[ZKField]].self, from: data) {
+            self.fields = fields
+            print(">> saved data restored.")
+        }
+        
+    }
 }

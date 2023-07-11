@@ -53,7 +53,7 @@ extension ZKFieldGridView {
                         ZKFieldView(
                             gridSize: gridSize,
                             fieldSize: size,
-                            color: (gameModel.selectedField == field) ? .fieldSelection : Color(.systemBackground),
+                            color: (gameModel.selectedField == field) ? .fieldSelection : Color.fieldBackground,
                             field: field
                         )
                         .onTapGesture {
@@ -66,7 +66,7 @@ extension ZKFieldGridView {
                 
             }
         }
-        .background(Color(.tertiarySystemFill))
+        .background(Color.secondary)
         .onChange(of: gameModel.selectedField) { _ in
             if gameModel.selectedField == nil {
                 withAnimation(.linear(duration: 0.1)) {

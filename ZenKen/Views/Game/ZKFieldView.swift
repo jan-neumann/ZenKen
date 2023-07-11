@@ -109,7 +109,7 @@ struct ZKFieldView: View {
                     Text(field.hint ?? "")
                         .font(.system(size: hintFontSize).bold())
                         .frame(alignment: .topLeading)
-                        .foregroundColor((gm.selectedField != nil && gm.selectedField == field) ? Color.white : Color(.systemBlue))
+                        .foregroundColor((gm.selectedField != nil && gm.selectedField == field) ? Color.white : Color.hint)
                         .padding(.top, 2)
                         .padding(.leading, 4)
                         .lineLimit(1)
