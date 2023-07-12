@@ -9,9 +9,9 @@ import SwiftUI
 
 struct ZKGameView: View {
     @Environment(\.scenePhase) private var scenePhase
-    
-    let size = 9
-    let seed = 6512473110383760955
+    @Environment(\.dismiss) private var dismiss
+    let size: Int
+    let seed: Int
     
     @StateObject var gameModel: GameModel = GameModel()
     
@@ -19,8 +19,22 @@ struct ZKGameView: View {
     
     // TODO: hint and error buttons
     var body: some View {
-        ZKFieldGridView(gridSize: size,
-                        isPortrait: $isPortrait)
+        VStack {
+            HStack {
+                Button {
+                    dismiss()
+                } label: {
+                    Label("Back", systemImage: "chevron.left")
+                    
+                }
+                .foregroundColor(.white)
+                Spacer()
+            }
+            .padding()
+            
+            ZKFieldGridView(gridSize: size,
+                            isPortrait: $isPortrait)
+        }
         .background(
             LinearGradient(colors: Color.backgroundGradientColors, startPoint: .topLeading, endPoint: .bottomTrailing)
         )
@@ -46,6 +60,8 @@ struct ZKGameView: View {
             case .active:
                 gameModel.restore()
                 return
+            default:
+                return
             }
         }
     }
@@ -62,6 +78,9 @@ struct ZKGameView: View {
 // MARK: - Previews
 struct ZKGameView_Previews: PreviewProvider {
     static var previews: some View {
-        ZKGameView()
+        ZKGameView(
+        size: 4,
+        seed: 123
+        )
     }
 }

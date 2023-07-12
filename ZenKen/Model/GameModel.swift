@@ -51,7 +51,6 @@ final class GameModel: ObservableObject {
             return false
         }
         let valToCheck = row * size + (col - 1)
-        //return false
         return (cages[cageID].getCells().first(where: { $0 == valToCheck }) == nil)
         
     }

@@ -19,6 +19,8 @@
 		9D7857AD2A42E7C1008C4867 /* GameModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D7857AC2A42E7C1008C4867 /* GameModel.swift */; };
 		9D7857AF2A42E83B008C4867 /* ZKGameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D7857AE2A42E83B008C4867 /* ZKGameView.swift */; };
 		9D8275602A431B26007AE842 /* ZKField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D82755F2A431B26007AE842 /* ZKField.swift */; };
+		9DF3A6692A5D90A100E3D5C5 /* ZKPuzzleSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DF3A6682A5D90A100E3D5C5 /* ZKPuzzleSelectionView.swift */; };
+		9DF3A66B2A5D93AC00E3D5C5 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DF3A66A2A5D93AC00E3D5C5 /* Settings.swift */; };
 		9DFA6D692A44886F00385C0F /* Color+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DFA6D682A44886F00385C0F /* Color+Extensions.swift */; };
 /* End PBXBuildFile section */
 
@@ -36,6 +38,8 @@
 		9D7857AC2A42E7C1008C4867 /* GameModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameModel.swift; sourceTree = "<group>"; };
 		9D7857AE2A42E83B008C4867 /* ZKGameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZKGameView.swift; sourceTree = "<group>"; };
 		9D82755F2A431B26007AE842 /* ZKField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZKField.swift; sourceTree = "<group>"; };
+		9DF3A6682A5D90A100E3D5C5 /* ZKPuzzleSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZKPuzzleSelectionView.swift; sourceTree = "<group>"; };
+		9DF3A66A2A5D93AC00E3D5C5 /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
 		9DFA6D682A44886F00385C0F /* Color+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Extensions.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -87,6 +91,7 @@
 				9D7857A32A42E5FA008C4867 /* Views */,
 				9D7857972A42E597008C4867 /* Assets.xcassets */,
 				9D7857992A42E597008C4867 /* Preview Content */,
+				9DF3A66A2A5D93AC00E3D5C5 /* Settings.swift */,
 			);
 			path = ZenKen;
 			sourceTree = "<group>";
@@ -110,6 +115,7 @@
 		9D7857A32A42E5FA008C4867 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				9DF3A6672A5D907E00E3D5C5 /* PuzzleSelection */,
 				9DF3A6662A5D7A6500E3D5C5 /* Game */,
 			);
 			path = Views;
@@ -141,6 +147,14 @@
 				9D3234342A4991A700AC96CB /* ZKNoteSelectionView.swift */,
 			);
 			path = Game;
+			sourceTree = "<group>";
+		};
+		9DF3A6672A5D907E00E3D5C5 /* PuzzleSelection */ = {
+			isa = PBXGroup;
+			children = (
+				9DF3A6682A5D90A100E3D5C5 /* ZKPuzzleSelectionView.swift */,
+			);
+			path = PuzzleSelection;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -219,8 +233,10 @@
 				9D3234352A4991A700AC96CB /* ZKNoteSelectionView.swift in Sources */,
 				9D7857AD2A42E7C1008C4867 /* GameModel.swift in Sources */,
 				9D7857A52A42E633008C4867 /* ZKFieldGridView.swift in Sources */,
+				9DF3A6692A5D90A100E3D5C5 /* ZKPuzzleSelectionView.swift in Sources */,
 				9DFA6D692A44886F00385C0F /* Color+Extensions.swift in Sources */,
 				9D25CB1F2A4433B300476FD6 /* Array+Extensions.swift in Sources */,
+				9DF3A66B2A5D93AC00E3D5C5 /* Settings.swift in Sources */,
 				9D7857AF2A42E83B008C4867 /* ZKGameView.swift in Sources */,
 				9D7857942A42E596008C4867 /* ZenKenApp.swift in Sources */,
 				9D25CB212A4449CE00476FD6 /* ZKNumPadView.swift in Sources */,
