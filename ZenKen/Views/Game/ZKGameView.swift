@@ -13,9 +13,22 @@ struct ZKGameView: View {
     let size: Int
     let seed: Int
     
-    @StateObject var gameModel: GameModel = GameModel()
+    @StateObject var gameModel: GameModel
     
     @State private var isPortrait = false
+    
+    init(size: Int, seed: Int) {
+        self.size = size
+        self.seed = seed
+        self._gameModel = StateObject<GameModel>(
+            wrappedValue:
+                GameModel(
+                    id: String(seed),
+                    size: size,
+                    seed: seed
+                )
+        )
+    }
     
     // TODO: hint and error buttons
     var body: some View {
@@ -24,7 +37,7 @@ struct ZKGameView: View {
                 Button {
                     dismiss()
                 } label: {
-                    Label("Back", systemImage: "chevron.left")
+                    Label(String(localized: "Back"), systemImage: "chevron.left")
                     
                 }
                 .foregroundColor(.white)
@@ -41,8 +54,11 @@ struct ZKGameView: View {
         .statusBarHidden()
         .onAppear {
             gameModel.size = size
-            gameModel.setNewProblem(newSeed: seed)
+            gameModel.restoreOrSetNewProblem(newSeed: seed)
             setOrientation()
+        }
+        .onDisappear {
+            _ = gameModel.save()
         }
         .onReceive(
             NotificationCenter.default.publisher(for: UIDevice.orientationDidChangeNotification)
@@ -53,12 +69,12 @@ struct ZKGameView: View {
         .onChange(of: scenePhase) { phase in
             switch phase {
             case .background:
-                gameModel.save()
+                _ = gameModel.save()
                 return
             case .inactive:
                 return
             case .active:
-                gameModel.restore()
+                _ = gameModel.restore()
                 return
             default:
                 return

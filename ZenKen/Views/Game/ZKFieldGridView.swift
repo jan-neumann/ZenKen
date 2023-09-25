@@ -17,7 +17,7 @@ struct ZKFieldGridView: View {
     @State private var showKeyPad: Bool = false
     
     var margin: CGFloat {
-        CGFloat(gameModel.fields.count - 1)
+        CGFloat(gameModel.puzzle.fields.count - 1)
     }
  
     // MARK: - Main View
@@ -40,7 +40,7 @@ extension ZKFieldGridView {
     func grid(size: CGSize) -> some View {
         VStack(spacing: 1) {
             
-            ForEach(gameModel.fields) { fields in
+            ForEach(gameModel.puzzle.fields) { fields in
                 
                 HStack(spacing: 1) {
                     
@@ -89,6 +89,7 @@ extension ZKFieldGridView {
                     Spacer()
                     
                 }
+                
                 portraitNumpad
             }
         }
@@ -173,12 +174,13 @@ extension ZKFieldGridView {
 
 
 // MARK: - Previews
+
 struct ZenKenGrid_Previews: PreviewProvider {
     static var previews: some View {
         ZKFieldGridView(
             gridSize: 4,
             isPortrait: .constant(false)
         )
-        .environmentObject(GameModel())
+        .environmentObject(GameModel(id: "0"))
     }
 }

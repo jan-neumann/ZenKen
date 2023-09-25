@@ -10,12 +10,27 @@ import ZKGenerator
 
 final class GameModel: ObservableObject {
     
+    var id: String
+    
     @Published var generator: ZKGenerator?
-    @Published var fields: [[ZKField]] = []
     @Published var selectedField: ZKField?
-    @Published var size = 9
+    @Published var size: Int
+    @Published var puzzle: ZKPuzzle
   
-    private var seed = 8033042266564781627
+    private var seed: Int
+    
+    
+    // MARK: - Init
+    
+    init(id: String,
+         size: Int = 4,
+         seed: Int = 8033042266564781627
+    ) {
+        self.id = id
+        self.size = size
+        self.puzzle = ZKPuzzle(id: String(seed), size: size)
+        self.seed = seed
+    }
     
     // MARK: - Properties
     
@@ -98,9 +113,14 @@ final class GameModel: ObservableObject {
         return nil
     }
     
-    func setNewProblem(newSeed: Int) {
+    func restoreOrSetNewProblem(newSeed: Int) {
         seed = newSeed
-    
+        id = String(seed)
+        
+        guard !restore() else {
+            return
+        }
+        
         if generator == nil {
             generator = ZKGenerator(startupSize: size,
                                         seed: seed)
@@ -113,10 +133,10 @@ final class GameModel: ObservableObject {
             fatalError(">> Failure. No generator.")
         }
         
-        fields = []
+        self.puzzle = ZKPuzzle(id: String(seed), size: size)
         
         for i in 0..<size {
-            fields.append([])
+            self.puzzle.fields.append([])
             
             for j in 0..<size {
                 let hint = hint(row: i, col: j)
@@ -127,7 +147,7 @@ final class GameModel: ObservableObject {
                 let drawRight = drawRightBorder(col: j)
                 let drawTop = drawTop(row: i, col: j) || drawTopBorder(row: i)
                 let drawBottom = drawBottomBorder(row: i)
-                fields[i].append(
+                self.puzzle.fields[i].append(
                     ZKField(
                     cageHint: cageHint,
                     hint: hint ?? "",
@@ -145,23 +165,33 @@ final class GameModel: ObservableObject {
 }
 
 // MARK: - Loading / Saving
+
 extension GameModel {
-    func save() {
-        if let data = try? JSONEncoder().encode(fields) {
-            print(">> data saved.")
-            UserDefaults.standard.set(data, forKey: "gameState")
+    
+    func save() -> Bool {
+        if let data = try? JSONEncoder().encode(puzzle) {
+            print(">> data for \(id) saved.")
+            UserDefaults.standard.set(data, forKey: id)
+            return true
         } else {
-            print(">> Could not save data.")
+            print(">> Could not save data for id: \(String(describing: id)).")
+    
         }
-        
+        return false
     }
     
-    func restore() {
-        if let data = UserDefaults.standard.data(forKey: "gameState"),
-           let fields = try? JSONDecoder().decode([[ZKField]].self, from: data) {
-            self.fields = fields
-            print(">> saved data restored.")
-        }
+    func restore() -> Bool {
+        if  id != "",
+            let data = UserDefaults.standard.data(forKey: id),
         
+            let puzzle = try? JSONDecoder().decode(ZKPuzzle.self, from: data) {
+            self.puzzle = puzzle
+            print(">> saved data for \(id) restored.")
+            print(">> data: \(data)")
+            return true
+        } else {
+            print(">> could not restore data.")
+        }
+        return false
     }
 }

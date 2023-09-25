@@ -19,6 +19,8 @@
 		9D7857AD2A42E7C1008C4867 /* GameModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D7857AC2A42E7C1008C4867 /* GameModel.swift */; };
 		9D7857AF2A42E83B008C4867 /* ZKGameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D7857AE2A42E83B008C4867 /* ZKGameView.swift */; };
 		9D8275602A431B26007AE842 /* ZKField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D82755F2A431B26007AE842 /* ZKField.swift */; };
+		9DABBF4F2AC1ADFA00C2705D /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 9DABBF4E2AC1ADFA00C2705D /* Localizable.xcstrings */; };
+		9DABBF512AC1AF8500C2705D /* ZKPuzzle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DABBF502AC1AF8500C2705D /* ZKPuzzle.swift */; };
 		9DF3A6692A5D90A100E3D5C5 /* ZKPuzzleSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DF3A6682A5D90A100E3D5C5 /* ZKPuzzleSelectionView.swift */; };
 		9DF3A66B2A5D93AC00E3D5C5 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DF3A66A2A5D93AC00E3D5C5 /* Settings.swift */; };
 		9DFA6D692A44886F00385C0F /* Color+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DFA6D682A44886F00385C0F /* Color+Extensions.swift */; };
@@ -38,6 +40,8 @@
 		9D7857AC2A42E7C1008C4867 /* GameModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameModel.swift; sourceTree = "<group>"; };
 		9D7857AE2A42E83B008C4867 /* ZKGameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZKGameView.swift; sourceTree = "<group>"; };
 		9D82755F2A431B26007AE842 /* ZKField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZKField.swift; sourceTree = "<group>"; };
+		9DABBF4E2AC1ADFA00C2705D /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
+		9DABBF502AC1AF8500C2705D /* ZKPuzzle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZKPuzzle.swift; sourceTree = "<group>"; };
 		9DF3A6682A5D90A100E3D5C5 /* ZKPuzzleSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZKPuzzleSelectionView.swift; sourceTree = "<group>"; };
 		9DF3A66A2A5D93AC00E3D5C5 /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
 		9DFA6D682A44886F00385C0F /* Color+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Extensions.swift"; sourceTree = "<group>"; };
@@ -85,13 +89,14 @@
 		9D7857922A42E596008C4867 /* ZenKen */ = {
 			isa = PBXGroup;
 			children = (
-				9D7857932A42E596008C4867 /* ZenKenApp.swift */,
+				9DABBF4C2AC1ACB400C2705D /* App */,
 				9D25CB1D2A44339D00476FD6 /* Extensions */,
 				9D7857AB2A42E782008C4867 /* Model */,
 				9D7857A32A42E5FA008C4867 /* Views */,
-				9D7857972A42E597008C4867 /* Assets.xcassets */,
-				9D7857992A42E597008C4867 /* Preview Content */,
+				9DABBF4D2AC1ACD400C2705D /* Files */,
 				9DF3A66A2A5D93AC00E3D5C5 /* Settings.swift */,
+				9DABBF4E2AC1ADFA00C2705D /* Localizable.xcstrings */,
+				9D7857992A42E597008C4867 /* Preview Content */,
 			);
 			path = ZenKen;
 			sourceTree = "<group>";
@@ -133,8 +138,25 @@
 			children = (
 				9D7857AC2A42E7C1008C4867 /* GameModel.swift */,
 				9D82755F2A431B26007AE842 /* ZKField.swift */,
+				9DABBF502AC1AF8500C2705D /* ZKPuzzle.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		9DABBF4C2AC1ACB400C2705D /* App */ = {
+			isa = PBXGroup;
+			children = (
+				9D7857932A42E596008C4867 /* ZenKenApp.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		9DABBF4D2AC1ACD400C2705D /* Files */ = {
+			isa = PBXGroup;
+			children = (
+				9D7857972A42E597008C4867 /* Assets.xcassets */,
+			);
+			path = Files;
 			sourceTree = "<group>";
 		};
 		9DF3A6662A5D7A6500E3D5C5 /* Game */ = {
@@ -202,6 +224,7 @@
 			knownRegions = (
 				en,
 				Base,
+				de,
 			);
 			mainGroup = 9D7857872A42E596008C4867;
 			productRefGroup = 9D7857912A42E596008C4867 /* Products */;
@@ -220,6 +243,7 @@
 			files = (
 				9D78579B2A42E597008C4867 /* Preview Assets.xcassets in Resources */,
 				9D7857982A42E597008C4867 /* Assets.xcassets in Resources */,
+				9DABBF4F2AC1ADFA00C2705D /* Localizable.xcstrings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -234,6 +258,7 @@
 				9D7857AD2A42E7C1008C4867 /* GameModel.swift in Sources */,
 				9D7857A52A42E633008C4867 /* ZKFieldGridView.swift in Sources */,
 				9DF3A6692A5D90A100E3D5C5 /* ZKPuzzleSelectionView.swift in Sources */,
+				9DABBF512AC1AF8500C2705D /* ZKPuzzle.swift in Sources */,
 				9DFA6D692A44886F00385C0F /* Color+Extensions.swift in Sources */,
 				9D25CB1F2A4433B300476FD6 /* Array+Extensions.swift in Sources */,
 				9DF3A66B2A5D93AC00E3D5C5 /* Settings.swift in Sources */,
@@ -298,7 +323,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -352,7 +377,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
