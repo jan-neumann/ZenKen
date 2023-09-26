@@ -42,11 +42,39 @@ struct ZKGameView: View {
                 }
                 .foregroundColor(.white)
                 Spacer()
-            }
+                // TODO
+                HStack {
+                    Button {
+                        
+                    } label: {
+                        VStack {
+                            Image(systemName: "questionmark.circle")
+                            Text("Hint")
+                                .font(.caption)
+                        }
+                        
+                    }
+                    
+                    Button {
+                        
+                    } label: {
+                        VStack {
+                            Image(systemName: "exclamationmark.circle")
+                            Text("Errors")
+                                .font(.caption)
+                        }
+                            
+                    }
+                }
+                .font(.largeTitle)
+                .fontWeight(.bold)
+                .foregroundColor(.white)
+                           }
             .padding()
             
             ZKFieldGridView(gridSize: size,
                             isPortrait: $isPortrait)
+           
         }
         .background(
             LinearGradient(colors: Color.backgroundGradientColors, startPoint: .topLeading, endPoint: .bottomTrailing)
