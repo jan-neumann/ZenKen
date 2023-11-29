@@ -10,24 +10,46 @@
     "%lld" : {
 
     },
+    "%lld x %lld Puzzles" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%1$lld x %2$lld Puzzles"
+          }
+        }
+      }
+    },
     "•" : {
 
     },
-    "4 x 4 Puzzles" : {
-
-    },
     "Back" : {
+      "extractionState" : "stale",
       "localizations" : {
         "de" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Zurück"
           }
-        },
-        "en" : {
+        }
+      }
+    },
+    "Errors" : {
+      "localizations" : {
+        "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Back"
+            "value" : "Fehler"
+          }
+        }
+      }
+    },
+    "Hint" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hinweis"
           }
         }
       }
@@ -36,14 +58,18 @@
       "localizations" : {
         "de" : {
           "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "Notizen"
-          }
-        },
-        "en" : {
-          "stringUnit" : {
             "state" : "translated",
             "value" : "Notizen"
+          }
+        }
+      }
+    },
+    "Welcome to ZenKen!" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Willkommen bei ZenKen!"
           }
         }
       }

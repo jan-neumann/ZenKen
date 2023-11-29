@@ -129,6 +129,7 @@ struct ZKNumPadView: View {
                 }
             }
             gameModel.selectedField = nil
+            gameModel.showErrors = false
         } label: {
             HStack(spacing: 0) {
                 if symbol != nil {

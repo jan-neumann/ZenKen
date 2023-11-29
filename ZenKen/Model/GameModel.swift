@@ -16,7 +16,8 @@ final class GameModel: ObservableObject {
     @Published var selectedField: ZKField?
     @Published var size: Int
     @Published var puzzle: ZKPuzzle
-  
+    @Published var showErrors: Bool = false
+    
     private var seed: Int
     
     

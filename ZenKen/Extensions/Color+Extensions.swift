@@ -17,8 +17,5 @@ extension Color {
         Color("BackgroundGradient3"),
         Color("BackgroundGradient4")
     ]
-    
-    static var note = Color("Note")
-    static var fieldBackground = Color("FieldBackground")
-    static var hint = Color("Hint")
+
 }

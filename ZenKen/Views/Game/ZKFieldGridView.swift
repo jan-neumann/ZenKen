@@ -9,12 +9,18 @@ import SwiftUI
 
 struct ZKFieldGridView: View {
 
+    // MARK: - Public
+    
     let gridSize: Int
     
     @EnvironmentObject var gameModel: GameModel
     @Binding var isPortrait: Bool
+ 
+    // MARK: - Private
     
     @State private var showKeyPad: Bool = false
+    
+    // MARK: - Properties
     
     var margin: CGFloat {
         CGFloat(gameModel.puzzle.fields.count - 1)
@@ -35,9 +41,11 @@ struct ZKFieldGridView: View {
     }
 }
 
+// MARK: - Sub Views
+
 extension ZKFieldGridView {
     
-    func grid(size: CGSize) -> some View {
+    private func grid(size: CGSize) -> some View {
         VStack(spacing: 1) {
             
             ForEach(gameModel.puzzle.fields) { fields in
@@ -67,7 +75,7 @@ extension ZKFieldGridView {
             }
         }
         .background(Color.secondary)
-        .onChange(of: gameModel.selectedField) { _ in
+        .onChange(of: gameModel.selectedField) {
             if gameModel.selectedField == nil {
                 withAnimation(.linear(duration: 0.1)) {
                     showKeyPad = false
@@ -78,7 +86,7 @@ extension ZKFieldGridView {
     
     // MARK: - Portrait orientation views
     
-    var portraitView : some View {
+    private var portraitView : some View {
         GeometryReader { geo in
             VStack(spacing: 0) {
                 portraitNotesView
@@ -95,7 +103,7 @@ extension ZKFieldGridView {
         }
     }
     
-    var portraitNumpad: some View {
+    private var portraitNumpad: some View {
         VStack {
             ZKNumPadView(
                 portrait: true,
@@ -107,7 +115,7 @@ extension ZKFieldGridView {
         
     }
     
-    var portraitNotesView: some View {
+    private var portraitNotesView: some View {
         VStack(spacing: 0) {
             Spacer()
             if let selectedField = gameModel.selectedField {
@@ -123,7 +131,7 @@ extension ZKFieldGridView {
     
     // MARK: - Landscape orientation views
     
-    var landscapeView : some View {
+    private var landscapeView : some View {
         GeometryReader { geo in
             HStack(alignment: .center, spacing: 0) {
                 landscapeNotesView
@@ -136,12 +144,11 @@ extension ZKFieldGridView {
                 }
                 
                 landscapeNumpad
-                
             }
         }
     }
     
-    var landscapeNumpad : some View {
+    private var landscapeNumpad : some View {
         HStack(spacing: 0) {
         
             ZKNumPadView(
@@ -154,7 +161,7 @@ extension ZKFieldGridView {
         }
     }
     
-    var landscapeNotesView: some View {
+    private var landscapeNotesView: some View {
         HStack(spacing: 0) {
             
             Spacer()

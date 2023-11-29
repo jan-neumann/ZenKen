@@ -19,9 +19,11 @@
 		9D7857AD2A42E7C1008C4867 /* GameModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D7857AC2A42E7C1008C4867 /* GameModel.swift */; };
 		9D7857AF2A42E83B008C4867 /* ZKGameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D7857AE2A42E83B008C4867 /* ZKGameView.swift */; };
 		9D8275602A431B26007AE842 /* ZKField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D82755F2A431B26007AE842 /* ZKField.swift */; };
+		9D938BDA2B17351400737792 /* MainMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D938BD92B17351400737792 /* MainMenuView.swift */; };
+		9D938BDC2B17422600737792 /* ZKPuzzleData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D938BDB2B17422600737792 /* ZKPuzzleData.swift */; };
 		9DABBF4F2AC1ADFA00C2705D /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 9DABBF4E2AC1ADFA00C2705D /* Localizable.xcstrings */; };
 		9DABBF512AC1AF8500C2705D /* ZKPuzzle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DABBF502AC1AF8500C2705D /* ZKPuzzle.swift */; };
-		9DF3A6692A5D90A100E3D5C5 /* ZKPuzzleSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DF3A6682A5D90A100E3D5C5 /* ZKPuzzleSelectionView.swift */; };
+		9DF3A6692A5D90A100E3D5C5 /* ZKPuzzleSelectionMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DF3A6682A5D90A100E3D5C5 /* ZKPuzzleSelectionMenuView.swift */; };
 		9DF3A66B2A5D93AC00E3D5C5 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DF3A66A2A5D93AC00E3D5C5 /* Settings.swift */; };
 		9DFA6D692A44886F00385C0F /* Color+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DFA6D682A44886F00385C0F /* Color+Extensions.swift */; };
 /* End PBXBuildFile section */
@@ -40,9 +42,11 @@
 		9D7857AC2A42E7C1008C4867 /* GameModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameModel.swift; sourceTree = "<group>"; };
 		9D7857AE2A42E83B008C4867 /* ZKGameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZKGameView.swift; sourceTree = "<group>"; };
 		9D82755F2A431B26007AE842 /* ZKField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZKField.swift; sourceTree = "<group>"; };
+		9D938BD92B17351400737792 /* MainMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMenuView.swift; sourceTree = "<group>"; };
+		9D938BDB2B17422600737792 /* ZKPuzzleData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZKPuzzleData.swift; sourceTree = "<group>"; };
 		9DABBF4E2AC1ADFA00C2705D /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
 		9DABBF502AC1AF8500C2705D /* ZKPuzzle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZKPuzzle.swift; sourceTree = "<group>"; };
-		9DF3A6682A5D90A100E3D5C5 /* ZKPuzzleSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZKPuzzleSelectionView.swift; sourceTree = "<group>"; };
+		9DF3A6682A5D90A100E3D5C5 /* ZKPuzzleSelectionMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZKPuzzleSelectionMenuView.swift; sourceTree = "<group>"; };
 		9DF3A66A2A5D93AC00E3D5C5 /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
 		9DFA6D682A44886F00385C0F /* Color+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Extensions.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -120,6 +124,7 @@
 		9D7857A32A42E5FA008C4867 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				9D938BD92B17351400737792 /* MainMenuView.swift */,
 				9DF3A6672A5D907E00E3D5C5 /* PuzzleSelection */,
 				9DF3A6662A5D7A6500E3D5C5 /* Game */,
 			);
@@ -139,6 +144,7 @@
 				9D7857AC2A42E7C1008C4867 /* GameModel.swift */,
 				9D82755F2A431B26007AE842 /* ZKField.swift */,
 				9DABBF502AC1AF8500C2705D /* ZKPuzzle.swift */,
+				9D938BDB2B17422600737792 /* ZKPuzzleData.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -174,7 +180,7 @@
 		9DF3A6672A5D907E00E3D5C5 /* PuzzleSelection */ = {
 			isa = PBXGroup;
 			children = (
-				9DF3A6682A5D90A100E3D5C5 /* ZKPuzzleSelectionView.swift */,
+				9DF3A6682A5D90A100E3D5C5 /* ZKPuzzleSelectionMenuView.swift */,
 			);
 			path = PuzzleSelection;
 			sourceTree = "<group>";
@@ -210,7 +216,7 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1430;
-				LastUpgradeCheck = 1430;
+				LastUpgradeCheck = 1500;
 				TargetAttributes = {
 					9D78578F2A42E596008C4867 = {
 						CreatedOnToolsVersion = 14.3.1;
@@ -257,11 +263,13 @@
 				9D3234352A4991A700AC96CB /* ZKNoteSelectionView.swift in Sources */,
 				9D7857AD2A42E7C1008C4867 /* GameModel.swift in Sources */,
 				9D7857A52A42E633008C4867 /* ZKFieldGridView.swift in Sources */,
-				9DF3A6692A5D90A100E3D5C5 /* ZKPuzzleSelectionView.swift in Sources */,
+				9DF3A6692A5D90A100E3D5C5 /* ZKPuzzleSelectionMenuView.swift in Sources */,
 				9DABBF512AC1AF8500C2705D /* ZKPuzzle.swift in Sources */,
+				9D938BDC2B17422600737792 /* ZKPuzzleData.swift in Sources */,
 				9DFA6D692A44886F00385C0F /* Color+Extensions.swift in Sources */,
 				9D25CB1F2A4433B300476FD6 /* Array+Extensions.swift in Sources */,
 				9DF3A66B2A5D93AC00E3D5C5 /* Settings.swift in Sources */,
+				9D938BDA2B17351400737792 /* MainMenuView.swift in Sources */,
 				9D7857AF2A42E83B008C4867 /* ZKGameView.swift in Sources */,
 				9D7857942A42E596008C4867 /* ZenKenApp.swift in Sources */,
 				9D25CB212A4449CE00476FD6 /* ZKNumPadView.swift in Sources */,
@@ -277,6 +285,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
@@ -309,6 +319,7 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -337,6 +348,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
@@ -369,6 +382,7 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;

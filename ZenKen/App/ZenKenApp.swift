@@ -9,11 +9,15 @@ import SwiftUI
 
 @main
 struct ZenKenApp: App {
+    
+    // MARK: - Main Scene
+    
     var body: some Scene {
         WindowGroup {
-            ZKPuzzleSelectionView()
+            MainMenuView()
                 .onAppear {
-                    var path: [AnyObject] = NSSearchPathForDirectoriesInDomains(.libraryDirectory, .userDomainMask, true) as [AnyObject]
+                    // TODO: Check if necessary
+                    let path: [AnyObject] = NSSearchPathForDirectoriesInDomains(.libraryDirectory, .userDomainMask, true) as [AnyObject]
                         let folder: String = path[0] as! String
                         NSLog("Your NSUserDefaults are stored in this folder: %@/Preferences", folder)
                 }
