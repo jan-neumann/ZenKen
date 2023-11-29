@@ -6,9 +6,10 @@
 //
 
 import SwiftUI
+import ZKGenerator
 
 struct ZKPuzzleSelectionMenuView: View {
-    
+
     let puzzles: [ZKPuzzleData]
     let size: Int
     
