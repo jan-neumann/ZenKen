@@ -20,6 +20,7 @@
 		9D7857AF2A42E83B008C4867 /* ZKGameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D7857AE2A42E83B008C4867 /* ZKGameView.swift */; };
 		9D8275602A431B26007AE842 /* ZKField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D82755F2A431B26007AE842 /* ZKField.swift */; };
 		9D938BDA2B17351400737792 /* MainMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D938BD92B17351400737792 /* MainMenuView.swift */; };
+		9DA313352B1870E500778520 /* puzzles4x4.json in Resources */ = {isa = PBXBuildFile; fileRef = 9DA313342B1870E500778520 /* puzzles4x4.json */; };
 		9DABBF4F2AC1ADFA00C2705D /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 9DABBF4E2AC1ADFA00C2705D /* Localizable.xcstrings */; };
 		9DABBF512AC1AF8500C2705D /* ZKPuzzle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DABBF502AC1AF8500C2705D /* ZKPuzzle.swift */; };
 		9DF3A6692A5D90A100E3D5C5 /* ZKPuzzleSelectionMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DF3A6682A5D90A100E3D5C5 /* ZKPuzzleSelectionMenuView.swift */; };
@@ -42,6 +43,7 @@
 		9D7857AE2A42E83B008C4867 /* ZKGameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZKGameView.swift; sourceTree = "<group>"; };
 		9D82755F2A431B26007AE842 /* ZKField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZKField.swift; sourceTree = "<group>"; };
 		9D938BD92B17351400737792 /* MainMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMenuView.swift; sourceTree = "<group>"; };
+		9DA313342B1870E500778520 /* puzzles4x4.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = puzzles4x4.json; sourceTree = "<group>"; };
 		9DABBF4E2AC1ADFA00C2705D /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
 		9DABBF502AC1AF8500C2705D /* ZKPuzzle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZKPuzzle.swift; sourceTree = "<group>"; };
 		9DF3A6682A5D90A100E3D5C5 /* ZKPuzzleSelectionMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZKPuzzleSelectionMenuView.swift; sourceTree = "<group>"; };
@@ -157,6 +159,7 @@
 		9DABBF4D2AC1ACD400C2705D /* Files */ = {
 			isa = PBXGroup;
 			children = (
+				9DA313342B1870E500778520 /* puzzles4x4.json */,
 				9D7857972A42E597008C4867 /* Assets.xcassets */,
 			);
 			path = Files;
@@ -244,6 +247,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9DA313352B1870E500778520 /* puzzles4x4.json in Resources */,
 				9D78579B2A42E597008C4867 /* Preview Assets.xcassets in Resources */,
 				9D7857982A42E597008C4867 /* Assets.xcassets in Resources */,
 				9DABBF4F2AC1ADFA00C2705D /* Localizable.xcstrings in Resources */,

@@ -17,17 +17,29 @@ struct ZKPuzzleSelectionMenuView: View {
 
     @State private var currentPuzzle: ZKPuzzleData?
     
+    @AppStorage("4x4Solved") var solved4x4: Int = 1
+    
+    
+    private var solved: Int {
+        switch size {
+        case 4:
+            return solved4x4
+        default:
+            return 0
+        }
+    }
+    
     // MARK: - Init
     
-    init(size: Int) {
-        
+    init(size: Int, puzzles: [ZKPuzzleData]) {
         self.size = size
-        puzzles = ZKPuzzleData.previewData
+        self.puzzles = puzzles
     }
     
     // MARK: - Main View
     
     var body: some View {
+        
         VStack {
             Text("\(size) x \(size) Puzzles")
                 .font(.title)
@@ -36,10 +48,7 @@ struct ZKPuzzleSelectionMenuView: View {
                 ForEach(puzzles) { puzzle in
                     puzzleButton(
                         for: puzzle,
-                        locked: !previousPuzzleSolved(
-                            puzzle: puzzle,
-                            allPuzzles: puzzles
-                        )
+                        locked: puzzle.number > solved
                     )
                 }
             }
@@ -83,30 +92,32 @@ struct ZKPuzzleSelectionMenuView: View {
 
 extension ZKPuzzleSelectionMenuView {
     
-    private func previousPuzzleSolved(puzzle: ZKPuzzleData, allPuzzles: [ZKPuzzleData]) -> Bool {
-        guard let firstPuzzle = allPuzzles.first else {
-            return false
-        }
-        if puzzle.id == firstPuzzle.id {
-            return true
-        }
-        
-        // find index of previous puzzle
-        guard let indexOfPuzzle = allPuzzles.firstIndex(where: { $0.id == puzzle.id }) else {
-            return false
-        }
-        let indexOfPreviousPuzzle = indexOfPuzzle - 1
-        
-        if indexOfPreviousPuzzle >= 0 {
-            return allPuzzles[indexOfPreviousPuzzle].solved
-        }
-        return false
-    }
+//    private func previousPuzzleSolved(puzzle: ZKPuzzleData, allPuzzles: [ZKPuzzleData]) -> Bool {
+//        guard let firstPuzzle = allPuzzles.first else {
+//            return false
+//        }
+//        if puzzle.id == firstPuzzle.id {
+//            return true
+//        }
+//        
+//        // find index of previous puzzle
+//        guard let indexOfPuzzle = allPuzzles.firstIndex(where: { $0.id == puzzle.id }) else {
+//            return false
+//        }
+//        let indexOfPreviousPuzzle = indexOfPuzzle - 1
+//        
+//        if indexOfPreviousPuzzle >= 0 {
+//            return allPuzzles[indexOfPreviousPuzzle].solved
+//        }
+//        return false
+//    }
     
 }
 
 // MARK: - Previews
 
 #Preview {
-    ZKPuzzleSelectionMenuView(size: 4)
+    ZKPuzzleSelectionMenuView(size: 4, 
+                              puzzles: ZKPuzzleData.previewData
+    )
 }
