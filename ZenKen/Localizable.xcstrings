@@ -34,6 +34,16 @@
         }
       }
     },
+    "Congratulations!" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Glückwunsch!"
+          }
+        }
+      }
+    },
     "Errors" : {
       "localizations" : {
         "de" : {
@@ -64,12 +74,51 @@
         }
       }
     },
+    "OK" : {
+
+    },
+    "Select a field for a hint." : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wähle ein Feld für einen Hinweis"
+          }
+        }
+      }
+    },
+    "solved : %lld / %lld" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "gelöst: %1$lld / %2$lld"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "solved : %1$lld / %2$lld"
+          }
+        }
+      }
+    },
     "Welcome to ZenKen!" : {
       "localizations" : {
         "de" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Willkommen bei ZenKen!"
+          }
+        }
+      }
+    },
+    "Well done. You've solved the puzzle." : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gut gemacht. Du hast das Puzzle gelöst."
           }
         }
       }

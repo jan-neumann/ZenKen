@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9D1D837D2B19BCC000236A72 /* puzzles6x6.json in Resources */ = {isa = PBXBuildFile; fileRef = 9D1D83772B19BCC000236A72 /* puzzles6x6.json */; };
+		9D1D837E2B19BCC000236A72 /* puzzles8x8.json in Resources */ = {isa = PBXBuildFile; fileRef = 9D1D83782B19BCC000236A72 /* puzzles8x8.json */; };
+		9D1D837F2B19BCC000236A72 /* puzzles5x5.json in Resources */ = {isa = PBXBuildFile; fileRef = 9D1D83792B19BCC000236A72 /* puzzles5x5.json */; };
+		9D1D83802B19BCC000236A72 /* puzzles7x7.json in Resources */ = {isa = PBXBuildFile; fileRef = 9D1D837A2B19BCC000236A72 /* puzzles7x7.json */; };
+		9D1D83812B19BCC000236A72 /* puzzles9x9.json in Resources */ = {isa = PBXBuildFile; fileRef = 9D1D837B2B19BCC000236A72 /* puzzles9x9.json */; };
 		9D25CB1F2A4433B300476FD6 /* Array+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D25CB1E2A4433B300476FD6 /* Array+Extensions.swift */; };
 		9D25CB212A4449CE00476FD6 /* ZKNumPadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D25CB202A4449CE00476FD6 /* ZKNumPadView.swift */; };
 		9D3234352A4991A700AC96CB /* ZKNoteSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D3234342A4991A700AC96CB /* ZKNoteSelectionView.swift */; };
@@ -23,12 +28,18 @@
 		9DA313352B1870E500778520 /* puzzles4x4.json in Resources */ = {isa = PBXBuildFile; fileRef = 9DA313342B1870E500778520 /* puzzles4x4.json */; };
 		9DABBF4F2AC1ADFA00C2705D /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 9DABBF4E2AC1ADFA00C2705D /* Localizable.xcstrings */; };
 		9DABBF512AC1AF8500C2705D /* ZKPuzzle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DABBF502AC1AF8500C2705D /* ZKPuzzle.swift */; };
+		9DEB4F512B19E3D2002587FE /* ZKPuzzleSolvedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DEB4F502B19E3D2002587FE /* ZKPuzzleSolvedView.swift */; };
 		9DF3A6692A5D90A100E3D5C5 /* ZKPuzzleSelectionMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DF3A6682A5D90A100E3D5C5 /* ZKPuzzleSelectionMenuView.swift */; };
 		9DF3A66B2A5D93AC00E3D5C5 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DF3A66A2A5D93AC00E3D5C5 /* Settings.swift */; };
 		9DFA6D692A44886F00385C0F /* Color+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DFA6D682A44886F00385C0F /* Color+Extensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		9D1D83772B19BCC000236A72 /* puzzles6x6.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = puzzles6x6.json; sourceTree = "<group>"; };
+		9D1D83782B19BCC000236A72 /* puzzles8x8.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = puzzles8x8.json; sourceTree = "<group>"; };
+		9D1D83792B19BCC000236A72 /* puzzles5x5.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = puzzles5x5.json; sourceTree = "<group>"; };
+		9D1D837A2B19BCC000236A72 /* puzzles7x7.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = puzzles7x7.json; sourceTree = "<group>"; };
+		9D1D837B2B19BCC000236A72 /* puzzles9x9.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = puzzles9x9.json; sourceTree = "<group>"; };
 		9D25CB1E2A4433B300476FD6 /* Array+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Extensions.swift"; sourceTree = "<group>"; };
 		9D25CB202A4449CE00476FD6 /* ZKNumPadView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZKNumPadView.swift; sourceTree = "<group>"; };
 		9D3234342A4991A700AC96CB /* ZKNoteSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZKNoteSelectionView.swift; sourceTree = "<group>"; };
@@ -46,6 +57,7 @@
 		9DA313342B1870E500778520 /* puzzles4x4.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = puzzles4x4.json; sourceTree = "<group>"; };
 		9DABBF4E2AC1ADFA00C2705D /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
 		9DABBF502AC1AF8500C2705D /* ZKPuzzle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZKPuzzle.swift; sourceTree = "<group>"; };
+		9DEB4F502B19E3D2002587FE /* ZKPuzzleSolvedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZKPuzzleSolvedView.swift; sourceTree = "<group>"; };
 		9DF3A6682A5D90A100E3D5C5 /* ZKPuzzleSelectionMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZKPuzzleSelectionMenuView.swift; sourceTree = "<group>"; };
 		9DF3A66A2A5D93AC00E3D5C5 /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
 		9DFA6D682A44886F00385C0F /* Color+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Extensions.swift"; sourceTree = "<group>"; };
@@ -160,6 +172,11 @@
 			isa = PBXGroup;
 			children = (
 				9DA313342B1870E500778520 /* puzzles4x4.json */,
+				9D1D83792B19BCC000236A72 /* puzzles5x5.json */,
+				9D1D83772B19BCC000236A72 /* puzzles6x6.json */,
+				9D1D837A2B19BCC000236A72 /* puzzles7x7.json */,
+				9D1D83782B19BCC000236A72 /* puzzles8x8.json */,
+				9D1D837B2B19BCC000236A72 /* puzzles9x9.json */,
 				9D7857972A42E597008C4867 /* Assets.xcassets */,
 			);
 			path = Files;
@@ -173,6 +190,7 @@
 				9D7857A62A42E64E008C4867 /* ZKFieldView.swift */,
 				9D25CB202A4449CE00476FD6 /* ZKNumPadView.swift */,
 				9D3234342A4991A700AC96CB /* ZKNoteSelectionView.swift */,
+				9DEB4F502B19E3D2002587FE /* ZKPuzzleSolvedView.swift */,
 			);
 			path = Game;
 			sourceTree = "<group>";
@@ -247,9 +265,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9D1D837E2B19BCC000236A72 /* puzzles8x8.json in Resources */,
+				9D1D83812B19BCC000236A72 /* puzzles9x9.json in Resources */,
 				9DA313352B1870E500778520 /* puzzles4x4.json in Resources */,
+				9D1D83802B19BCC000236A72 /* puzzles7x7.json in Resources */,
+				9D1D837F2B19BCC000236A72 /* puzzles5x5.json in Resources */,
 				9D78579B2A42E597008C4867 /* Preview Assets.xcassets in Resources */,
 				9D7857982A42E597008C4867 /* Assets.xcassets in Resources */,
+				9D1D837D2B19BCC000236A72 /* puzzles6x6.json in Resources */,
 				9DABBF4F2AC1ADFA00C2705D /* Localizable.xcstrings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -266,6 +289,7 @@
 				9D7857A52A42E633008C4867 /* ZKFieldGridView.swift in Sources */,
 				9DF3A6692A5D90A100E3D5C5 /* ZKPuzzleSelectionMenuView.swift in Sources */,
 				9DABBF512AC1AF8500C2705D /* ZKPuzzle.swift in Sources */,
+				9DEB4F512B19E3D2002587FE /* ZKPuzzleSolvedView.swift in Sources */,
 				9DFA6D692A44886F00385C0F /* Color+Extensions.swift in Sources */,
 				9D25CB1F2A4433B300476FD6 /* Array+Extensions.swift in Sources */,
 				9DF3A66B2A5D93AC00E3D5C5 /* Settings.swift in Sources */,
@@ -412,9 +436,13 @@
 				DEVELOPMENT_TEAM = 2GW6QU3PCC;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = ZenKen;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.puzzle-games";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UIRequiresFullScreen = YES;
+				INFOPLIST_KEY_UIStatusBarStyle = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -441,9 +469,13 @@
 				DEVELOPMENT_TEAM = 2GW6QU3PCC;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = ZenKen;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.puzzle-games";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UIRequiresFullScreen = YES;
+				INFOPLIST_KEY_UIStatusBarStyle = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (

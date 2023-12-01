@@ -86,4 +86,11 @@ final class ZKField: ObservableObject, Identifiable, Hashable, Codable {
     static func == (lhs: ZKField, rhs: ZKField) -> Bool {
         lhs.id == rhs.id
     }
+    
+    func solved() -> Bool {
+        guard let value = value, let solution = solution else {
+            return false
+        }
+        return value == solution
+    }
 }

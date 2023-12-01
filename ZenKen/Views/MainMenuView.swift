@@ -16,6 +16,16 @@ struct MainMenuView: View {
         switch size {
         case 4:
             return allPuzzles.puzzles4x4
+        case 5:
+            return allPuzzles.puzzles5x5
+        case 6:
+            return allPuzzles.puzzles6x6
+        case 7:
+            return allPuzzles.puzzles7x7
+        case 8:
+            return allPuzzles.puzzles8x8
+        case 9:
+            return allPuzzles.puzzles9x9
         default:
             return []
         }
@@ -47,7 +57,6 @@ struct MainMenuView: View {
            
             }
             .padding()
-//            .navigationTitle("ZenKen")
             .tint(.blue)
 
         }

@@ -49,4 +49,16 @@ final class ZKPuzzle: ObservableObject, Identifiable, Hashable, Codable {
         lhs.id == rhs.id
     }
     
+    func allSolved() -> Bool {
+        var result = true
+        
+        fields.forEach { subfields in
+            subfields.forEach { field in
+                if !field.solved() {
+                    result = false
+                }
+            }
+        }
+        return result
+    }
 }

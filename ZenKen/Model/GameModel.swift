@@ -17,7 +17,7 @@ final class GameModel: ObservableObject {
     @Published var size: Int
     @Published var puzzle: ZKPuzzle
     @Published var showErrors: Bool = false
-    
+   
     private var seed: Int
     
     
@@ -43,6 +43,10 @@ final class GameModel: ObservableObject {
     }
     
     // MARK: - Functions
+    
+    func checkIfSolved() {
+    
+    }
     
     private func cageID(row: Int, col: Int) -> Int? {
         guard let cageIDs = generator?.cageIDs else {

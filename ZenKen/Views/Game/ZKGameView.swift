@@ -14,18 +14,23 @@ struct ZKGameView: View {
     let size: Int
     let seed: Int
     
+    @Binding var solved: Bool
+    
     // MARK: - Private
     
     @Environment(\.scenePhase) private var scenePhase
     @Environment(\.dismiss) private var dismiss
     @StateObject private var gameModel: GameModel
     @State private var isPortrait = false
-     
+    @State private var fieldChanged = false
+    @State private var selectHintMode = false
+    
     // MARK: - Init
     
-    init(size: Int, seed: Int) {
+    init(size: Int, seed: Int,solved:  Binding<Bool>) {
         self.size = size
         self.seed = seed
+        self._solved = solved
         self._gameModel = StateObject<GameModel>(
             wrappedValue:
                 GameModel(
@@ -42,9 +47,11 @@ struct ZKGameView: View {
         
         ZStack {
             headerView
-          
+            // Game grid
             ZKFieldGridView(gridSize: size,
-                            isPortrait: $isPortrait)
+                            isPortrait: $isPortrait, 
+                            fieldEditChange: $fieldChanged, 
+                            hintMode: $selectHintMode)
         }
         .background(
             LinearGradient(colors: Color.backgroundGradientColors, 
@@ -60,6 +67,13 @@ struct ZKGameView: View {
             setOrientation()
         }
         .environmentObject(gameModel)
+        .onChange(of: fieldChanged) {
+            if gameModel.puzzle.allSolved() {
+                solved = true
+            }
+            fieldChanged = false
+        
+        }
         .onChange(of: scenePhase) { newPhase, _ in
             switch newPhase {
             case .background:
@@ -73,6 +87,20 @@ struct ZKGameView: View {
             default:
                 return
             }
+        }
+        .sheet(isPresented: $solved) {
+            VStack {
+                ZKPuzzleSolvedView()
+                Button {
+                    dismiss()
+                } label: {
+                    Text("OK")
+                }
+                .frame(width: 160)
+                .buttonStyle(.bordered)
+                .tint(.blue)
+            }
+            .interactiveDismissDisabled()
         }
     }
     
@@ -100,6 +128,7 @@ extension ZKGameView {
     private var headerView: some View {
         VStack {
             HStack {
+                // Back button
                 Button {
                     dismiss()
                 } label: {
@@ -109,38 +138,50 @@ extension ZKGameView {
                 .fontWeight(.bold)
                 .foregroundColor(.white)
                 Spacer()
-                // TODO
-                HStack {
-                    Button {
-                        
-                    } label: {
-                        VStack {
-                            Image(systemName: "questionmark.circle")
-                            Text("Hint")
-                                .font(.caption)
+                VStack {
+                    HStack {
+                        // Hint button
+                        Button {
+                            selectHintMode.toggle()
+                        } label: {
+                            VStack {
+                                Image(systemName: "questionmark.circle")
+                                Text("Hint")
+                                    .font(.caption)
+                            }
                         }
+                        .frame(width: 80, height: 80)
+                        // Show errors button
+                        Button {
+                            gameModel.showErrors = true
+                        } label: {
+                            VStack {
+                                Image(systemName: "exclamationmark.circle")
+                                Text("Errors")
+                                    .font(.caption)
+                            }
+                            
+                        }
+                        .frame(width: 80, height: 80)
                         
                     }
-                    .frame(width: 80, height: 80)
                     
-                    Button {
-                        gameModel.showErrors = true
-                    } label: {
-                        VStack {
-                            Image(systemName: "exclamationmark.circle")
-                            Text("Errors")
-                                .font(.caption)
-                        }
-                        
-                    }
-                    .frame(width: 80, height: 80)
+                    .font(.largeTitle)
+                    .fontWeight(.bold)
+                    .foregroundColor(.white)
+                    
+                    // Hint selection message
+                    Text("Select a field for a hint.")
+                        .bold()
+                        .frame(width: 150)
+                        .multilineTextAlignment(.center)
+                        .foregroundStyle(.white)
+                        .opacity(selectHintMode ? 1 : 0)
                 }
-                
-                .font(.largeTitle)
-                .fontWeight(.bold)
-                .foregroundColor(.white)
             }
             .padding(.horizontal)
+     
+            
             Spacer()
         }
     }
@@ -151,6 +192,7 @@ extension ZKGameView {
 #Preview {
     ZKGameView(
         size: 4,
-        seed: 123
+        seed: 123,
+        solved: .constant(false)
     )
 }

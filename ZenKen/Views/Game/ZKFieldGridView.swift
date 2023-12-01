@@ -15,6 +15,8 @@ struct ZKFieldGridView: View {
     
     @EnvironmentObject var gameModel: GameModel
     @Binding var isPortrait: Bool
+    @Binding var fieldEditChange: Bool
+    @Binding var hintMode: Bool
  
     // MARK: - Private
     
@@ -65,8 +67,13 @@ extension ZKFieldGridView {
                             field: field
                         )
                         .onTapGesture {
-                            showKeyPad = true
-                            gameModel.selectedField = field
+                            if hintMode {
+                                field.value = field.solution
+                                hintMode = false
+                            } else {
+                                showKeyPad = true
+                                gameModel.selectedField = field
+                            }
                         }
                         
                     }
@@ -74,12 +81,14 @@ extension ZKFieldGridView {
                 
             }
         }
-        .background(Color.secondary)
+        .background(!hintMode ? Color.secondary : Color.purple)
         .onChange(of: gameModel.selectedField) {
             if gameModel.selectedField == nil {
                 withAnimation(.linear(duration: 0.1)) {
                     showKeyPad = false
+                   
                 }
+                fieldEditChange = true
             }
         }
     }
@@ -186,7 +195,9 @@ struct ZenKenGrid_Previews: PreviewProvider {
     static var previews: some View {
         ZKFieldGridView(
             gridSize: 4,
-            isPortrait: .constant(false)
+            isPortrait: .constant(false), 
+            fieldEditChange: .constant(false), 
+            hintMode: .constant(false)
         )
         .environmentObject(GameModel(id: "0"))
     }

@@ -43,7 +43,7 @@ struct ZKFieldView: View {
     }
     
     private var hintFontSize: CGFloat {
-        size * 0.2
+        size * 0.25
     }
     
     private var valueFontSize: CGFloat {
@@ -120,21 +120,8 @@ struct ZKFieldView: View {
                 }
             
             // Hint Text
-            VStack(alignment: .leading, spacing: 0) {
-                HStack(alignment: .top, spacing: 0) {
-                    Text(field.hint ?? "")
-                        .font(.system(size: hintFontSize).bold())
-                        .frame(alignment: .topLeading)
-                        .foregroundColor((gm.selectedField != nil && gm.selectedField == field) ? Color.white : Color.hint)
-                        .padding(.top, 2)
-                        .padding(.leading, 4)
-                        .lineLimit(1)
-                        .minimumScaleFactor(0.5)
-                    Spacer()
-                }
-                Spacer()
-                
-            }
+            hintText
+
         }
         .frame(width: size, height: size )
    
@@ -144,6 +131,23 @@ struct ZKFieldView: View {
 // MARK: - Sub Views
 
 extension ZKFieldView {
+    
+    private var hintText: some View {
+        VStack(alignment: .leading, spacing: 0) {
+            HStack(alignment: .top, spacing: 0) {
+                Text(field.hint ?? "")
+                    .font(.system(size: hintFontSize).bold())
+                    .frame(alignment: .topLeading)
+                    .foregroundColor((gm.selectedField != nil && gm.selectedField == field) ? Color.white : Color.hint)
+                    .padding(.top, 2)
+                    .padding(.leading, 4)
+                    .lineLimit(1)
+                    .minimumScaleFactor(0.5)
+                Spacer()
+            }
+            Spacer()
+        }
+    }
     
     private func noteText(number: Int) -> some View {
         Text(field.notes[number - 1] ? "\(number)" : "•")
@@ -196,9 +200,9 @@ struct ZenKenFieldView_Previews: PreviewProvider {
             fieldSize: 40,
             color: .white,
             field: ZKField(
-                cageHint: "1 (x)",
-                hint: "1 (x)",
-                value: 1,
+                cageHint: "4096 (x)",
+                hint: "4096 (x)",
+                value: 9,
                 solution: 1,
                 drawLeftBorder: true,
                 drawRightBorder: true,
