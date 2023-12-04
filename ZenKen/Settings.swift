@@ -9,6 +9,21 @@ import Foundation
 
 final class Settings: ObservableObject {
     
+    static let adTestMode = true // TODO: Set fo false prior to release
+    
+    struct AdMobId {
+        static let appId = "ca-app-pub-7585285452167184~4537327024"
+        static let nativeAdId = "ca-app-pub-7585285452167184/8343929841"
+        static let interstitialAdId = "ca-app-pub-7585285452167184/5634840172"
+        static let bannerAdId = "ca-app-pub-7585285452167184/1308528450"
+        
+        static let nativeAdTestId = ""
+        static let interstitialAdTestId = "ca-app-pub-3940256099942544/4411468910"
+        static let bannerAdTestId = ""
+        
+    }
+  
+    
     @Published var pointer4x4: Int {
         willSet {
             UserDefaults.standard.set(newValue, forKey: Keys.pointer4x4)

@@ -15,6 +15,10 @@
 		9D25CB1F2A4433B300476FD6 /* Array+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D25CB1E2A4433B300476FD6 /* Array+Extensions.swift */; };
 		9D25CB212A4449CE00476FD6 /* ZKNumPadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D25CB202A4449CE00476FD6 /* ZKNumPadView.swift */; };
 		9D3234352A4991A700AC96CB /* ZKNoteSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D3234342A4991A700AC96CB /* ZKNoteSelectionView.swift */; };
+		9D5A7E2D2B1DB2960098B608 /* GoogleMobileAds in Frameworks */ = {isa = PBXBuildFile; productRef = 9D5A7E2C2B1DB2960098B608 /* GoogleMobileAds */; };
+		9D5A7E342B1DBF610098B608 /* InterstitialAdView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D5A7E332B1DBF610098B608 /* InterstitialAdView.swift */; };
+		9D5A7E372B1DCB360098B608 /* InterstitialAdCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D5A7E362B1DCB360098B608 /* InterstitialAdCoordinator.swift */; };
+		9D5A7E3C2B1DE53D0098B608 /* BannerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D5A7E3B2B1DE53D0098B608 /* BannerViewController.swift */; };
 		9D7857942A42E596008C4867 /* ZenKenApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D7857932A42E596008C4867 /* ZenKenApp.swift */; };
 		9D7857982A42E597008C4867 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9D7857972A42E597008C4867 /* Assets.xcassets */; };
 		9D78579B2A42E597008C4867 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9D78579A2A42E597008C4867 /* Preview Assets.xcassets */; };
@@ -43,6 +47,10 @@
 		9D25CB1E2A4433B300476FD6 /* Array+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Extensions.swift"; sourceTree = "<group>"; };
 		9D25CB202A4449CE00476FD6 /* ZKNumPadView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZKNumPadView.swift; sourceTree = "<group>"; };
 		9D3234342A4991A700AC96CB /* ZKNoteSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZKNoteSelectionView.swift; sourceTree = "<group>"; };
+		9D5A7E302B1DB6C20098B608 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		9D5A7E332B1DBF610098B608 /* InterstitialAdView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterstitialAdView.swift; sourceTree = "<group>"; };
+		9D5A7E362B1DCB360098B608 /* InterstitialAdCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterstitialAdCoordinator.swift; sourceTree = "<group>"; };
+		9D5A7E3B2B1DE53D0098B608 /* BannerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BannerViewController.swift; sourceTree = "<group>"; };
 		9D7857902A42E596008C4867 /* ZenKen.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ZenKen.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9D7857932A42E596008C4867 /* ZenKenApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZenKenApp.swift; sourceTree = "<group>"; };
 		9D7857972A42E597008C4867 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -68,6 +76,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9D5A7E2D2B1DB2960098B608 /* GoogleMobileAds in Frameworks */,
 				9D7857AA2A42E6FA008C4867 /* ZKGenerator in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -82,6 +91,16 @@
 				9DFA6D682A44886F00385C0F /* Color+Extensions.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		9D5A7E352B1DCB220098B608 /* Ads */ = {
+			isa = PBXGroup;
+			children = (
+				9D5A7E332B1DBF610098B608 /* InterstitialAdView.swift */,
+				9D5A7E362B1DCB360098B608 /* InterstitialAdCoordinator.swift */,
+				9D5A7E3B2B1DE53D0098B608 /* BannerViewController.swift */,
+			);
+			path = Ads;
 			sourceTree = "<group>";
 		};
 		9D7857872A42E596008C4867 = {
@@ -105,6 +124,8 @@
 		9D7857922A42E596008C4867 /* ZenKen */ = {
 			isa = PBXGroup;
 			children = (
+				9D5A7E352B1DCB220098B608 /* Ads */,
+				9D5A7E302B1DB6C20098B608 /* Info.plist */,
 				9DABBF4C2AC1ACB400C2705D /* App */,
 				9D25CB1D2A44339D00476FD6 /* Extensions */,
 				9D7857AB2A42E782008C4867 /* Model */,
@@ -221,6 +242,7 @@
 			name = ZenKen;
 			packageProductDependencies = (
 				9D7857A92A42E6FA008C4867 /* ZKGenerator */,
+				9D5A7E2C2B1DB2960098B608 /* GoogleMobileAds */,
 			);
 			productName = ZenKen;
 			productReference = 9D7857902A42E596008C4867 /* ZenKen.app */;
@@ -251,6 +273,9 @@
 				de,
 			);
 			mainGroup = 9D7857872A42E596008C4867;
+			packageReferences = (
+				9D5A7E2B2B1DB2960098B608 /* XCRemoteSwiftPackageReference "swift-package-manager-google-mobile-ads" */,
+			);
 			productRefGroup = 9D7857912A42E596008C4867 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -284,9 +309,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9D5A7E3C2B1DE53D0098B608 /* BannerViewController.swift in Sources */,
 				9D3234352A4991A700AC96CB /* ZKNoteSelectionView.swift in Sources */,
 				9D7857AD2A42E7C1008C4867 /* GameModel.swift in Sources */,
 				9D7857A52A42E633008C4867 /* ZKFieldGridView.swift in Sources */,
+				9D5A7E372B1DCB360098B608 /* InterstitialAdCoordinator.swift in Sources */,
 				9DF3A6692A5D90A100E3D5C5 /* ZKPuzzleSelectionMenuView.swift in Sources */,
 				9DABBF512AC1AF8500C2705D /* ZKPuzzle.swift in Sources */,
 				9DEB4F512B19E3D2002587FE /* ZKPuzzleSolvedView.swift in Sources */,
@@ -295,6 +322,7 @@
 				9DF3A66B2A5D93AC00E3D5C5 /* Settings.swift in Sources */,
 				9D938BDA2B17351400737792 /* MainMenuView.swift in Sources */,
 				9D7857AF2A42E83B008C4867 /* ZKGameView.swift in Sources */,
+				9D5A7E342B1DBF610098B608 /* InterstitialAdView.swift in Sources */,
 				9D7857942A42E596008C4867 /* ZenKenApp.swift in Sources */,
 				9D25CB212A4449CE00476FD6 /* ZKNumPadView.swift in Sources */,
 				9D7857A72A42E64E008C4867 /* ZKFieldView.swift in Sources */,
@@ -436,6 +464,7 @@
 				DEVELOPMENT_TEAM = 2GW6QU3PCC;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = ZenKen/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = ZenKen;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.puzzle-games";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -450,6 +479,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
+				"OTHER_LDFLAGS[arch=*]" = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = com.JNSD.ZenKen;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -469,6 +499,7 @@
 				DEVELOPMENT_TEAM = 2GW6QU3PCC;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = ZenKen/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = ZenKen;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.puzzle-games";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -483,6 +514,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
+				"OTHER_LDFLAGS[arch=*]" = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = com.JNSD.ZenKen;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -514,7 +546,23 @@
 		};
 /* End XCConfigurationList section */
 
+/* Begin XCRemoteSwiftPackageReference section */
+		9D5A7E2B2B1DB2960098B608 /* XCRemoteSwiftPackageReference "swift-package-manager-google-mobile-ads" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/googleads/swift-package-manager-google-mobile-ads.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 10.14.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
 /* Begin XCSwiftPackageProductDependency section */
+		9D5A7E2C2B1DB2960098B608 /* GoogleMobileAds */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 9D5A7E2B2B1DB2960098B608 /* XCRemoteSwiftPackageReference "swift-package-manager-google-mobile-ads" */;
+			productName = GoogleMobileAds;
+		};
 		9D7857A92A42E6FA008C4867 /* ZKGenerator */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = ZKGenerator;

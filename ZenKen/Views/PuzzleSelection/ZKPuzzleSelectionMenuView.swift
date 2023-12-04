@@ -30,6 +30,10 @@ struct ZKPuzzleSelectionMenuView: View {
     @AppStorage("8x8Solved") private var solved8x8: Int = 1
     @AppStorage("9x9Solved") private var solved9x9: Int = 1
     
+    
+     private let interstitialAd = InterstitialAdView()
+     private let interstitialAdCoordinator = InterstitialAdCoordinator()
+     
     // MARK: - Properties
     
     private var solved: Int {
@@ -65,27 +69,11 @@ struct ZKPuzzleSelectionMenuView: View {
     
     var body: some View {
         VStack {
-            
-            Rectangle()
-                .foregroundStyle(.quinary)
-                .overlay {
-                    VStack {
-                        Text("\(size) x \(size) Puzzles")
-                            .font(.title.bold())
-                            .padding()
-                        HStack {
-                            Image(systemName: "square.grid.3x3")
-                            Text("solved : \(solved - 1) / \(puzzles.count)")
-                               
-                        }
-                        .foregroundStyle(.secondary)
-                        .font(.title2)
-                    }
+            headerView
+                .background {
+                    interstitialAd
+                        .frame(width: .zero, height: .zero)
                 }
-                .frame(height: 180)
-                .clipShape(.rect(cornerRadius: 10))
-                .padding()
-     
             ScrollView {
                 LazyVGrid(columns: columns, spacing: 15) {
                     ForEach(puzzles) { puzzle in
@@ -104,6 +92,7 @@ struct ZKPuzzleSelectionMenuView: View {
                        seed: newPuzzle.seed, 
                        solved: $currentPuzzleSolved
             )
+          
         }
         .transition(.slide)
         .onChange(of: currentPuzzleSolved) { _, newValue in
@@ -111,14 +100,49 @@ struct ZKPuzzleSelectionMenuView: View {
                 puzzleSolved()
             }
         }
+        .onChange(of: currentPuzzle) { oldValue, newValue in
+            if newValue == nil {
+                // TODO: Find another solution
+                DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                    interstitialAdCoordinator.presentAd(
+                        from: interstitialAd.viewController
+                    )
+                }
+            }
+        }
     }
     
     // MARK: - Sub Views
     
+    var headerView: some View {
+        Rectangle()
+            .foregroundStyle(.quinary)
+            .overlay {
+                VStack {
+                    Text("\(size) x \(size) Puzzles")
+                        .font(.title.bold())
+                        .padding()
+                    HStack {
+                        Image(systemName: "square.grid.3x3")
+                        Text("solved : \(solved - 1) / \(puzzles.count)")
+                           
+                    }
+                    .foregroundStyle(.secondary)
+                    .font(.title2)
+                }
+            }
+            .frame(height: 180)
+            .clipShape(.rect(cornerRadius: 10))
+            .padding()
+    }
+    
     func puzzleButton(for puzzle: ZKPuzzleData, locked: Bool) -> some View {
         Button {
+            interstitialAdCoordinator.loadAd()
+            
             currentPuzzle = puzzle
             currentPuzzleNumber = puzzle.number
+    
         } label: {
             ZStack {
          

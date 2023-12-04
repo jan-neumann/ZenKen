@@ -25,7 +25,7 @@ struct ZKGameView: View {
     @State private var fieldChanged = false
     @State private var selectHintMode = false
     
-    // MARK: - Init
+   // MARK: - Init
     
     init(size: Int, seed: Int,solved:  Binding<Bool>) {
         self.size = size
@@ -47,11 +47,13 @@ struct ZKGameView: View {
         
         ZStack {
             headerView
+              
             // Game grid
             ZKFieldGridView(gridSize: size,
                             isPortrait: $isPortrait, 
                             fieldEditChange: $fieldChanged, 
                             hintMode: $selectHintMode)
+           
         }
         .background(
             LinearGradient(colors: Color.backgroundGradientColors, 
@@ -102,6 +104,7 @@ struct ZKGameView: View {
             }
             .interactiveDismissDisabled()
         }
+    
     }
     
     // MARK: - Helper Functions

@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import GoogleMobileAds
 
 @main
 struct ZenKenApp: App {
@@ -20,8 +21,12 @@ struct ZenKenApp: App {
                     let path: [AnyObject] = NSSearchPathForDirectoriesInDomains(.libraryDirectory, .userDomainMask, true) as [AnyObject]
                         let folder: String = path[0] as! String
                         NSLog("Your NSUserDefaults are stored in this folder: %@/Preferences", folder)
+                    
+                    // Init ads // TODO: Ask for consent prior initialization
+                    GADMobileAds.sharedInstance().start(completionHandler: nil)
                 }
         }
+        
         
     }
 }
