@@ -8,7 +8,7 @@
 import Foundation
 
 final class ZKField: ObservableObject, Identifiable, Hashable, Codable {
-    
+      
     enum CodingKeys: String, CodingKey {
         case id
         case cageHint

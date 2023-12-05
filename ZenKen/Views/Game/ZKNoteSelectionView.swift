@@ -8,41 +8,67 @@
 import SwiftUI
 
 struct ZKNoteSelectionView: View {
+    
+    // MARK: - Public
+    
     let portrait: Bool
     let size: Int
     @ObservedObject var field: ZKField
+    @Binding var show: Bool
     
-    @State var allNotesOn: Bool = false
+    // MARK: - Private
+    
+    @State private var allNotesOn: Bool = false
+    
+    // MARK: - Properties
     
     func buttonColor(index: Int) -> Color {
         field.notes[index] ? Color.secondary : Color.blue
     }
     
+    // MARK: - Main View
+    
     var body: some View {
         VStack {
             if portrait {
-                notesLabel
+                HStack {
+                    notesLabel
+                    Spacer()
+                    Button {
+                        show.toggle()
+                    } label: {
+                        Image(systemName: "xmark")
+                    }
+                    .buttonStyle(.plain)
+                  
+                }
                 HStack(spacing: 5) {
                     numbersView
                     allNotesToggleButton
-                
+                    
                 }
             } else {
-                    VStack(spacing: 3) {
-                        notesLabel
-                        numbersView
-                        allNotesToggleButton
-                    }
+                VStack(spacing: 3) {
+                    notesLabel
+                    numbersView
+                    allNotesToggleButton
                 }
+            }
             
         }
-        .padding(.horizontal, 10)
+        .padding(.top, 5)
+        .padding([.horizontal, .bottom], 10)
         .transition(.opacity)
+        .background(Color(.systemGray3))
+        .clipShape(.rect(cornerRadius: 10))
+        .shadow(radius: 10)
     }
+    
+    // MARK: - Sub Views
     
     var notesLabel: some View {
         Label("Notes", systemImage: "square.and.pencil")
-            .foregroundColor(.white)
+            .fontWeight(.semibold)
     }
     
     var allNotesToggleButton: some View {
@@ -92,16 +118,23 @@ struct NoteToggleButtonStyle: ButtonStyle {
     
 }
 
-//struct ZKNoteSelectionView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        ZKNoteSelectionView(
-//            portrait: true,
-//            size: 9,
-//            field: .constant(nil))
-//        ZKNoteSelectionView(
-//            portrait: false,
-//            size: 9,
-//            field: .constant(nil))
-//        
-//    }
-//}
+// MARK: - Previews
+
+#Preview {
+    @State var field: ZKField = ZKField (
+        cageHint: "4096(X)",
+        hint: "4096(X)",
+        drawLeftBorder: true,
+        drawRightBorder: true,
+        drawBottomBorder: true,
+        drawTopBorder: true
+    )
+    
+    return ZKNoteSelectionView(
+        portrait: true,
+        size: 9,
+        field: field,
+        show: .constant(true)
+    )
+    
+}

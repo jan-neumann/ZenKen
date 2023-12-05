@@ -13,9 +13,13 @@ final class InterstitialAdCoordinator: NSObject {
     
     func loadAd() {
         
+        let request = GADRequest()
+        
+        request.scene = UIApplication.shared.connectedScenes.first as? UIWindowScene
+        
         GADInterstitialAd.load(
             withAdUnitID: Settings.adTestMode ? Settings.AdMobId.interstitialAdTestId : Settings.AdMobId.interstitialAdId,
-            request: GADRequest()) { ad, error in
+            request: request) { ad, error in
                 if let error = error {
                     print(">> Failed to load interstitial ad with error: \(error.localizedDescription)")
                     return

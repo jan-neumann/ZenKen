@@ -47,13 +47,19 @@ struct ZKGameView: View {
         
         ZStack {
             headerView
-              
+                
             // Game grid
-            ZKFieldGridView(gridSize: size,
-                            isPortrait: $isPortrait, 
-                            fieldEditChange: $fieldChanged, 
-                            hintMode: $selectHintMode)
-           
+            VStack(alignment: .center) {
+               
+                ZKFieldGridView(gridSize: size,
+                                isPortrait: $isPortrait,
+                                fieldEditChange: $fieldChanged,
+                                hintMode: $selectHintMode)
+             
+                BannerAdView()
+                    .frame(maxHeight: 60)
+                  
+            }
         }
         .background(
             LinearGradient(colors: Color.backgroundGradientColors, 
@@ -69,14 +75,14 @@ struct ZKGameView: View {
             setOrientation()
         }
         .environmentObject(gameModel)
-        .onChange(of: fieldChanged) {
+        .onChange(of: fieldChanged) { _ in
             if gameModel.puzzle.allSolved() {
                 solved = true
             }
             fieldChanged = false
         
         }
-        .onChange(of: scenePhase) { newPhase, _ in
+        .onChange(of: scenePhase) { newPhase in
             switch newPhase {
             case .background:
                 _ = gameModel.save()
@@ -130,19 +136,19 @@ extension ZKGameView {
     
     private var headerView: some View {
         VStack {
-            HStack {
+            HStack(alignment: .top) {
                 // Back button
                 Button {
                     dismiss()
                 } label: {
                     Image(systemName: "chevron.left")
                 }
-                .font(.largeTitle)
-                .fontWeight(.bold)
-                .foregroundColor(.white)
+               
+                
                 Spacer()
-                VStack {
-                    HStack {
+                
+                VStack(spacing: 0) {
+                    HStack(alignment: .top) {
                         // Hint button
                         Button {
                             selectHintMode.toggle()
@@ -168,22 +174,21 @@ extension ZKGameView {
                         .frame(width: 80, height: 80)
                         
                     }
-                    
-                    .font(.largeTitle)
-                    .fontWeight(.bold)
-                    .foregroundColor(.white)
+                
                     
                     // Hint selection message
                     Text("Select a field for a hint.")
                         .bold()
                         .frame(width: 150)
                         .multilineTextAlignment(.center)
-                        .foregroundStyle(.white)
                         .opacity(selectHintMode ? 1 : 0)
                 }
             }
+            .font(.largeTitle)
+            .fontWeight(.semibold)
+            .foregroundStyle(.white)
             .padding(.horizontal)
-     
+           
             
             Spacer()
         }
@@ -194,7 +199,7 @@ extension ZKGameView {
 
 #Preview {
     ZKGameView(
-        size: 4,
+        size: 9,
         seed: 123,
         solved: .constant(false)
     )

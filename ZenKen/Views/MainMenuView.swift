@@ -34,7 +34,9 @@ struct MainMenuView: View {
         NavigationStack {
             VStack {
                 Text("Welcome to ZenKen!")
-                    .font(.largeTitle.bold())
+                    .font(.largeTitle)
+                    .fontWeight(.semibold)
+                    .multilineTextAlignment(.center)
                     
                 Spacer()
                 ForEach(4..<10) { size in

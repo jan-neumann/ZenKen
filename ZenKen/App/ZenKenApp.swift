@@ -23,7 +23,13 @@ struct ZenKenApp: App {
                         NSLog("Your NSUserDefaults are stored in this folder: %@/Preferences", folder)
                     
                     // Init ads // TODO: Ask for consent prior initialization
-                    GADMobileAds.sharedInstance().start(completionHandler: nil)
+                    GADMobileAds.sharedInstance().start { status in
+                        if Settings.adTestMode {
+                            GADMobileAds.sharedInstance().requestConfiguration.testDeviceIdentifiers = [ "c2ce836e78c80bcecb7fecc66779a08d" ]
+                        }
+                    }
+                    
+
                 }
         }
         

@@ -73,8 +73,7 @@ struct ZKFieldView: View {
     
     var body: some View {
         ZStack {
-            Rectangle()
-                .foregroundColor(color)
+            color
                 .overlay {
                     ZStack {
                         // Cage
@@ -123,8 +122,7 @@ struct ZKFieldView: View {
             hintText
 
         }
-        .frame(width: size, height: size )
-   
+        .frame(width: size, height: size)
     }
 }
 

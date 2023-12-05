@@ -95,12 +95,12 @@ struct ZKPuzzleSelectionMenuView: View {
           
         }
         .transition(.slide)
-        .onChange(of: currentPuzzleSolved) { _, newValue in
+        .onChange(of: currentPuzzleSolved) { newValue in
             if newValue {
                 puzzleSolved()
             }
         }
-        .onChange(of: currentPuzzle) { oldValue, newValue in
+        .onChange(of: currentPuzzle) { newValue in
             if newValue == nil {
                 // TODO: Find another solution
                 DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
@@ -139,7 +139,6 @@ struct ZKPuzzleSelectionMenuView: View {
     func puzzleButton(for puzzle: ZKPuzzleData, locked: Bool) -> some View {
         Button {
             interstitialAdCoordinator.loadAd()
-            
             currentPuzzle = puzzle
             currentPuzzleNumber = puzzle.number
     
@@ -168,7 +167,7 @@ struct ZKPuzzleSelectionMenuView: View {
         }
         .frame(width: 100, height: 100)
         .buttonStyle(.bordered)
-        .buttonBorderShape(.buttonBorder)
+//        .buttonBorderShape(.buttonBorder)
         .tint(locked ? .gray : .blue)
         .disabled(locked)
        

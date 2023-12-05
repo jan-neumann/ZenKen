@@ -75,14 +75,13 @@ extension ZKFieldGridView {
                                 gameModel.selectedField = field
                             }
                         }
-                        
                     }
                 }
                 
             }
         }
-        .background(!hintMode ? Color.secondary : Color.purple)
-        .onChange(of: gameModel.selectedField) {
+        .background(!hintMode ? Color.secondary : Color.yellow)
+        .onChange(of: gameModel.selectedField) { _ in
             if gameModel.selectedField == nil {
                 withAnimation(.linear(duration: 0.1)) {
                     showKeyPad = false
@@ -131,8 +130,10 @@ extension ZKFieldGridView {
                 ZKNoteSelectionView(
                     portrait: isPortrait,
                     size: gameModel.size,
-                    field: selectedField
+                    field: selectedField, 
+                    show: $showKeyPad
                 )
+                .opacity(showKeyPad ? 1 : 0)
                 .padding(.vertical, 10)
             }
         }
@@ -179,9 +180,11 @@ extension ZKFieldGridView {
                 ZKNoteSelectionView(
                     portrait: false,
                     size: gameModel.size,
-                    field: selectedField
+                    field: selectedField, 
+                    show: $showKeyPad
                 )
                 .padding(.vertical, 10)
+                .opacity(showKeyPad ? 1 : 0)
             }
         }
      

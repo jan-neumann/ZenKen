@@ -19,7 +19,7 @@ final class Settings: ObservableObject {
         
         static let nativeAdTestId = ""
         static let interstitialAdTestId = "ca-app-pub-3940256099942544/4411468910"
-        static let bannerAdTestId = ""
+        static let bannerAdTestId = "ca-app-pub-3940256099942544/2934735716"
         
     }
   

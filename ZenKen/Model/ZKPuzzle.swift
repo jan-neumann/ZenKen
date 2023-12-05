@@ -44,7 +44,6 @@ final class ZKPuzzle: ObservableObject, Identifiable, Hashable, Codable {
         hasher.combine(id)
     }
     
-    
     static func == (lhs: ZKPuzzle, rhs: ZKPuzzle) -> Bool {
         lhs.id == rhs.id
     }

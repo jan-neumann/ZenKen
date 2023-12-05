@@ -30,6 +30,7 @@
 		9D8275602A431B26007AE842 /* ZKField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D82755F2A431B26007AE842 /* ZKField.swift */; };
 		9D938BDA2B17351400737792 /* MainMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D938BD92B17351400737792 /* MainMenuView.swift */; };
 		9DA313352B1870E500778520 /* puzzles4x4.json in Resources */ = {isa = PBXBuildFile; fileRef = 9DA313342B1870E500778520 /* puzzles4x4.json */; };
+		9DA91BF42B1F039B00CB8920 /* BannerAdView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DA91BF32B1F039B00CB8920 /* BannerAdView.swift */; };
 		9DABBF4F2AC1ADFA00C2705D /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 9DABBF4E2AC1ADFA00C2705D /* Localizable.xcstrings */; };
 		9DABBF512AC1AF8500C2705D /* ZKPuzzle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DABBF502AC1AF8500C2705D /* ZKPuzzle.swift */; };
 		9DEB4F512B19E3D2002587FE /* ZKPuzzleSolvedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DEB4F502B19E3D2002587FE /* ZKPuzzleSolvedView.swift */; };
@@ -63,6 +64,7 @@
 		9D82755F2A431B26007AE842 /* ZKField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZKField.swift; sourceTree = "<group>"; };
 		9D938BD92B17351400737792 /* MainMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMenuView.swift; sourceTree = "<group>"; };
 		9DA313342B1870E500778520 /* puzzles4x4.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = puzzles4x4.json; sourceTree = "<group>"; };
+		9DA91BF32B1F039B00CB8920 /* BannerAdView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BannerAdView.swift; sourceTree = "<group>"; };
 		9DABBF4E2AC1ADFA00C2705D /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
 		9DABBF502AC1AF8500C2705D /* ZKPuzzle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZKPuzzle.swift; sourceTree = "<group>"; };
 		9DEB4F502B19E3D2002587FE /* ZKPuzzleSolvedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZKPuzzleSolvedView.swift; sourceTree = "<group>"; };
@@ -98,6 +100,7 @@
 			children = (
 				9D5A7E332B1DBF610098B608 /* InterstitialAdView.swift */,
 				9D5A7E362B1DCB360098B608 /* InterstitialAdCoordinator.swift */,
+				9DA91BF32B1F039B00CB8920 /* BannerAdView.swift */,
 				9D5A7E3B2B1DE53D0098B608 /* BannerViewController.swift */,
 			);
 			path = Ads;
@@ -323,6 +326,7 @@
 				9D938BDA2B17351400737792 /* MainMenuView.swift in Sources */,
 				9D7857AF2A42E83B008C4867 /* ZKGameView.swift in Sources */,
 				9D5A7E342B1DBF610098B608 /* InterstitialAdView.swift in Sources */,
+				9DA91BF42B1F039B00CB8920 /* BannerAdView.swift in Sources */,
 				9D7857942A42E596008C4867 /* ZenKenApp.swift in Sources */,
 				9D25CB212A4449CE00476FD6 /* ZKNumPadView.swift in Sources */,
 				9D7857A72A42E64E008C4867 /* ZKFieldView.swift in Sources */,
@@ -472,8 +476,9 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UIRequiresFullScreen = YES;
 				INFOPLIST_KEY_UIStatusBarStyle = "";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -507,8 +512,9 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UIRequiresFullScreen = YES;
 				INFOPLIST_KEY_UIStatusBarStyle = "";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
