@@ -38,6 +38,11 @@ struct ZKNoteSelectionView: View {
                         show.toggle()
                     } label: {
                         Image(systemName: "xmark")
+                            .frame(width: 30, height: 30)
+                            .background(.white.opacity(0.6))
+                            .clipShape(Circle())
+                            .shadow(radius: 2)
+                           
                     }
                     .buttonStyle(.plain)
                   
@@ -74,7 +79,7 @@ struct ZKNoteSelectionView: View {
     var allNotesToggleButton: some View {
         Button {
             allNotesOn.toggle()
-            for i in 0..<field.notes.count {
+            for i in 0 ..< field.notes.count {
                 field.notes[i] = allNotesOn
             }
         } label: {

@@ -25,7 +25,10 @@ struct ZenKenApp: App {
                     // Init ads // TODO: Ask for consent prior initialization
                     GADMobileAds.sharedInstance().start { status in
                         if Settings.adTestMode {
-                            GADMobileAds.sharedInstance().requestConfiguration.testDeviceIdentifiers = [ "c2ce836e78c80bcecb7fecc66779a08d" ]
+                            GADMobileAds.sharedInstance().requestConfiguration.testDeviceIdentifiers = [ 
+                                "c2ce836e78c80bcecb7fecc66779a08d",
+                                "04ad4ef3909fa8398c62a548b4ab6bc0"
+                            ]
                         }
                     }
                     

@@ -31,36 +31,41 @@ struct MainMenuView: View {
         }
     }
     var body: some View {
-        NavigationStack {
-            VStack {
-                Text("Welcome to ZenKen!")
-                    .font(.largeTitle)
-                    .fontWeight(.semibold)
-                    .multilineTextAlignment(.center)
+        
+        if allPuzzles.loadingFinished {
+            NavigationStack {
+                VStack {
+                    Text("Welcome to ZenKen!")
+                        .font(.largeTitle)
+                        .fontWeight(.semibold)
+                        .multilineTextAlignment(.center)
                     
-                Spacer()
-                ForEach(4..<10) { size in
-                    NavigationLink {
-                        ZKPuzzleSelectionMenuView(
-                            size: size, 
-                            puzzles: puzzles(for: size)
-                        )
-                    } label: {
-                        Label("\(size) x \(size) Puzzles", systemImage: "play")
-                            .frame(height: 50)
+                    Spacer()
+                    ForEach(4..<10) { size in
+                        NavigationLink {
+                            ZKPuzzleSelectionMenuView(
+                                size: size,
+                                puzzles: puzzles(for: size)
+                            )
+                        } label: {
+                            Label("\(size) x \(size) Puzzles", systemImage: "play")
+                                .frame(height: 50)
+                        }
+                        
+                        .buttonStyle(.bordered)
+                        
+                        .tint(.blue)
+                        .padding(.vertical, 5)
                     }
+                    Spacer()
                     
-                    .buttonStyle(.bordered)
-                    
-                    .tint(.blue)
-                    .padding(.vertical, 5)
                 }
-                Spacer()
-           
+                .padding()
+                .tint(.blue)
+                
             }
-            .padding()
-            .tint(.blue)
-
+        } else {
+            ProgressView()
         }
     }
 }

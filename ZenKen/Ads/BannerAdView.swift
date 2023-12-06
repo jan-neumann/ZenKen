@@ -9,35 +9,35 @@ import SwiftUI
 import GoogleMobileAds
 
 struct BannerAdView: UIViewControllerRepresentable {
-    
-    @State private var viewWidth: CGFloat = .zero
+ 
     private let bannerView = GADBannerView()
     
     
     func makeUIViewController(context: Context) -> BannerViewController {
         let bannerViewController = BannerViewController()
         
-        bannerView.adUnitID = Settings.adTestMode ? Settings.AdMobId.bannerAdTestId : Settings.AdMobId.bannerAdId
+        bannerView.adUnitID = Settings.adTestMode ? Settings.AdMobInfo.bannerAdTestId : Settings.AdMobInfo.bannerAdId
         bannerView.rootViewController = bannerViewController
+        
+        let viewWidth = UIDevice.current.userInterfaceIdiom == .phone ? Settings.AdMobInfo.iPhoneBannerSize.width : Settings.AdMobInfo.iPadBannerSize.width
         
         bannerViewController.view.addSubview(bannerView)
         // Tell the bannerViewController to update our Coordinator when the ad width changes
         bannerViewController.delegate = context.coordinator
+     
+        DispatchQueue.main.async {
+            // Request a banner ad width with the updated viewWidth.
+            let request = GADRequest()
+            request.scene = UIApplication.shared.connectedScenes.first as? UIWindowScene
+            bannerView.adSize = GADCurrentOrientationAnchoredAdaptiveBannerAdSizeWithWidth(viewWidth)
+            bannerView.load(request)
+        }
         
         return bannerViewController
     }
     
     func updateUIViewController(_ uiViewController: BannerViewController, context: Context) {
-//        guard viewWidth != .zero else { return }
-        DispatchQueue.main.async {
-            viewWidth = uiViewController.view.window?.screen.bounds.width ?? 728
-            // Request a banner ad width with the updated viewWidth.
-            let request = GADRequest()
-            request.scene = UIApplication.shared.connectedScenes.first as? UIWindowScene
-            
-            bannerView.adSize = GADCurrentOrientationAnchoredAdaptiveBannerAdSizeWithWidth(viewWidth)
-            bannerView.load(request)
-        }
+       
      
     }
     
@@ -57,7 +57,7 @@ struct BannerAdView: UIViewControllerRepresentable {
         
         func bannerViewController(_ bannerViewController: BannerViewController, didUpdate width: CGFloat) {
             // Pass the viewWidth from Coordinator to BannerView.
-            parent.viewWidth = width
+//            parent.viewWidth = width
         }
         
         // MARK: - GADBannerViewDelegate methods

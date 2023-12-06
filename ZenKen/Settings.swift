@@ -11,7 +11,7 @@ final class Settings: ObservableObject {
     
     static let adTestMode = true // TODO: Set fo false prior to release
     
-    struct AdMobId {
+    struct AdMobInfo {
         static let appId = "ca-app-pub-7585285452167184~4537327024"
         static let nativeAdId = "ca-app-pub-7585285452167184/8343929841"
         static let interstitialAdId = "ca-app-pub-7585285452167184/5634840172"
@@ -21,6 +21,8 @@ final class Settings: ObservableObject {
         static let interstitialAdTestId = "ca-app-pub-3940256099942544/4411468910"
         static let bannerAdTestId = "ca-app-pub-3940256099942544/2934735716"
         
+        static let iPhoneBannerSize = CGSize(width: 468, height: 60)
+        static let iPadBannerSize = CGSize(width: 728, height: 9)
     }
   
     

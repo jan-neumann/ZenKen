@@ -90,6 +90,11 @@ extension ZKFieldGridView {
                 fieldEditChange = true
             }
         }
+        .onChange(of: showKeyPad) { newValue in
+            if !newValue {
+                gameModel.selectedField = nil
+            }
+        }
     }
     
     // MARK: - Portrait orientation views

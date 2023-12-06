@@ -57,7 +57,7 @@ struct ZKGameView: View {
                                 hintMode: $selectHintMode)
              
                 BannerAdView()
-                    .frame(maxHeight: 60)
+                    .frame(height: UIDevice.current.userInterfaceIdiom == .phone ? Settings.AdMobInfo.iPhoneBannerSize.height : Settings.AdMobInfo.iPadBannerSize.height, alignment: .center)
                   
             }
         }
