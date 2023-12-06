@@ -21,8 +21,6 @@ final class Settings: ObservableObject {
         static let interstitialAdTestId = "ca-app-pub-3940256099942544/4411468910"
         static let bannerAdTestId = "ca-app-pub-3940256099942544/2934735716"
         
-        static let iPhoneBannerSize = CGSize(width: 468, height: 60)
-        static let iPadBannerSize = CGSize(width: 728, height: 9)
     }
   
     

@@ -8,7 +8,7 @@
 import SwiftUI
 
 extension Color {
-    static var fieldSelection = Color("SelectedField").opacity(0.5)
+    static var fieldSelection = Color("SelectedField")
     
     static var backgroundGradientColors =
     [

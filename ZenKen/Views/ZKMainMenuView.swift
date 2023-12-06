@@ -1,5 +1,5 @@
 //
-//  MainMenuView.swift
+//  ZKMainMenuView.swift
 //  ZenKen
 //
 //  Created by Jan Alexander Neumann on 29.11.23.
@@ -8,7 +8,7 @@
 import SwiftUI
 import ZKGenerator
 
-struct MainMenuView: View {
+struct ZKMainMenuView: View {
     
     @StateObject private var allPuzzles = ZKPuzzles(loadFromBundle: true)
     
@@ -62,14 +62,17 @@ struct MainMenuView: View {
                 }
                 .padding()
                 .tint(.blue)
+              
                 
             }
+            .statusBarHidden()
         } else {
             ProgressView()
         }
     }
+       
 }
 
 #Preview {
-    MainMenuView()
+    ZKMainMenuView()
 }

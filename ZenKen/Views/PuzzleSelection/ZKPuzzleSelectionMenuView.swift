@@ -167,7 +167,6 @@ struct ZKPuzzleSelectionMenuView: View {
         }
         .frame(width: 100, height: 100)
         .buttonStyle(.bordered)
-//        .buttonBorderShape(.buttonBorder)
         .tint(locked ? .gray : .blue)
         .disabled(locked)
        

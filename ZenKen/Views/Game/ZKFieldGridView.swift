@@ -59,11 +59,18 @@ extension ZKFieldGridView {
                         let size = isPortrait ?
                         (size.width - margin) / CGFloat(gridSize) :
                         (size.height - margin) / CGFloat(gridSize)
+                         
+                        let color = gameModel.selectedField == field ?
+                            .fieldSelection :
+                            Color.fieldBackground
+                        let textColor = gameModel.selectedField == field ?
+                            Color.white : .primary
                         
                         ZKFieldView(
                             gridSize: gridSize,
                             fieldSize: size,
-                            color: (gameModel.selectedField == field) ? .fieldSelection : Color.fieldBackground,
+                            color: color,
+                            textColor: textColor,
                             field: field
                         )
                         .onTapGesture {
@@ -80,12 +87,11 @@ extension ZKFieldGridView {
                 
             }
         }
-        .background(!hintMode ? Color.secondary : Color.yellow)
+        .shadow(color: .indigo.opacity(0.6), radius: !hintMode ? 0 : 5)
         .onChange(of: gameModel.selectedField) { _ in
             if gameModel.selectedField == nil {
                 withAnimation(.linear(duration: 0.1)) {
                     showKeyPad = false
-                   
                 }
                 fieldEditChange = true
             }
@@ -95,6 +101,8 @@ extension ZKFieldGridView {
                 gameModel.selectedField = nil
             }
         }
+        .animation(.smooth, value: hintMode)
+        
     }
     
     // MARK: - Portrait orientation views
@@ -108,7 +116,6 @@ extension ZKFieldGridView {
                     Spacer()
                     grid(size: geo.size)
                     Spacer()
-                    
                 }
                 
                 portraitNumpad
@@ -123,7 +130,6 @@ extension ZKFieldGridView {
                 gameModel: gameModel
             )
             .opacity(showKeyPad ? 1 : 0)
-            Spacer()
         }
         
     }
@@ -139,7 +145,7 @@ extension ZKFieldGridView {
                     show: $showKeyPad
                 )
                 .opacity(showKeyPad ? 1 : 0)
-                .padding(.vertical, 10)
+                .padding(.bottom, 5)
             }
         }
     }

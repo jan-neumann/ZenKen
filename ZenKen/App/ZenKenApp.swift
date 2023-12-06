@@ -15,7 +15,7 @@ struct ZenKenApp: App {
     
     var body: some Scene {
         WindowGroup {
-            MainMenuView()
+            ZKMainMenuView()
                 .onAppear {
                     // TODO: Check if necessary
                     let path: [AnyObject] = NSSearchPathForDirectoriesInDomains(.libraryDirectory, .userDomainMask, true) as [AnyObject]
@@ -25,14 +25,12 @@ struct ZenKenApp: App {
                     // Init ads // TODO: Ask for consent prior initialization
                     GADMobileAds.sharedInstance().start { status in
                         if Settings.adTestMode {
-                            GADMobileAds.sharedInstance().requestConfiguration.testDeviceIdentifiers = [ 
+                            GADMobileAds.sharedInstance().requestConfiguration.testDeviceIdentifiers = [
                                 "c2ce836e78c80bcecb7fecc66779a08d",
                                 "04ad4ef3909fa8398c62a548b4ab6bc0"
                             ]
                         }
                     }
-                    
-
                 }
         }
         

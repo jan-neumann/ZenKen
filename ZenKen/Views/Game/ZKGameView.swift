@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import GoogleMobileAds
 
 struct ZKGameView: View {
   
@@ -50,15 +51,14 @@ struct ZKGameView: View {
                 
             // Game grid
             VStack(alignment: .center) {
-               
+                let adSize = UIDevice.current.userInterfaceIdiom == .pad ? GADAdSizeFullBanner : GADAdSizeBanner
                 ZKFieldGridView(gridSize: size,
                                 isPortrait: $isPortrait,
                                 fieldEditChange: $fieldChanged,
                                 hintMode: $selectHintMode)
-             
+         
                 BannerAdView()
-                    .frame(height: UIDevice.current.userInterfaceIdiom == .phone ? Settings.AdMobInfo.iPhoneBannerSize.height : Settings.AdMobInfo.iPadBannerSize.height, alignment: .center)
-                  
+                    .frame(width: adSize.size.width, height: adSize.size.height)
             }
         }
         .background(
@@ -143,7 +143,8 @@ extension ZKGameView {
                 } label: {
                     Image(systemName: "chevron.left")
                 }
-               
+                .frame(width: 70, height: 70)
+                .disabled(gameModel.selectedField != nil)
                 
                 Spacer()
                 
@@ -159,7 +160,9 @@ extension ZKGameView {
                                     .font(.caption)
                             }
                         }
-                        .frame(width: 80, height: 80)
+                        .frame(width: 70, height: 70)
+                        .disabled(gameModel.selectedField != nil)
+                        
                         // Show errors button
                         Button {
                             gameModel.showErrors = true
@@ -171,24 +174,31 @@ extension ZKGameView {
                             }
                             
                         }
-                        .frame(width: 80, height: 80)
-                        
+                        .frame(width: 70, height: 70)
+                        .disabled(gameModel.selectedField != nil)
                     }
-                
-                    
+                 
                     // Hint selection message
                     Text("Select a field for a hint.")
+                        .font(.caption)
                         .bold()
-                        .frame(width: 150)
+                        .lineLimit(/*@START_MENU_TOKEN@*/2/*@END_MENU_TOKEN@*/)
                         .multilineTextAlignment(.center)
+                        .shadow(radius: 2)
+                        .padding(10)
+                        .background(.tertiary)
+                        .clipShape(.capsule)
                         .opacity(selectHintMode ? 1 : 0)
+                        .frame(height: 50)
+                        .padding(.trailing, 10)
+                        .animation(.smooth, value: selectHintMode)
+                        .transition(.slide)
                 }
             }
             .font(.largeTitle)
             .fontWeight(.semibold)
-            .foregroundStyle(.white)
-            .padding(.horizontal)
-           
+            .foregroundStyle(gameModel.selectedField == nil ? .white : .gray)
+            .shadow(radius: 2)
             
             Spacer()
         }

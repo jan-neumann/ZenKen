@@ -15,31 +15,25 @@ struct BannerAdView: UIViewControllerRepresentable {
     
     func makeUIViewController(context: Context) -> BannerViewController {
         let bannerViewController = BannerViewController()
-        
+        let adSize = UIDevice.current.userInterfaceIdiom == .pad ? GADAdSizeFullBanner : GADAdSizeBanner
+       
         bannerView.adUnitID = Settings.adTestMode ? Settings.AdMobInfo.bannerAdTestId : Settings.AdMobInfo.bannerAdId
         bannerView.rootViewController = bannerViewController
-        
-        let viewWidth = UIDevice.current.userInterfaceIdiom == .phone ? Settings.AdMobInfo.iPhoneBannerSize.width : Settings.AdMobInfo.iPadBannerSize.width
-        
+         
         bannerViewController.view.addSubview(bannerView)
         // Tell the bannerViewController to update our Coordinator when the ad width changes
         bannerViewController.delegate = context.coordinator
-     
-        DispatchQueue.main.async {
-            // Request a banner ad width with the updated viewWidth.
-            let request = GADRequest()
-            request.scene = UIApplication.shared.connectedScenes.first as? UIWindowScene
-            bannerView.adSize = GADCurrentOrientationAnchoredAdaptiveBannerAdSizeWithWidth(viewWidth)
-            bannerView.load(request)
-        }
         
+        // Request a banner ad width with the updated viewWidth.
+        let request = GADRequest()
+        request.scene = UIApplication.shared.connectedScenes.first as? UIWindowScene
+        bannerView.adSize = adSize
+        bannerView.load(request)
+     
         return bannerViewController
     }
     
-    func updateUIViewController(_ uiViewController: BannerViewController, context: Context) {
-       
-     
-    }
+    func updateUIViewController(_ uiViewController: BannerViewController, context: Context) {}
     
     func makeCoordinator() -> Coordinator {
         Coordinator(parent: self)

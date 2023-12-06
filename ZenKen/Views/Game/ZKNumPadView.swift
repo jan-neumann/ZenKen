@@ -30,6 +30,7 @@ struct ZKNumPadView: View {
         HStack(spacing: 0) {
             
             VStack(spacing: 5) {
+                
                 hintText
                 
                 Grid(horizontalSpacing: 5, verticalSpacing: 5) {
@@ -49,16 +50,12 @@ struct ZKNumPadView: View {
                 }
             }
             .padding(.horizontal)
-            .padding(.bottom, 10)
+            .padding(.bottom, 6)
           
         }
-        .background(
-            Color(.systemGray6)
-                .opacity(0.7)
-                .blur(radius: 2)
-        )
-        .padding(5)
-        .cornerRadius(20)
+        .background(Color(.systemGray6).opacity(0.7))
+        .clipShape(.rect(cornerRadius: 10))
+        .padding(3)
         .shadow(radius: 2)
     }
     
@@ -67,11 +64,8 @@ struct ZKNumPadView: View {
             .foregroundColor(.white)
             .padding(.horizontal)
             .padding(.vertical, 5)
-            .background(.blue)
-            .clipShape(
-                RoundedRectangle(cornerRadius: 20)
-                   
-            )
+            .background(Color.indigo.gradient)
+            .clipShape(.capsule)
             .padding(.top, 10)
             .shadow(radius: 2)
     }

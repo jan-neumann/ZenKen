@@ -28,7 +28,7 @@
 		9D7857AD2A42E7C1008C4867 /* GameModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D7857AC2A42E7C1008C4867 /* GameModel.swift */; };
 		9D7857AF2A42E83B008C4867 /* ZKGameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D7857AE2A42E83B008C4867 /* ZKGameView.swift */; };
 		9D8275602A431B26007AE842 /* ZKField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D82755F2A431B26007AE842 /* ZKField.swift */; };
-		9D938BDA2B17351400737792 /* MainMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D938BD92B17351400737792 /* MainMenuView.swift */; };
+		9D938BDA2B17351400737792 /* ZKMainMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D938BD92B17351400737792 /* ZKMainMenuView.swift */; };
 		9DA313352B1870E500778520 /* puzzles4x4.json in Resources */ = {isa = PBXBuildFile; fileRef = 9DA313342B1870E500778520 /* puzzles4x4.json */; };
 		9DA91BF42B1F039B00CB8920 /* BannerAdView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DA91BF32B1F039B00CB8920 /* BannerAdView.swift */; };
 		9DABBF4F2AC1ADFA00C2705D /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 9DABBF4E2AC1ADFA00C2705D /* Localizable.xcstrings */; };
@@ -62,7 +62,7 @@
 		9D7857AC2A42E7C1008C4867 /* GameModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameModel.swift; sourceTree = "<group>"; };
 		9D7857AE2A42E83B008C4867 /* ZKGameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZKGameView.swift; sourceTree = "<group>"; };
 		9D82755F2A431B26007AE842 /* ZKField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZKField.swift; sourceTree = "<group>"; };
-		9D938BD92B17351400737792 /* MainMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMenuView.swift; sourceTree = "<group>"; };
+		9D938BD92B17351400737792 /* ZKMainMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZKMainMenuView.swift; sourceTree = "<group>"; };
 		9DA313342B1870E500778520 /* puzzles4x4.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = puzzles4x4.json; sourceTree = "<group>"; };
 		9DA91BF32B1F039B00CB8920 /* BannerAdView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BannerAdView.swift; sourceTree = "<group>"; };
 		9DABBF4E2AC1ADFA00C2705D /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
@@ -127,12 +127,12 @@
 		9D7857922A42E596008C4867 /* ZenKen */ = {
 			isa = PBXGroup;
 			children = (
-				9D5A7E352B1DCB220098B608 /* Ads */,
 				9D5A7E302B1DB6C20098B608 /* Info.plist */,
 				9DABBF4C2AC1ACB400C2705D /* App */,
 				9D25CB1D2A44339D00476FD6 /* Extensions */,
 				9D7857AB2A42E782008C4867 /* Model */,
 				9D7857A32A42E5FA008C4867 /* Views */,
+				9D5A7E352B1DCB220098B608 /* Ads */,
 				9DABBF4D2AC1ACD400C2705D /* Files */,
 				9DF3A66A2A5D93AC00E3D5C5 /* Settings.swift */,
 				9DABBF4E2AC1ADFA00C2705D /* Localizable.xcstrings */,
@@ -160,7 +160,8 @@
 		9D7857A32A42E5FA008C4867 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				9D938BD92B17351400737792 /* MainMenuView.swift */,
+				9D9D99492B20A7F800F9D26C /* Settings */,
+				9D938BD92B17351400737792 /* ZKMainMenuView.swift */,
 				9DF3A6672A5D907E00E3D5C5 /* PuzzleSelection */,
 				9DF3A6662A5D7A6500E3D5C5 /* Game */,
 			);
@@ -182,6 +183,13 @@
 				9DABBF502AC1AF8500C2705D /* ZKPuzzle.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		9D9D99492B20A7F800F9D26C /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Settings;
 			sourceTree = "<group>";
 		};
 		9DABBF4C2AC1ACB400C2705D /* App */ = {
@@ -323,7 +331,7 @@
 				9DFA6D692A44886F00385C0F /* Color+Extensions.swift in Sources */,
 				9D25CB1F2A4433B300476FD6 /* Array+Extensions.swift in Sources */,
 				9DF3A66B2A5D93AC00E3D5C5 /* Settings.swift in Sources */,
-				9D938BDA2B17351400737792 /* MainMenuView.swift in Sources */,
+				9D938BDA2B17351400737792 /* ZKMainMenuView.swift in Sources */,
 				9D7857AF2A42E83B008C4867 /* ZKGameView.swift in Sources */,
 				9D5A7E342B1DBF610098B608 /* InterstitialAdView.swift in Sources */,
 				9DA91BF42B1F039B00CB8920 /* BannerAdView.swift in Sources */,

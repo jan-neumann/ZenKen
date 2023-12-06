@@ -21,6 +21,7 @@ struct ZKFieldView: View {
     let gridSize: Int
     let fieldSize: CGFloat
     let color: Color
+    let textColor: Color
     
     @ObservedObject var field: ZKField
      
@@ -104,7 +105,7 @@ struct ZKFieldView: View {
                         Text(field.value != nil ? "\(field.value!)" : "")
                             .font(.system(size: valueFontSize))
                             .foregroundColor((gm.showErrors && valueError)
-                                                ? .red : .primary
+                                                ? .red : textColor
                             )
                             .shadow(radius: 2)
                             .padding(.top, 5)
@@ -197,6 +198,7 @@ struct ZenKenFieldView_Previews: PreviewProvider {
             gridSize: 4,
             fieldSize: 40,
             color: .white,
+            textColor: .black,
             field: ZKField(
                 cageHint: "4096 (x)",
                 hint: "4096 (x)",

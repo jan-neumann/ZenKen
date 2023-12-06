@@ -42,15 +42,13 @@ struct ZKNoteSelectionView: View {
                             .background(.white.opacity(0.6))
                             .clipShape(Circle())
                             .shadow(radius: 2)
-                           
+                            .fontWeight(.bold)
                     }
                     .buttonStyle(.plain)
-                  
                 }
                 HStack(spacing: 5) {
                     numbersView
                     allNotesToggleButton
-                    
                 }
             } else {
                 VStack(spacing: 3) {
@@ -62,11 +60,12 @@ struct ZKNoteSelectionView: View {
             
         }
         .padding(.top, 5)
-        .padding([.horizontal, .bottom], 10)
+        .padding([.horizontal, .bottom], 6)
         .transition(.opacity)
-        .background(Color(.systemGray3))
+        .background(.backgroundGradient1.gradient) // Color(.systemGray4)
         .clipShape(.rect(cornerRadius: 10))
-        .shadow(radius: 10)
+        .shadow(radius: 5)
+        .padding(.horizontal, 10)
     }
     
     // MARK: - Sub Views
@@ -74,6 +73,7 @@ struct ZKNoteSelectionView: View {
     var notesLabel: some View {
         Label("Notes", systemImage: "square.and.pencil")
             .fontWeight(.semibold)
+            .foregroundColor(.white)
     }
     
     var allNotesToggleButton: some View {
@@ -115,8 +115,7 @@ struct NoteToggleButtonStyle: ButtonStyle {
             configuration.label
                 .frame(minWidth: 28, maxWidth: 50, minHeight: 28, maxHeight: 50)
                 .aspectRatio(1, contentMode: .fit)
-                .foregroundColor(.white)
-                .background(toggle ? Color.blue : Color.secondary)
+                .background(toggle ? Color.indigo : Color(.systemGray5))
                 .cornerRadius(5)
                 .shadow(radius: 5)
         }
