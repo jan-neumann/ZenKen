@@ -20,7 +20,7 @@ struct ZKFieldView: View {
     
     let gridSize: Int
     let fieldSize: CGFloat
-    let color: Color
+    let backgroundColor: Color
     let textColor: Color
     
     @ObservedObject var field: ZKField
@@ -74,7 +74,7 @@ struct ZKFieldView: View {
     
     var body: some View {
         ZStack {
-            color
+            backgroundColor
                 .overlay {
                     ZStack {
                         // Cage
@@ -197,7 +197,7 @@ struct ZenKenFieldView_Previews: PreviewProvider {
         ZKFieldView(
             gridSize: 4,
             fieldSize: 40,
-            color: .white,
+            backgroundColor: .white,
             textColor: .black,
             field: ZKField(
                 cageHint: "4096 (x)",

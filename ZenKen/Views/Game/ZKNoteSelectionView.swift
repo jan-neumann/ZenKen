@@ -13,7 +13,8 @@ struct ZKNoteSelectionView: View {
     
     let portrait: Bool
     let size: Int
-    @ObservedObject var field: ZKField
+    let maxWidth: CGFloat
+    @Binding var field: ZKField?
     @Binding var show: Bool
     
     // MARK: - Private
@@ -23,49 +24,52 @@ struct ZKNoteSelectionView: View {
     // MARK: - Properties
     
     func buttonColor(index: Int) -> Color {
-        field.notes[index] ? Color.secondary : Color.blue
+        guard let field = field else {
+            return .clear
+        }
+        return field.notes[index] ? Color.secondary : Color.indigo
     }
     
     // MARK: - Main View
     
     var body: some View {
-        VStack {
-            if portrait {
-                HStack {
-                    notesLabel
-                    Spacer()
-                    Button {
-                        show.toggle()
-                    } label: {
-                        Image(systemName: "xmark")
-                            .frame(width: 30, height: 30)
-                            .background(.white.opacity(0.6))
-                            .clipShape(Circle())
-                            .shadow(radius: 2)
-                            .fontWeight(.bold)
+        if let field = field {
+            VStack {
+                if portrait {
+                    VStack {
+                        HStack(alignment: .top) {
+                            notesLabel
+                            Spacer()
+                        }
+                        HStack(alignment: .bottom, spacing: 5) {
+                            numbersView(field: field)
+                            allNotesToggleButton(field: field)
+                        }
                     }
-                    .buttonStyle(.plain)
+                    .frame(
+                        minWidth: UIDevice.current.userInterfaceIdiom == .pad ? 500 :  300,
+                        maxWidth: maxWidth
+                    )
+                    .padding(5)
+                } else { // landscape
+                    VStack(spacing: 3) {
+                        notesLabel
+                        numbersView(field: field)
+                        allNotesToggleButton(field: field)
+                    }
+                    .frame(minHeight: 500)
                 }
-                HStack(spacing: 5) {
-                    numbersView
-                    allNotesToggleButton
-                }
-            } else {
-                VStack(spacing: 3) {
-                    notesLabel
-                    numbersView
-                    allNotesToggleButton
-                }
+                
             }
-            
+            .padding(15)
+            .transition(.opacity)
+            .background(.backgroundGradient3.gradient)
+            .clipShape(.rect(cornerRadius: 10))
+            .shadow(radius: 5)
+            .overlay(alignment: .topTrailing) { ZKCloseButton(show: $show) }
+            .padding(.trailing, 5)
         }
-        .padding(.top, 5)
-        .padding([.horizontal, .bottom], 6)
-        .transition(.opacity)
-        .background(.backgroundGradient1.gradient) // Color(.systemGray4)
-        .clipShape(.rect(cornerRadius: 10))
-        .shadow(radius: 5)
-        .padding(.horizontal, 10)
+        
     }
     
     // MARK: - Sub Views
@@ -76,25 +80,33 @@ struct ZKNoteSelectionView: View {
             .foregroundColor(.white)
     }
     
-    var allNotesToggleButton: some View {
+    func allNotesToggleButton(field: ZKField) -> some View {
         Button {
             allNotesOn.toggle()
             for i in 0 ..< field.notes.count {
                 field.notes[i] = allNotesOn
             }
         } label: {
-            Image(systemName: allNotesOn ? "square.slash" : "checkmark.square")
-                .bold()
+            Image(
+                systemName: allNotesOn ?
+                "square.slash" :
+                    "checkmark.square"
+            )
+            .bold()
         }
-        .buttonStyle(NoteToggleButtonStyle())
+        .buttonStyle(
+            NoteToggleButtonStyle(
+                field: field,
+                noteNumber: 0
+            )
+        )
        
     }
     
-    var numbersView: some View {
-        ForEach(0..<size, id: \.self) { number in
+    func numbersView(field: ZKField) -> some View {
+        ForEach(0 ..< size, id: \.self) { number in
             Button {
                 if field.notes.count > number {
-                   
                     withAnimation {
                         field.notes[number].toggle()
                     }
@@ -103,19 +115,25 @@ struct ZKNoteSelectionView: View {
                 Text("\(number + 1)")
                     .font(.caption.bold())
             }
-            .buttonStyle(NoteToggleButtonStyle(toggle: field.notes[number]))
+            .buttonStyle(
+                NoteToggleButtonStyle(
+                    field: field,
+                    noteNumber: number
+                )
+            )
         }
     }
 }
 
-struct NoteToggleButtonStyle: ButtonStyle {
-    var toggle: Bool = false
+fileprivate struct NoteToggleButtonStyle: ButtonStyle {
+    @ObservedObject var field: ZKField
+    let noteNumber: Int
     
     func makeBody(configuration: Self.Configuration) -> some View {
             configuration.label
                 .frame(minWidth: 28, maxWidth: 50, minHeight: 28, maxHeight: 50)
                 .aspectRatio(1, contentMode: .fit)
-                .background(toggle ? Color.indigo : Color(.systemGray5))
+                .background(field.notes[noteNumber] ? .indigo : .numPadBackground)
                 .cornerRadius(5)
                 .shadow(radius: 5)
         }
@@ -125,7 +143,7 @@ struct NoteToggleButtonStyle: ButtonStyle {
 // MARK: - Previews
 
 #Preview {
-    @State var field: ZKField = ZKField (
+    @State var field: ZKField? = ZKField (
         cageHint: "4096(X)",
         hint: "4096(X)",
         drawLeftBorder: true,
@@ -137,7 +155,8 @@ struct NoteToggleButtonStyle: ButtonStyle {
     return ZKNoteSelectionView(
         portrait: true,
         size: 9,
-        field: field,
+        maxWidth: 300,
+        field: $field,
         show: .constant(true)
     )
     

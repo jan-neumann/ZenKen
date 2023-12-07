@@ -9,6 +9,7 @@ import Foundation
 
 final class Settings: ObservableObject {
     
+    static let adsEnabled = true
     static let adTestMode = true // TODO: Set fo false prior to release
     
     struct AdMobInfo {
@@ -20,7 +21,6 @@ final class Settings: ObservableObject {
         static let nativeAdTestId = ""
         static let interstitialAdTestId = "ca-app-pub-3940256099942544/4411468910"
         static let bannerAdTestId = "ca-app-pub-3940256099942544/2934735716"
-        
     }
   
     

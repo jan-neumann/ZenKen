@@ -26,6 +26,12 @@ struct ZKGameView: View {
     @State private var fieldChanged = false
     @State private var selectHintMode = false
     
+    // MARK: - Properties
+    
+    private var adSize: CGSize {
+        UIDevice.current.userInterfaceIdiom == .pad ? GADAdSizeFullBanner.size : GADAdSizeBanner.size
+    }
+    
    // MARK: - Init
     
     init(size: Int, seed: Int,solved:  Binding<Bool>) {
@@ -46,26 +52,20 @@ struct ZKGameView: View {
     
     var body: some View {
         
-        ZStack {
-            headerView
-                
+        VStack {
             // Game grid
-            VStack(alignment: .center) {
-                let adSize = UIDevice.current.userInterfaceIdiom == .pad ? GADAdSizeFullBanner : GADAdSizeBanner
-                ZKFieldGridView(gridSize: size,
-                                isPortrait: $isPortrait,
-                                fieldEditChange: $fieldChanged,
-                                hintMode: $selectHintMode)
-         
+            ZKFieldGridView(gridSize: size,
+                            isPortrait: $isPortrait,
+                            fieldEditChange: $fieldChanged,
+                            hintMode: $selectHintMode)
+            // Ad Banner
+            if Settings.adsEnabled {
                 BannerAdView()
-                    .frame(width: adSize.size.width, height: adSize.size.height)
+                    .frame(width: adSize.width, height: adSize.height)
             }
         }
-        .background(
-            LinearGradient(colors: Color.backgroundGradientColors, 
-                           startPoint: .topLeading,
-                           endPoint: .bottomTrailing)
-        )
+        .background(alignment: .top) { toolbarHeaderView }
+        .background(backgroundGradient)
         .statusBarHidden()
         .onAppear { initialize() }
         .onDisappear { _ = gameModel.save() }
@@ -134,74 +134,77 @@ struct ZKGameView: View {
 
 extension ZKGameView {
     
-    private var headerView: some View {
-        VStack {
-            HStack(alignment: .top) {
-                // Back button
-                Button {
-                    dismiss()
-                } label: {
-                    Image(systemName: "chevron.left")
-                }
-                .frame(width: 70, height: 70)
-                .disabled(gameModel.selectedField != nil)
-                
-                Spacer()
-                
-                VStack(spacing: 0) {
-                    HStack(alignment: .top) {
-                        // Hint button
-                        Button {
-                            selectHintMode.toggle()
-                        } label: {
-                            VStack {
-                                Image(systemName: "questionmark.circle")
-                                Text("Hint")
-                                    .font(.caption)
-                            }
-                        }
-                        .frame(width: 70, height: 70)
-                        .disabled(gameModel.selectedField != nil)
-                        
-                        // Show errors button
-                        Button {
-                            gameModel.showErrors = true
-                        } label: {
-                            VStack {
-                                Image(systemName: "exclamationmark.circle")
-                                Text("Errors")
-                                    .font(.caption)
-                            }
-                            
-                        }
-                        .frame(width: 70, height: 70)
-                        .disabled(gameModel.selectedField != nil)
-                    }
-                 
-                    // Hint selection message
-                    Text("Select a field for a hint.")
-                        .font(.caption)
-                        .bold()
-                        .lineLimit(/*@START_MENU_TOKEN@*/2/*@END_MENU_TOKEN@*/)
-                        .multilineTextAlignment(.center)
-                        .shadow(radius: 2)
-                        .padding(10)
-                        .background(.tertiary)
-                        .clipShape(.capsule)
-                        .opacity(selectHintMode ? 1 : 0)
-                        .frame(height: 50)
-                        .padding(.trailing, 10)
-                        .animation(.smooth, value: selectHintMode)
-                        .transition(.slide)
-                }
+    private var backgroundGradient: some View {
+        LinearGradient(colors: Color.backgroundGradientColors,
+                       startPoint: .topLeading,
+                       endPoint: .bottomTrailing)
+        .ignoresSafeArea()
+    }
+    
+    private var toolbarHeaderView: some View {
+        HStack(alignment: .top) {
+            // Back button
+            Button {
+                dismiss()
+            } label: {
+                Image(systemName: "chevron.left")
             }
-            .font(.largeTitle)
-            .fontWeight(.semibold)
-            .foregroundStyle(gameModel.selectedField == nil ? .white : .gray)
-            .shadow(radius: 2)
+            .frame(width: 70, height: 70)
+            .disabled(gameModel.selectedField != nil)
             
             Spacer()
+            
+            VStack(spacing: 0) {
+                HStack(alignment: .top) {
+                    // Hint button
+                    Button {
+                        selectHintMode.toggle()
+                    } label: {
+                        VStack {
+                            Image(systemName: "questionmark.circle")
+                            Text("Hint")
+                                .font(.caption)
+                        }
+                    }
+                    .frame(width: 70, height: 70)
+                    .disabled(gameModel.selectedField != nil)
+                    
+                    // Show errors button
+                    Button {
+                        gameModel.showErrors = true
+                    } label: {
+                        VStack {
+                            Image(systemName: "exclamationmark.circle")
+                            Text("Errors")
+                                .font(.caption)
+                        }
+                        
+                    }
+                    .frame(width: 70, height: 70)
+                    .disabled(gameModel.selectedField != nil)
+                }
+                
+                // Hint selection message
+                Text("Select a field for a hint.")
+                    .font(.caption)
+                    .bold()
+                    .lineLimit(/*@START_MENU_TOKEN@*/2/*@END_MENU_TOKEN@*/)
+                    .multilineTextAlignment(.center)
+                    .shadow(radius: 2)
+                    .padding(10)
+                    .background(.tertiary)
+                    .clipShape(.capsule)
+                    .opacity(selectHintMode ? 1 : 0)
+                    .frame(height: 50)
+                    .padding(.trailing, 10)
+                    .animation(.smooth, value: selectHintMode)
+                    .transition(.slide)
+            }
         }
+        .font(.largeTitle)
+        .fontWeight(.semibold)
+        .foregroundStyle(gameModel.selectedField == nil ? .white : .gray)
+        .shadow(radius: 2)
     }
 }
 

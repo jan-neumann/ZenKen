@@ -33,6 +33,7 @@
 		9DA91BF42B1F039B00CB8920 /* BannerAdView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DA91BF32B1F039B00CB8920 /* BannerAdView.swift */; };
 		9DABBF4F2AC1ADFA00C2705D /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 9DABBF4E2AC1ADFA00C2705D /* Localizable.xcstrings */; };
 		9DABBF512AC1AF8500C2705D /* ZKPuzzle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DABBF502AC1AF8500C2705D /* ZKPuzzle.swift */; };
+		9DD2178F2B21FE1700AED3A1 /* ZKCloseButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DD2178E2B21FE1700AED3A1 /* ZKCloseButton.swift */; };
 		9DEB4F512B19E3D2002587FE /* ZKPuzzleSolvedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DEB4F502B19E3D2002587FE /* ZKPuzzleSolvedView.swift */; };
 		9DF3A6692A5D90A100E3D5C5 /* ZKPuzzleSelectionMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DF3A6682A5D90A100E3D5C5 /* ZKPuzzleSelectionMenuView.swift */; };
 		9DF3A66B2A5D93AC00E3D5C5 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DF3A66A2A5D93AC00E3D5C5 /* Settings.swift */; };
@@ -67,6 +68,7 @@
 		9DA91BF32B1F039B00CB8920 /* BannerAdView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BannerAdView.swift; sourceTree = "<group>"; };
 		9DABBF4E2AC1ADFA00C2705D /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
 		9DABBF502AC1AF8500C2705D /* ZKPuzzle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZKPuzzle.swift; sourceTree = "<group>"; };
+		9DD2178E2B21FE1700AED3A1 /* ZKCloseButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZKCloseButton.swift; sourceTree = "<group>"; };
 		9DEB4F502B19E3D2002587FE /* ZKPuzzleSolvedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZKPuzzleSolvedView.swift; sourceTree = "<group>"; };
 		9DF3A6682A5D90A100E3D5C5 /* ZKPuzzleSelectionMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZKPuzzleSelectionMenuView.swift; sourceTree = "<group>"; };
 		9DF3A66A2A5D93AC00E3D5C5 /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
@@ -129,6 +131,7 @@
 			children = (
 				9D5A7E302B1DB6C20098B608 /* Info.plist */,
 				9DABBF4C2AC1ACB400C2705D /* App */,
+				9DD2178D2B21FDF900AED3A1 /* Shared */,
 				9D25CB1D2A44339D00476FD6 /* Extensions */,
 				9D7857AB2A42E782008C4867 /* Model */,
 				9D7857A32A42E5FA008C4867 /* Views */,
@@ -212,6 +215,14 @@
 				9D7857972A42E597008C4867 /* Assets.xcassets */,
 			);
 			path = Files;
+			sourceTree = "<group>";
+		};
+		9DD2178D2B21FDF900AED3A1 /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+				9DD2178E2B21FE1700AED3A1 /* ZKCloseButton.swift */,
+			);
+			path = Shared;
 			sourceTree = "<group>";
 		};
 		9DF3A6662A5D7A6500E3D5C5 /* Game */ = {
@@ -325,6 +336,7 @@
 				9D7857AD2A42E7C1008C4867 /* GameModel.swift in Sources */,
 				9D7857A52A42E633008C4867 /* ZKFieldGridView.swift in Sources */,
 				9D5A7E372B1DCB360098B608 /* InterstitialAdCoordinator.swift in Sources */,
+				9DD2178F2B21FE1700AED3A1 /* ZKCloseButton.swift in Sources */,
 				9DF3A6692A5D90A100E3D5C5 /* ZKPuzzleSelectionMenuView.swift in Sources */,
 				9DABBF512AC1AF8500C2705D /* ZKPuzzle.swift in Sources */,
 				9DEB4F512B19E3D2002587FE /* ZKPuzzleSolvedView.swift in Sources */,

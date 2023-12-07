@@ -71,8 +71,10 @@ struct ZKPuzzleSelectionMenuView: View {
         VStack {
             headerView
                 .background {
-                    interstitialAd
-                        .frame(width: .zero, height: .zero)
+                    if Settings.adsEnabled {
+                        interstitialAd
+                            .frame(width: .zero, height: .zero)
+                    }
                 }
             ScrollView {
                 LazyVGrid(columns: columns, spacing: 15) {
@@ -101,7 +103,8 @@ struct ZKPuzzleSelectionMenuView: View {
             }
         }
         .onChange(of: currentPuzzle) { newValue in
-            if newValue == nil {
+            if newValue == nil,
+                Settings.adsEnabled {
                 // TODO: Find another solution
                 DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
                     interstitialAdCoordinator.presentAd(
@@ -138,7 +141,9 @@ struct ZKPuzzleSelectionMenuView: View {
     
     func puzzleButton(for puzzle: ZKPuzzleData, locked: Bool) -> some View {
         Button {
-            interstitialAdCoordinator.loadAd()
+            if Settings.adsEnabled {
+                interstitialAdCoordinator.loadAd()
+            }
             currentPuzzle = puzzle
             currentPuzzleNumber = puzzle.number
     
@@ -148,6 +153,7 @@ struct ZKPuzzleSelectionMenuView: View {
                 VStack {
                     Text("\(puzzle.number)")
                         .font(.title)
+                        .fontWeight(.semibold)
                         .padding(.bottom, 5)
                     Image(systemName: locked ? "lock" : "lock.open")
                         .font(.largeTitle)

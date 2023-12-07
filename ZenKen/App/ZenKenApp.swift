@@ -22,13 +22,15 @@ struct ZenKenApp: App {
                         let folder: String = path[0] as! String
                         NSLog("Your NSUserDefaults are stored in this folder: %@/Preferences", folder)
                     
-                    // Init ads // TODO: Ask for consent prior initialization
-                    GADMobileAds.sharedInstance().start { status in
-                        if Settings.adTestMode {
-                            GADMobileAds.sharedInstance().requestConfiguration.testDeviceIdentifiers = [
-                                "c2ce836e78c80bcecb7fecc66779a08d",
-                                "04ad4ef3909fa8398c62a548b4ab6bc0"
-                            ]
+                    if Settings.adsEnabled {
+                        // Init ads // TODO: Ask for consent prior initialization
+                        GADMobileAds.sharedInstance().start { status in
+                            if Settings.adTestMode {
+                                GADMobileAds.sharedInstance().requestConfiguration.testDeviceIdentifiers = [
+                                    "c2ce836e78c80bcecb7fecc66779a08d",
+                                    "04ad4ef3909fa8398c62a548b4ab6bc0"
+                                ]
+                            }
                         }
                     }
                 }

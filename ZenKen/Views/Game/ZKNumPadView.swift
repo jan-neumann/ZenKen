@@ -8,8 +8,14 @@
 import SwiftUI
 
 struct ZKNumPadView: View {
+    
+    // MARK: - Public
+    
     let portrait: Bool
     @ObservedObject var gameModel: GameModel
+    @Binding var show: Bool
+    
+    // MARK: - Properties
     
     var hint: String {
         guard let hintString = gameModel.selectedField?.cageHint else {
@@ -18,6 +24,8 @@ struct ZKNumPadView: View {
         return hintString.replacingOccurrences(of: " ", with: "")
     }
     
+    // MARK: - Main View
+    
     var body: some View {
         if portrait {
             portraitGrid
@@ -25,6 +33,8 @@ struct ZKNumPadView: View {
             landscapeGrid
         }
     }
+    
+    // MARK: - Sub Views
     
     private var portraitGrid: some View {
         HStack(spacing: 0) {
@@ -53,22 +63,18 @@ struct ZKNumPadView: View {
             .padding(.bottom, 6)
           
         }
-        .background(Color(.systemGray6).opacity(0.7))
+        .background(Color.backgroundGradient1.gradient)
+        
         .clipShape(.rect(cornerRadius: 10))
         .padding(3)
         .shadow(radius: 2)
+        .overlay(alignment: .topTrailing) { ZKCloseButton(show: $show) }
+        .frame(
+            minWidth: UIDevice.current.userInterfaceIdiom == .pad ? 500 :  300
+        )
     }
     
-    private var hintText: some View {
-        Text("\(hint)")
-            .foregroundColor(.white)
-            .padding(.horizontal)
-            .padding(.vertical, 5)
-            .background(Color.indigo.gradient)
-            .clipShape(.capsule)
-            .padding(.top, 10)
-            .shadow(radius: 2)
-    }
+
     
     private var landscapeGrid: some View {
         VStack(spacing: 5) {
@@ -103,16 +109,23 @@ struct ZKNumPadView: View {
             }
             .padding(5)
         }
-        .background(
-            Color(.systemGray6)
-                .opacity(0.7)
-                .blur(radius: 2)
-        )
+        .background(Color.backgroundGradient1.gradient)
         .padding(5)
         .cornerRadius(20)
         .shadow(radius: 2)
     }
-
+    
+    private var hintText: some View {
+        Text("\(hint)")
+            .foregroundColor(.white)
+            .padding(.horizontal)
+            .padding(.vertical, 5)
+            .background(Color.indigo.gradient)
+            .clipShape(.capsule)
+            .padding(.top, 5)
+            .shadow(radius: 2)
+    }
+    
     private func numButton(value: Int, symbol: String? = nil) -> some View {
         Button {
             withAnimation {
@@ -126,38 +139,44 @@ struct ZKNumPadView: View {
             gameModel.showErrors = false
         } label: {
             HStack(spacing: 0) {
-                if symbol != nil {
-                    Image(systemName: symbol!)
+                if let symbol = symbol {
+                    Image(systemName: symbol)
                         .font(.caption.bold())
                 } else {
                     Text("\(value)")
-                        .font(.body.bold())
+                        .font(.title.bold())
                         .shadow(radius: 2)
                 }
             }
         }
-      //  .frame(minWidth: 30, maxWidth: 60, minHeight: 30, maxHeight: 60)
-        .buttonStyle(NumberButtonStyle())
+        .buttonStyle(NumberButtonStyle(minWidth: portrait ? 35 : 50, minHeight: portrait ? 35 : 50))
     }
 }
 
-struct NumberButtonStyle: ButtonStyle {
+fileprivate struct NumberButtonStyle: ButtonStyle {
+    
+    let minWidth: CGFloat
+    let minHeight: CGFloat
+    
     func makeBody(configuration: Self.Configuration) -> some View {
             configuration.label
-                .frame(minWidth: 30, maxWidth: 60, minHeight: 30, maxHeight: 60)
+                .frame(minWidth: minWidth,
+                       maxWidth: 70,
+                       minHeight: minHeight,
+                       maxHeight: 70
+                )
                 .aspectRatio(1, contentMode: .fit)
                 .foregroundColor(.primary)
-                .background(.tertiary)
+                .background(.numPadBackground.gradient)
                 .cornerRadius(5)
                 .shadow(radius: 5)
         }
 }
 
-//struct ZKNumPadView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        NumPadView(
-//            gridSize: 4,
-//            selectedField: ZKField()
-//        )
-//    }
-//}
+#Preview {
+    ZKNumPadView(
+        portrait: true,
+        gameModel: GameModel(id: "1234"), 
+        show: .constant(true)
+    )
+}
