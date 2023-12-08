@@ -57,7 +57,8 @@ struct ZKGameView: View {
             ZKFieldGridView(gridSize: size,
                             isPortrait: $isPortrait,
                             fieldEditChange: $fieldChanged,
-                            hintMode: $selectHintMode)
+                            hintMode: $selectHintMode, 
+                            solved: $solved)
             // Ad Banner
             if Settings.adsEnabled {
                 BannerAdView()
@@ -65,7 +66,7 @@ struct ZKGameView: View {
             }
         }
         .background(alignment: .top) { toolbarHeaderView }
-        .background(backgroundGradient)
+        .background(ZKBackgroundGradient())
         .statusBarHidden()
         .onAppear { initialize() }
         .onDisappear { _ = gameModel.save() }
@@ -102,7 +103,7 @@ struct ZKGameView: View {
                 Button {
                     dismiss()
                 } label: {
-                    Text("OK")
+                    Text("Continue")
                 }
                 .frame(width: 160)
                 .buttonStyle(.bordered)
@@ -110,6 +111,9 @@ struct ZKGameView: View {
             }
             .interactiveDismissDisabled()
         }
+        .animation(.smooth(duration: 0.16),
+                   value: gameModel.selectedField
+        )
     
     }
     
@@ -133,13 +137,6 @@ struct ZKGameView: View {
 // MARK: - Sub Views
 
 extension ZKGameView {
-    
-    private var backgroundGradient: some View {
-        LinearGradient(colors: Color.backgroundGradientColors,
-                       startPoint: .topLeading,
-                       endPoint: .bottomTrailing)
-        .ignoresSafeArea()
-    }
     
     private var toolbarHeaderView: some View {
         HStack(alignment: .top) {
@@ -203,7 +200,8 @@ extension ZKGameView {
         }
         .font(.largeTitle)
         .fontWeight(.semibold)
-        .foregroundStyle(gameModel.selectedField == nil ? .white : .gray)
+        .blur(radius: gameModel.selectedField == nil ? 0 : 5)
+        .foregroundStyle(.white)
         .shadow(radius: 2)
     }
 }

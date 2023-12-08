@@ -30,6 +30,10 @@ struct ZKNoteSelectionView: View {
         return field.notes[index] ? Color.secondary : Color.indigo
     }
     
+    var isPad: Bool {
+        UIDevice.current.userInterfaceIdiom == .pad
+    }
+    
     // MARK: - Main View
     
     var body: some View {
@@ -47,10 +51,11 @@ struct ZKNoteSelectionView: View {
                         }
                     }
                     .frame(
-                        minWidth: UIDevice.current.userInterfaceIdiom == .pad ? 500 :  300,
+                        minWidth: isPad ? 500 :  300,
                         maxWidth: maxWidth
                     )
-                    .padding(5)
+                    .padding(.horizontal, 5)
+                    
                 } else { // landscape
                     VStack(spacing: 3) {
                         notesLabel
@@ -61,13 +66,17 @@ struct ZKNoteSelectionView: View {
                 }
                 
             }
-            .padding(15)
+            .padding([.horizontal, .bottom], 15)
+            .padding(.top, 5)
             .transition(.opacity)
-            .background(.backgroundGradient3.gradient)
+            .background(Color.backgroundGradient1.gradient)
             .clipShape(.rect(cornerRadius: 10))
             .shadow(radius: 5)
             .overlay(alignment: .topTrailing) { ZKCloseButton(show: $show) }
             .padding(.trailing, 5)
+            .onAppear {
+                allNotesOn = field.notes.allSatisfy({ $0 == true })
+            }
         }
         
     }
@@ -77,8 +86,10 @@ struct ZKNoteSelectionView: View {
     var notesLabel: some View {
         Label("Notes", systemImage: "square.and.pencil")
             .fontWeight(.semibold)
-            .foregroundColor(.white)
+            .foregroundStyle(.white)
+         
     }
+    
     
     func allNotesToggleButton(field: ZKField) -> some View {
         Button {
@@ -97,7 +108,8 @@ struct ZKNoteSelectionView: View {
         .buttonStyle(
             NoteToggleButtonStyle(
                 field: field,
-                noteNumber: 0
+                noteNumber: -1,
+                override: allNotesOn
             )
         )
        
@@ -128,12 +140,13 @@ struct ZKNoteSelectionView: View {
 fileprivate struct NoteToggleButtonStyle: ButtonStyle {
     @ObservedObject var field: ZKField
     let noteNumber: Int
+    var override: Bool = false
     
     func makeBody(configuration: Self.Configuration) -> some View {
             configuration.label
                 .frame(minWidth: 28, maxWidth: 50, minHeight: 28, maxHeight: 50)
                 .aspectRatio(1, contentMode: .fit)
-                .background(field.notes[noteNumber] ? .indigo : .numPadBackground)
+                .background((override || (noteNumber >= 0 && field.notes[noteNumber])) ? Color.fieldSelection.gradient : Color.numPadBackground.gradient)
                 .cornerRadius(5)
                 .shadow(radius: 5)
         }

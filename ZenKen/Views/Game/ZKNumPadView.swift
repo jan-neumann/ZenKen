@@ -113,12 +113,13 @@ struct ZKNumPadView: View {
         .padding(5)
         .cornerRadius(20)
         .shadow(radius: 2)
+        .overlay(alignment: .topTrailing) { ZKCloseButton(show: $show) }
     }
     
     private var hintText: some View {
         Text("\(hint)")
             .foregroundColor(.white)
-            .padding(.horizontal)
+            .padding(.horizontal, 30)
             .padding(.vertical, 5)
             .background(Color.indigo.gradient)
             .clipShape(.capsule)
@@ -141,7 +142,8 @@ struct ZKNumPadView: View {
             HStack(spacing: 0) {
                 if let symbol = symbol {
                     Image(systemName: symbol)
-                        .font(.caption.bold())
+                        .font(.title2.bold())
+                        .shadow(radius: 2)
                 } else {
                     Text("\(value)")
                         .font(.title.bold())

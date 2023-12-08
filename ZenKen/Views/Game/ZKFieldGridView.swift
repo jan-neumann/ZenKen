@@ -17,7 +17,8 @@ struct ZKFieldGridView: View {
     @Binding var isPortrait: Bool
     @Binding var fieldEditChange: Bool
     @Binding var hintMode: Bool
- 
+    @Binding var solved: Bool
+    
     // MARK: - Private
     
     @State private var showKeyPad: Bool = false
@@ -83,6 +84,7 @@ extension ZKFieldGridView {
                         .onTapGesture {
                             if hintMode {
                                 field.value = field.solution
+                                solved = gameModel.puzzle.allSolved()
                                 hintMode = false
                             } else {
                                 showKeyPad = true

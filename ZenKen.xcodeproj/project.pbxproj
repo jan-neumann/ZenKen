@@ -37,6 +37,8 @@
 		9DEB4F512B19E3D2002587FE /* ZKPuzzleSolvedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DEB4F502B19E3D2002587FE /* ZKPuzzleSolvedView.swift */; };
 		9DF3A6692A5D90A100E3D5C5 /* ZKPuzzleSelectionMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DF3A6682A5D90A100E3D5C5 /* ZKPuzzleSelectionMenuView.swift */; };
 		9DF3A66B2A5D93AC00E3D5C5 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DF3A66A2A5D93AC00E3D5C5 /* Settings.swift */; };
+		9DF59A442B232357002BB3C3 /* ZKBackgroundGradient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DF59A432B232357002BB3C3 /* ZKBackgroundGradient.swift */; };
+		9DF59A462B2325A6002BB3C3 /* ZKPuzzleSelectionMenuViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DF59A452B2325A6002BB3C3 /* ZKPuzzleSelectionMenuViewModel.swift */; };
 		9DFA6D692A44886F00385C0F /* Color+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DFA6D682A44886F00385C0F /* Color+Extensions.swift */; };
 /* End PBXBuildFile section */
 
@@ -72,6 +74,8 @@
 		9DEB4F502B19E3D2002587FE /* ZKPuzzleSolvedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZKPuzzleSolvedView.swift; sourceTree = "<group>"; };
 		9DF3A6682A5D90A100E3D5C5 /* ZKPuzzleSelectionMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZKPuzzleSelectionMenuView.swift; sourceTree = "<group>"; };
 		9DF3A66A2A5D93AC00E3D5C5 /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
+		9DF59A432B232357002BB3C3 /* ZKBackgroundGradient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZKBackgroundGradient.swift; sourceTree = "<group>"; };
+		9DF59A452B2325A6002BB3C3 /* ZKPuzzleSelectionMenuViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZKPuzzleSelectionMenuViewModel.swift; sourceTree = "<group>"; };
 		9DFA6D682A44886F00385C0F /* Color+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Extensions.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -137,7 +141,6 @@
 				9D7857A32A42E5FA008C4867 /* Views */,
 				9D5A7E352B1DCB220098B608 /* Ads */,
 				9DABBF4D2AC1ACD400C2705D /* Files */,
-				9DF3A66A2A5D93AC00E3D5C5 /* Settings.swift */,
 				9DABBF4E2AC1ADFA00C2705D /* Localizable.xcstrings */,
 				9D7857992A42E597008C4867 /* Preview Content */,
 			);
@@ -165,7 +168,7 @@
 			children = (
 				9D9D99492B20A7F800F9D26C /* Settings */,
 				9D938BD92B17351400737792 /* ZKMainMenuView.swift */,
-				9DF3A6672A5D907E00E3D5C5 /* PuzzleSelection */,
+				9DF3A6672A5D907E00E3D5C5 /* SelectionMenu */,
 				9DF3A6662A5D7A6500E3D5C5 /* Game */,
 			);
 			path = Views;
@@ -181,6 +184,7 @@
 		9D7857AB2A42E782008C4867 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				9DF3A66A2A5D93AC00E3D5C5 /* Settings.swift */,
 				9D7857AC2A42E7C1008C4867 /* GameModel.swift */,
 				9D82755F2A431B26007AE842 /* ZKField.swift */,
 				9DABBF502AC1AF8500C2705D /* ZKPuzzle.swift */,
@@ -221,6 +225,7 @@
 			isa = PBXGroup;
 			children = (
 				9DD2178E2B21FE1700AED3A1 /* ZKCloseButton.swift */,
+				9DF59A432B232357002BB3C3 /* ZKBackgroundGradient.swift */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -238,12 +243,13 @@
 			path = Game;
 			sourceTree = "<group>";
 		};
-		9DF3A6672A5D907E00E3D5C5 /* PuzzleSelection */ = {
+		9DF3A6672A5D907E00E3D5C5 /* SelectionMenu */ = {
 			isa = PBXGroup;
 			children = (
 				9DF3A6682A5D90A100E3D5C5 /* ZKPuzzleSelectionMenuView.swift */,
+				9DF59A452B2325A6002BB3C3 /* ZKPuzzleSelectionMenuViewModel.swift */,
 			);
-			path = PuzzleSelection;
+			path = SelectionMenu;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -332,6 +338,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				9D5A7E3C2B1DE53D0098B608 /* BannerViewController.swift in Sources */,
+				9DF59A462B2325A6002BB3C3 /* ZKPuzzleSelectionMenuViewModel.swift in Sources */,
+				9DF59A442B232357002BB3C3 /* ZKBackgroundGradient.swift in Sources */,
 				9D3234352A4991A700AC96CB /* ZKNoteSelectionView.swift in Sources */,
 				9D7857AD2A42E7C1008C4867 /* GameModel.swift in Sources */,
 				9D7857A52A42E633008C4867 /* ZKFieldGridView.swift in Sources */,

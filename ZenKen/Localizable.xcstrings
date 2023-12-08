@@ -44,6 +44,16 @@
         }
       }
     },
+    "Continue" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Weiter"
+          }
+        }
+      }
+    },
     "Errors" : {
       "localizations" : {
         "de" : {
@@ -74,9 +84,6 @@
         }
       }
     },
-    "OK" : {
-
-    },
     "Select a field for a hint." : {
       "localizations" : {
         "de" : {
@@ -88,6 +95,7 @@
       }
     },
     "solved : %lld / %lld" : {
+      "extractionState" : "stale",
       "localizations" : {
         "de" : {
           "stringUnit" : {

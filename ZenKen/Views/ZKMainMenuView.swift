@@ -11,7 +11,7 @@ import ZKGenerator
 struct ZKMainMenuView: View {
     
     @StateObject private var allPuzzles = ZKPuzzles(loadFromBundle: true)
-    
+   
     private func puzzles(for size: Int) -> [ZKPuzzleData] {
         switch size {
         case 4:
@@ -57,11 +57,12 @@ struct ZKMainMenuView: View {
                         .tint(.blue)
                         .padding(.vertical, 5)
                     }
+                   
                     Spacer()
                     
                 }
                 .padding()
-                .tint(.blue)
+          
               
                 
             }

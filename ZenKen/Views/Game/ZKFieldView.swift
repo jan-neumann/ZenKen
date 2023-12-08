@@ -47,6 +47,10 @@ struct ZKFieldView: View {
         size * 0.25
     }
     
+    private var noteFontSize: CGFloat {
+        size * 0.2
+    }
+    
     private var valueFontSize: CGFloat {
         size * 0.55
     }
@@ -55,7 +59,7 @@ struct ZKFieldView: View {
         size * 0.13
     }
     private var noteHeight: CGFloat {
-        size * 0.1
+        size * 0.085
     }
     
     private var size: CGFloat {
@@ -104,7 +108,7 @@ struct ZKFieldView: View {
                         // Value Text
                         Text(field.value != nil ? "\(field.value!)" : "")
                             .font(.system(size: valueFontSize))
-                            .foregroundColor((gm.showErrors && valueError)
+                            .foregroundStyle((gm.showErrors && valueError)
                                                 ? .red : textColor
                             )
                             .shadow(radius: 2)
@@ -137,7 +141,7 @@ extension ZKFieldView {
                 Text(field.hint ?? "")
                     .font(.system(size: hintFontSize).bold())
                     .frame(alignment: .topLeading)
-                    .foregroundColor((gm.selectedField != nil && gm.selectedField == field) ? Color.white : Color.hint)
+                    .foregroundColor((gm.selectedField != nil && gm.selectedField == field) || gm.showErrors ? Color.white : Color.hint)
                     .padding(.top, 2)
                     .padding(.leading, 4)
                     .lineLimit(1)
@@ -184,8 +188,10 @@ extension ZKFieldView {
             
         }
         .foregroundColor((gm.selectedField != nil && gm.selectedField == field) ? .white : Color.note)
-        .font(.system(size: hintFontSize))
+        .font(.system(size: noteFontSize))
         .padding(.bottom, noteSpacing)
+        .padding(.top, 1)
+      
     }
 }
 

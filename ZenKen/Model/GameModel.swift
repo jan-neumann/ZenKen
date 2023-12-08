@@ -44,10 +44,6 @@ final class GameModel: ObservableObject {
     
     // MARK: - Functions
     
-    func checkIfSolved() {
-    
-    }
-    
     private func cageID(row: Int, col: Int) -> Int? {
         guard let cageIDs = generator?.cageIDs else {
             return nil
